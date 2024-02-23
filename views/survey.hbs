@@ -1,4 +1,3 @@
-<!-- views/survey.hbs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,21 +7,22 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <form action="/survey/submit" method="post">
+    <h1>{{survey.title}}</h1>
+    <p>{{survey.description}}</p>
+    <form id="survey-form" action="/survey/submit" method="post">
+        <input type="hidden" name="surveyId" value="{{survey._id}}">
         {{#each survey.questions as |question index|}}
-            <div class="question">
+            <div class="question" data-question-id="{{question._id}}">
                 <p>{{question.text}}</p>
-                {{#each question.options as |option|}}
+                {{#each question.options as |option index|}}
                     <label>
-                        <input type="radio" name="question{{index}}" value="{{option}}"> {{option}}
+                        <input type="radio" name="question{{../index}}" value="{{option}}"> {{option}}
                     </label>
                 {{/each}}
             </div>
         {{/each}}
         <button type="submit">Submit Answers</button>
     </form>
+    <script src="/js/survey.js"></script>
 </body>
 </html>
-
-<script src="/js/survey.js"></script>
-

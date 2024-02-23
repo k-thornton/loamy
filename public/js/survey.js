@@ -1,41 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const surveyForm = document.getElementById('survey-form');
-    if (surveyForm) {
-        surveyForm.addEventListener('submit', (e) => {
-            const allQuestionsAnswered = Array.from(document.querySelectorAll('.question')).every(question => {
-                return question.querySelector('input[type="radio"]:checked');
-            });
+    if (!surveyForm) return;
 
-            if (!allQuestionsAnswered) {
-                e.preventDefault(); // Prevent form submission
-                alert('Please answer all questions before submitting.');
+    surveyForm.addEventListener('submit', (event) => {
+        const questions = surveyForm.querySelectorAll('.question');
+        let allAnswered = true;
+
+        questions.forEach((question) => {
+            if (!question.querySelector('input[type="radio"]:checked')) {
+                allAnswered = false;
+                // Highlight unanswered questions for the user
+                question.style.border = '2px solid red';
+            } else {
+                // Reset the styling if the question is answered upon re-submit
+                question.style.border = '';
             }
         });
-    }
-    // Assuming you have a <div id="resultsChart"></div> in your results page
-    const resultsData = document.getElementById('resultsData');
-    if (resultsData) {
-        const score = JSON.parse(resultsData.innerText);
-        // Use a charting library like Chart.js to render the score
-        new Chart(document.getElementById('resultsChart'), {
-            type: 'bar', // Example chart type
-            data: {
-                labels: ['Your Score'],
-                datasets: [{
-                    label: 'Survey Score',
-                    data: [score],
-                    backgroundColor: ['rgba(54, 162, 235, 0.2)'],
-                    borderColor: ['rgba(54, 162, 235, 1)'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
+
+        if (!allAnswered) {
+            event.preventDefault(); // Prevent form from submitting
+            alert('Please answer all the questions before submitting.');
+        }
+    });
 });

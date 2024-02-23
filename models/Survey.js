@@ -1,18 +1,16 @@
 const mongoose = require('mongoose');
 
 const surveySchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
+  title: String,
   description: String,
   questions: [{
-    text: {
-      type: String,
-      required: true
-    },
-    options: [String], // Assuming multiple-choice questions for simplicity
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Question'
   }],
+  isActive: {
+    type: Boolean,
+    default: false,
+  },
   createdAt: {
     type: Date,
     default: Date.now
