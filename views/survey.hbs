@@ -1,0 +1,28 @@
+<!-- views/survey.hbs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <form action="/survey/submit" method="post">
+        {{#each survey.questions as |question index|}}
+            <div class="question">
+                <p>{{question.text}}</p>
+                {{#each question.options as |option|}}
+                    <label>
+                        <input type="radio" name="question{{index}}" value="{{option}}"> {{option}}
+                    </label>
+                {{/each}}
+            </div>
+        {{/each}}
+        <button type="submit">Submit Answers</button>
+    </form>
+</body>
+</html>
+
+<script src="/js/survey.js"></script>
+
