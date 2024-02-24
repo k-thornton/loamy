@@ -1,0 +1,172 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Survey API",
+      "description": "API for managing surveys and user authentication.",
+      "version": "1.0.0"
+    },
+    "host": "localhost:5001",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/google": {
+        "post": {
+          "summary": "Verifies a google authentication token and returns a JWT for frontend use.",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "googleToken",
+              "description": "Google token received from frontend",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Login"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+                "description": "Login successful",
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "jwt": {
+                            "type": "string",
+                            "example": "your_jwt_token_here"
+                        }
+                    }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            }
+          }
+        },
+      "/survey/questions/unanswered": {
+        "get": {
+          "summary": "Get all unanswered questions",
+          "responses": {
+            "200": {
+              "description": "A list of questions",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Question"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/survey/questions/answered": {
+        "get": {
+          "summary": "Get all answered questions, and their associated answers",
+          "responses": {
+            "200": {
+              "description": "An array containing questions and answers",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/QuestionWithAnswer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/survey/answers": {
+        "post": {
+          "summary": "Submit answers",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "answers",
+              "description": "A dictionary where each property key is a questionId and its value is the answer. Example: { \"q1\": \"answer1\", \"q2\": \"answer2\" }",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                  }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Answers submitted successfully"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Question": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "answerType": {
+            "type": "string"
+          },
+          "choices": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "answers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/Answer"
+            }
+          }
+        }
+      },
+      "Answer": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          }
+        }
+      },
+      "QuestionWithAnswer": {
+        "type": "object",
+        "properties": {
+          "question": {
+            "$ref": "#/definitions/Question"
+          },
+          "answer": {
+            "$ref": "#/definitions/Answer"
+          }
+        }
+      },
+      "Login": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+  
