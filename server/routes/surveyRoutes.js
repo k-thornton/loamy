@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Question = require('../models/Question');
 const User = require('../models/User');
-const authenticateToken = require('./middleware/authenticateToken');
+const authenticateToken = require('../middleware/authenticateToken');
 
 
 router.get('/questions/unanswered', authenticateToken, async (req, res) => {
