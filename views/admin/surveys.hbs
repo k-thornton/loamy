@@ -1,9 +1,0 @@
-<h1>Manage Surveys</h1>
-<a href="/admin/surveys/new">Create New Survey</a>
-<ul>
-    {{#each surveys}}
-        <li>
-            {{this.title}} - <a href="/admin/surveys/edit/{{this._id}}">Edit</a> | <a href="/admin/surveys/delete/{{this._id}}">Delete</a>
-        </li>
-    {{/each}}
-</ul>
