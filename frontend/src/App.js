@@ -4,9 +4,10 @@ import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import Navbar from './components/Navbar';
 
 function App() {
-  const [answer, setAnswer] = useState('');
+  const [answers, setAnswers] = useState({});
   const [greeting, setGreeting] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [questions, setQuestions] = useState([]);
   
   useEffect(() => {
     // Check for token in local storage or any other authentication checks on component mount
@@ -17,13 +18,62 @@ function App() {
     }
   }, []);
 
-  const submitAnswer = async (e) => {
+  const resetAnswers = async () => {
+    try {
+      const response = await axios.post('/api/survey/reset');
+      console.log(response);
+      setQuestions(null);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  const fetchUnansweredQuestions = async () => {
+    try {
+      const response = await axios.get('/api/survey/questions/unanswered');
+      await setQuestions(response.data);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    }
+  };
+
+  const fetchAnsweredQuestions = async () => {
+    try {
+      const response = await axios.get('/api/survey/questions/answered');
+      // Prepare the answers state
+      const answersState = {};
+      const questionsState = [];
+      response.data.forEach(item => {
+        answersState[item.question._id] = item.answer.answer;
+        questionsState.push(item.question);
+      });
+
+      setAnswers(answersState);
+      setQuestions(questionsState);
+    } catch (error) {
+      console.error('Error fetching questions:', error);
+    }
+  };
+
+  // Update local answer state
+  const handleAnswerChange = (questionId, answer) => {
+    setAnswers(prevAnswers => ({
+      ...prevAnswers,
+      [questionId]: answer
+    }));
+    console.log(answers);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/survey/answers', { answer }, { withCredentials: true });
-      console.log(response.data);
+      console.log(answers);
+
+      await axios.post('/api/survey/answers', answers);
+      console.log('Answers submitted successfully');
+      // Optionally reset answers state or navigate the user to a different page
     } catch (error) {
-      console.error('Error submitting answer:', error);
+      console.error('Failed to submit answers:', error);
     }
   };
 
@@ -33,6 +83,7 @@ function App() {
       setGreeting(response.data);
     } catch (error) {
       console.error('Error fetching greeting:', error);
+      setGreeting(error.message);
     }
   };
 
@@ -44,6 +95,7 @@ function App() {
       const jwt = response.data.token;
       localStorage.setItem('jwt', jwt); // Store the JWT for later use
       axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
+      setIsAuthenticated(true);
     } catch (error) {
       console.error('Error sending token to backend:', error);
     }
@@ -64,6 +116,7 @@ function App() {
   const logout = () => {
     // Remove the token
     localStorage.removeItem('jwt');
+    axios.defaults.headers.common['Authorization'] = '';
     setIsAuthenticated(false);
     // Redirect or perform any additional cleanup
   };
@@ -71,25 +124,53 @@ function App() {
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <div className="App">
-        <Navbar isAuthenticated={isAuthenticated} onLogout={logout} />
+        <Navbar isAuthenticated={isAuthenticated} onLogout={logout}/>
         <h1>Sign in with Google</h1>
         <GoogleLogin
           onSuccess={handleLoginSuccess}
           onError={handleLoginFailure}
         />
-        <h1>Survey</h1>
-        <form onSubmit={submitAnswer}>
-          <input
-            type="text"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            placeholder="Your answer"
-          />
-          <button type="submit">Submit Answer</button>
-        </form>
         <button onClick={fetchGreeting}>Fetch Greeting</button>
-          <div>
-          {greeting ? <p>{greeting}</p> : <p>Loading greeting...</p>}
+        <div>
+        {greeting ? <p>{greeting}</p> : <p>Loading greeting...</p>}
+        </div>
+        <button onClick={fetchAnsweredQuestions}>Fetch Answered Questions</button>
+        <button onClick={fetchUnansweredQuestions}>Fetch Unanswered Questions</button>
+        <button onClick={resetAnswers}>Reset All Answers</button>
+        <div>
+        {questions && Object.keys(questions).length > 0 ? <div>
+          <h1>Survey Questions</h1>
+      <form onSubmit={handleSubmit}>
+        {questions.map(question => (
+          <div key={question._id}>
+            <label htmlFor={`question-${question._id}`}>{question.text}</label>
+            {question.answerType === 'multipleChoice' ? (
+              <select
+                id={`question-${question._id}`}
+                value={answers[question._id] || ''}
+                onChange={(e) => handleAnswerChange(question._id, e.target.value)}
+              >
+                <option value="">Select an option</option>
+                {question.choices.map((choice, index) => (
+                  <option key={index} value={choice.text}>
+                    {choice.text}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <input
+                id={`question-${question._id}`}
+                type="text"
+                value={answers[question._id] || ''}
+                onChange={(e) => handleAnswerChange(question._id, e.target.value)}
+              />
+            )}
+          </div>
+        ))}
+        <button type="submit">Submit Answers</button>
+      </form>
+        </div> :
+        <p>No Questions Loaded</p>}
         </div>
       </div>
     </GoogleOAuthProvider>

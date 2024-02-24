@@ -7,9 +7,9 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
       <ul>
         {/* Other navigation items */}
         {!isAuthenticated ? (
-          <li><a href="/login">Login</a></li>
+          ''
         ) : (
-          <li><button onClick={onLogout}>Logout</button></li>
+          <button onClick={onLogout}>Logout</button>
         )}
       </ul>
     </nav>
