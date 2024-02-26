@@ -3,6 +3,7 @@ const router = express.Router();
 const Question = require('../models/Question');
 const User = require('../models/User');
 const authenticateToken = require('../middleware/authenticateToken');
+const { calculateZodiacSign } = require('../services/zodiacService');
 
 router.get('/questions/answered', authenticateToken, async (req, res) => {
   try {
@@ -63,6 +64,7 @@ router.post('/answers', authenticateToken, async (req, res) => {
       });
 
       await user.save();
+      const zodiacSign = await calculateZodiacSign(user);
       res.status(200).send('Answers updated');
   } catch (error) {
       console.log(error);

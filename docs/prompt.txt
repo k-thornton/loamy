@@ -7,3 +7,7 @@ I have a .env file containing MONGODB_URI and GOOGLE_CLIENT_ID
 all backend routes will fall under a /api router, and there are authentication related routes under /auth, and survey related routes under /survey
 
 I'm using axios for all App.js react app HTTP calls.
+--
+ok let's move onward into our zodiac sign calculation.  This will take the user's currently submitted answers, run them through some calculation, and then spit out one of the 12 different zodiac symbols.
+
+For now, let's make the calculation
