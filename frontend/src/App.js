@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   const [answers, setAnswers] = useState({});
+  const [myPersona, setMyPersona] = useState({});
   const [greeting, setGreeting] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [questions, setQuestions] = useState([]);
@@ -121,6 +122,17 @@ function App() {
     // Redirect or perform any additional cleanup
   };
 
+  const fetchMe = async () => {
+    try {
+      const response = await axios.get('/api/survey/me/', { withCredentials: true });
+      console.log(response.data);
+      setMyPersona(response.data);
+    } catch (error) {
+      console.error('Error fetching persona:', error);
+      setMyPersona(error.message);
+    }
+  };
+
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <div className="App">
@@ -137,6 +149,10 @@ function App() {
         <button onClick={fetchAnsweredQuestions}>Fetch Answered Questions</button>
         <button onClick={fetchUnansweredQuestions}>Fetch Unanswered Questions</button>
         <button onClick={resetAnswers}>Reset All Answers</button>
+        <button onClick={fetchMe}>Who am I?</button>
+        <div>
+        {myPersona ? <p>{myPersona.zodiac}</p> : <p>No Persona Loaded</p>}
+        </div>
         <div>
         {questions && Object.keys(questions).length > 0 ? <div>
           <h1>Survey Questions</h1>

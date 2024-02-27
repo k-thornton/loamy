@@ -3,7 +3,7 @@ const router = express.Router();
 const Question = require('../models/Question');
 const User = require('../models/User');
 const authenticateToken = require('../middleware/authenticateToken');
-const { calculateZodiacSign } = require('../services/zodiacService');
+const calculateZodiacSign = require('../services/zodiacService');
 
 router.get('/questions/answered', authenticateToken, async (req, res) => {
   try {
@@ -64,7 +64,8 @@ router.post('/answers', authenticateToken, async (req, res) => {
       });
 
       await user.save();
-      const zodiacSign = await calculateZodiacSign(user);
+      // const zodiacSign = await calculateZodiacSign(user);
+      // res.status(200).json(zodiacSign).send('Answers updated');
       res.status(200).send('Answers updated');
   } catch (error) {
       console.log(error);
@@ -77,6 +78,18 @@ router.post('/reset', authenticateToken, async (req, res) => {
     try {
       await User.updateOne({ email: req.user.email }, { $set: { answers: [], zodiacSign: null } });
       res.status(200).send('User answers and zodiac sign reset');
+    } catch (error) {
+      console.log(error);
+      res.status(500).send(error.message);
+    }
+  });
+
+  router.get('/me', authenticateToken, async (req, res) => {
+    try {
+      const user = await User.findOne({ email: req.user.email });
+      const zodiacSign = await calculateZodiacSign(user);
+      console.log(zodiacSign);
+      res.json(zodiacSign);
     } catch (error) {
       console.log(error);
       res.status(500).send(error.message);
