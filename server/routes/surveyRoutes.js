@@ -88,7 +88,6 @@ router.post('/reset', authenticateToken, async (req, res) => {
     try {
       const user = await User.findOne({ email: req.user.email });
       const zodiacSign = await calculateZodiacSign(user);
-      console.log(zodiacSign);
       res.json(zodiacSign);
     } catch (error) {
       console.log(error);

@@ -14,10 +14,10 @@ router.post('/google', async (req, res) => {
         audience: process.env.GOOGLE_CLIENT_ID, 
     });
     const payload = ticket.getPayload(); // This object includes user's information
-    
+
     // Extract user details
     const { sub: googleId, email } = payload;
-
+    
     // Check if the user already exists
     let user = await User.findOne({ googleId });
     if (!user) {
