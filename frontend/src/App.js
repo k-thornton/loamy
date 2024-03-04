@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import Navbar from "./components/Navbar";
+import Survey from './Survey';
 import ZodiacSignPage from "./pages/ZodiacSignPage";
 import zodiacSignsData from "./data/zodiacSignsData"; // Your zodiac sign data
 
@@ -19,6 +20,7 @@ function App() {
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
       setIsAuthenticated(true);
+      fetchUnansweredQuestions(); // Fetch unanswered questions once authenticated
     }
   }, []);
 
@@ -68,10 +70,17 @@ function App() {
     console.log(answers);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleAnswerSubmit = (answerData) => {
+    // Update answers state with new answer
+    setAnswers(prev => ({ ...prev, [answerData.questionId]: answerData.answer }));
+    console.log("Submitted answer:", answerData);
+    handleSubmit();
+    // Optional: Fetch next set of questions or update UI accordingly
+  };
+
+  const handleSubmit = async () => {
     try {
-      console.log(answers);
+      console.log("Submitting:", answers);
 
       await axios.post("/api/survey/answers", answers);
       console.log("Answers submitted successfully");
@@ -153,14 +162,22 @@ function App() {
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <div className="App">
           <Navbar isAuthenticated={isAuthenticated} onLogout={logout} />
-
-          <h1>Sign in with Google</h1>
-          <GoogleLogin
-            onSuccess={handleLoginSuccess}
-            onError={handleLoginFailure}
-          />
-          <button onClick={fetchGreeting}>Fetch Greeting</button>
-          <div>{greeting ? <p>{greeting}</p> : <p>Loading greeting...</p>}</div>
+          {!isAuthenticated ? (
+          <>
+            <h1>Sign in with Google</h1>
+            <GoogleLogin onSuccess={handleLoginSuccess} onError={handleLoginFailure} />
+          </>
+        ) : (
+          <>
+            <button onClick={fetchGreeting}>Fetch Greeting</button>
+            <div>{greeting ? <p>{greeting}</p> : <p>Loading greeting...</p>}</div>
+            {questions && questions.length > 0 ? (
+              <Survey questions={questions} onAnswerSubmit={handleAnswerSubmit} />
+            ) : (
+              <div>Loading questions...</div>
+            )}
+          </>
+        )}
           <button onClick={fetchAnsweredQuestions}>
             Fetch Answered Questions
           </button>
