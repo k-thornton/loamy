@@ -44,7 +44,6 @@ router.post('/answers', authenticateToken, async (req, res) => {
   try {
       // Load the user from the database
       const user = await User.findOne({ email: req.user.email });
-      console.log(user);
 
       // Ensure user.answers is initialized as an array if it's not already
       if (!user.answers) {

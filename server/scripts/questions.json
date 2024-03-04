@@ -1,0 +1,155 @@
+[
+  {
+    "text": "What is your fertility goal?",
+    "description": "Select your goal:",
+    "faq": [
+      {
+        "title": "What is IVF?",
+        "body": "🤰 In vitro fertilization (IVF) can be a helpful option for couples who are struggling to have a baby through natural conception. It involves stimulating the ovaries of a woman to retrieve egg(s), and then combining the egg with male sperm outside the body in a laboratory dish to create an embryo. This embryo is then implanted in the woman's uterus, in the hope of a successful pregnancy and a healthy baby."
+      },
+      {
+        "title": "What is Embryo Freezing?",
+        "body": "🧊🧫 Embryo freezing, also known as cryopreservation, is a medical procedure that involves stimulating the ovaries of a woman to retrieve egg(s), and then fertilizing the egg with male sperm outside the body in a laboratory dish to create an embryo. The embryos (early-stage fertilized eggs) are then stored at very low temperatures, typically in liquid nitrogen, to preserve their biologic age. Yes, if you freeze them at age 25 and come back to use them at age 37, the embryo hasn’t aged."
+      },
+      {
+        "title": "What is Egg Freezing?",
+        "body": "🧊🥚 Egg freezing, also known as oocyte cryopreservation, is a medical procedure in which a woman stimulates her ovaries (as well as suppresses ovulation) to retrieve egg(s). These eggs are extracted, frozen, and stored for future use. Egg freezing freezes an unfertilized egg (not combined with male sperm), whereas embryo freezing freezes a fertilized egg."
+      }
+    ],
+    "answerType": "multipleChoice",
+    "choices": [
+      {
+        "text": "In Vitro Fertilization (IVF)"
+      },
+      {
+        "text": "Freeze Embryos"
+      },
+      {
+        "text": "Freeze My Eggs"
+      }
+    ]
+  },
+  {
+    "text": "How old are you?",
+    "description": "🎂 Enter your age:",
+    "faq": [
+      {
+        "title": "Why are we asking this?",
+        "body": "Age is one of the best predictors of egg quality and success rates in fertility treatments. Understanding your age helps in assessing your options and expected outcomes more accurately."
+      }
+    ],
+    "note": "Our dataset is only representative of women ages 25 - 45.",
+    "answerType": "freeEntry",
+    "choices": []
+  },
+  {
+    "text": "What is your primary diagnosis?",
+    "description": "Select your primary diagnosis:",
+    "faq": [
+      {
+        "title": "Endometriosis",
+        "body": "Endometriosis is a condition that occurs when tiny pieces of the inside lining of a woman's uterus (the womb) grow outside the uterus. Normally, this lining builds up and then sheds during a woman's period. But with endometriosis, it can grow on other nearby organs, like the ovaries or the tissue lining the pelvis."
+      },
+      {
+        "title": "Diminished Ovarian Reserve",
+        "body": "Diminished ovarian reserve (DOR) means a woman has fewer eggs in her ovaries than she should for her age; this can make it harder to get pregnant. Aging is one of the biggest causes of low ovarian reserve. DOR is usually diagnosed by a reproductive endocrinologist via tests such as: antral follicle count and blood test for certain hormones like follicle-stimulating hormone (FSH), luteinizing hormone (LH), estradiol, and anti-Müllerian hormone (AMH)."
+      },
+      {
+        "title": "Polycystic Ovary Syndrome (PCOS)",
+        "body": "PCOS is a hormonal disorder. It can cause higher levels of certain hormones, particularly androgens (often called 'male hormones'), which can disrupt the normal functioning of the ovaries. PCOS can make it harder for the ovaries to release eggs regularly. This can lead to irregular menstrual periods or even a lack of periods. Other ovulation disorders include: Hypothalamic amenorrhea, premature ovarian failure and menopause, and hormone imbalances."
+      },
+      {
+        "title": "Tubal Issues",
+        "body": "Female tubal issues refer to problems with a woman's fallopian tubes. The fallopian tubes are a crucial part of the female reproductive system because they play a key role in the fertilization of an egg by sperm. Tubal issues can lead to difficulties in getting pregnant."
+      },
+      {
+        "title": "Male-Factor Infertility",
+        "body": "Male-factor infertility refers to fertility issues that are primarily caused by problems in the male reproductive system. This means that a man's sperm may have difficulties in fertilizing an egg, which can lead to difficulties in conceiving a child. Common factors to male infertility are low sperm count, reduced sperm motility, abnormal sperm shape, and ejaculate issues."
+      },
+      {
+        "title": "Uterine Factors (including fibroids)",
+        "body": "Uterine factors, including conditions like fibroids, can contribute to infertility in women. These factors can affect the structure and function of the uterus, making it challenging for a fertilized egg to implant and grow. Some of the uterine factors that can cause infertility include: Uterine Fibroids (leiomyomas), Uterine Polyps, Uterine Adhesions, and Abnormal Uterine Shape."
+      }
+    ],
+    "answerType": "multipleChoice",
+    "choices": [
+      {
+        "text": "Endometriosis"
+      },
+      {
+        "text": "Diminished Ovarian Reserve"
+      },
+      {
+        "text": "Ovulation disorders (including PCOS)"
+      },
+      {
+        "text": "Tubal issues"
+      },
+      {
+        "text": "Male Factors (Asthenozoospermia, Azoospermia, Oligoasthenoteratozoospermia)"
+      },
+      {
+        "text": "Uterine factors (including fibroids)"
+      },
+      {
+        "text": "Do not know"
+      },
+      {
+        "text": "Other"
+      }
+    ]
+  },
+  {
+    "text": "What is your Anti-Müllerian Hormone level?",
+    "description": "What is your AMH level (ng/mL):",
+    "faq": [
+      {
+        "title": "What does the Anti-Müllerian Hormone (AMH) test suggest? ",
+        "body": "An Anti-Müllerian Hormone (AMH) level test is a blood test that measures the amount of AMH in a woman's bloodstream. It is a hormone marker that indicates how many eggs are left (ovarian reserve). It cannot tell you about their quality, but it does indicate how long until you may hit menopause and whether egg freezing or having a child should be on the horizon more immediately."
+      }
+    ],
+    "note": " We did not filter the data using AMH due to the size of the dataset. AMH is not a good single indicator of overall fertility or the ability to get pregnant.",
+    "answerType": "freeEntry",
+    "choices": []
+  },
+  {
+    "text": "What is your Antral Follicle Count?",
+    "description": "Input your AFC (the number of antral follicles in both ovaries):",
+    "faq": [
+      {
+        "title": "What does the Antral Follicle Count (AFC) suggest?",
+        "body": "An Antral Follicle Count is a transvaginal ultrasound, specifically to count the number of immature follicles available to release an egg each cycle. To get the most accurate results, it is typically done on days 2-3 of the menstrual cycle. In combination with an Anti-Müllerian Hormone test, it can indicate your total remaining egg supply. It does not reveal the quality of the eggs, however."
+      }
+    ],
+    "note": "Leave this question blank if you are unsure.",
+    "answerType": "freeEntry",
+    "choices": []
+  },
+  {
+    "text": "What is your fertilization method?",
+    "description": "Select your fertilization method:",
+    "faq": [
+      {
+        "title": "What is Intracytoplasmic Sperm Injection (ICSI)?",
+        "body": "Intracytoplasmic Sperm Injection (ICSI) is an IVF fertilization method used for male factor infertility, especially in the case of low sperm count, as it takes the single best sperm from the male and shoots it directly into the egg with a micro-pipette. It has been proven effective to treat infertility when male factor is the prevailing diagnosis."
+      },
+      {
+        "title": "Is it effective?",
+        "body": "It is now used in over 90% of IVF cycles regardless of whether male factor is the reason. Many patients report using it for its psychological benefits, even if the evidence for its improvements on live birth are thin. ICSI costs the patient between $800 - 2,500 per cycle and the clinic $50 - 250 to perform."
+      }
+    ],
+    "note": "Your finished! Click the button below to see real-world outcomes for women like you ⬇️",
+    "answerType": "multipleChoice",
+    "choices": [
+      {
+        "text": "Intracytoplasmic Sperm Injection (ICSI)"
+      },
+      {
+        "text": "Not Intracytoplasmic Sperm Injection (ICSI)"
+      },
+      {
+        "text": "Do not know"
+      }
+    ]
+  }
+]

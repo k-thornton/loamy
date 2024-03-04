@@ -172,9 +172,20 @@ function App() {
           <div>
             {selectedZodiac ? (
               <div>
-                {selectedZodiac ? (
+                {myPersona ? (
                   <p>
-                    {myPersona.zodiac} because you said {myPersona.userAnswers.join(' and ')}
+                  <button
+                        onClick={() => selectZodiac(myPersona.zodiac)}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: "blue",
+                          textDecoration: "underline",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {zodiacSignsData[myPersona.zodiac].name}
+                      </button> because you said {myPersona.userAnswers.join(' and ')}
                   </p>
                 ) : (
                   <p />
