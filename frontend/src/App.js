@@ -201,7 +201,7 @@ function App() {
                           cursor: "pointer",
                         }}
                       >
-                        {zodiacSignsData[myPersona.zodiac].name}
+                        {myPersona.zodiac}
                       </button> because you said {myPersona.userAnswers.join(' and ')}
                   </p>
                 ) : (
