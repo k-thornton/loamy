@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchQuestions, updateAnswer, submitAnswers } from "../features/survey/surveySlice"; // Adjust imports as needed
 
-function Survey({ questions, onAnswerSubmit }) {
+function Survey() {
+  const dispatch = useDispatch();
+  const { questions, loading } = useSelector((state) => state.survey);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchQuestions());
+  }, [dispatch]);
+
+  // Now, you don't need to pass questions as a prop to Survey
+  if (loading) {
+    return <div>Loading questions...</div>;
+  }
 
   if (!questions || questions.length === 0) {
     return <div>No questions to display</div>;
@@ -20,13 +33,15 @@ function Survey({ questions, onAnswerSubmit }) {
       return;
     }
 
-    onAnswerSubmit({ questionId: currentQuestion._id, answer: selectedOption });
+    // Assuming updateAnswer takes the question ID and the selected answer as arguments
+    dispatch(updateAnswer({ questionId: currentQuestion._id, answer: selectedOption }));
 
     // Reset for next question
     setSelectedOption('');
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     } else {
+      dispatch(submitAnswers());
       alert('You have completed the survey!');
     }
   };

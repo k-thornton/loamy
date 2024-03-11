@@ -1,11 +1,22 @@
-// src/pages/SignPage.js
-import React from 'react';
-// import zodiacSignsData from '../data/zodiacSignsData';
+import React, { useEffect, useState } from 'react';
+import { fetchZodiacSignDetails } from '../services/zodiacService'; // This is a hypothetical function you would need to implement
 
-const ZodiacSignPage = ({ signData }) => {
+const ZodiacSignPage = ({ zodiacKey }) => {
+  const [signData, setSignData] = useState(null);
+
+  useEffect(() => {
+    const loadZodiacSignDetails = async () => {
+      const data = await fetchZodiacSignDetails(zodiacKey);
+      setSignData(data);
+    };
+
+    if (zodiacKey) {
+      loadZodiacSignDetails();
+    }
+  }, [zodiacKey]);
 
   if (!signData) {
-    return <div>Sign not found</div>;
+    return <div>Loading zodiac sign details...</div>;
   }
 
   return (

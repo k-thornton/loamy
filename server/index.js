@@ -26,20 +26,15 @@ mongoose
 // Routes
 apiRouter.use('/auth', require('./routes/authRoutes'));
 apiRouter.use('/survey', require('./routes/surveyRoutes'));
+apiRouter.use('/chat', require('./routes/chatRoutes'));
 
-apiRouter.get('/', authenticateToken, (req, res) => {
-    if (req.user) {
-      // User is logged in
-      res.type('text').send(`Hello ${req.user.email}`);
-    } else {
-      // User is not logged in
-      // At the moment this code is unreachable due to the middleware's behavior
-      res.type('text').send('Hello World');
-    }
-  });
+apiRouter.get('/', (req, res) => {
+  res.send('Welcome to the api.');
+});
 
 app.use('/api', apiRouter);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 
 app.get('/', (req, res) => {
     res.send('Welcome to the server. Use /api to access the API routes.');
