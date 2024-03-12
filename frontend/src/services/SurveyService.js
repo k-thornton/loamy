@@ -30,6 +30,7 @@ const resetAnswers = async () => {
 };
 
 const submitAnswers = async (answers) => {
+  console.log(answers)
   const response = await axios.post(`${BASE_URL}/answers`, answers, { withCredentials });
   return response.data;
 };

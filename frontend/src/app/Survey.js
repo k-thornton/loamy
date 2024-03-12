@@ -1,18 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchQuestions, updateAnswer, submitAnswers } from "../features/survey/surveySlice"; // Adjust imports as needed
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchQuestions,
+  updateAnswer,
+  submitAnswers,
+} from "../features/survey/surveySlice";
 
 function Survey() {
   const dispatch = useDispatch();
-  const { questions, loading } = useSelector((state) => state.survey);
+  const { questions, loading, answers } = useSelector((state) => state.survey);
+  // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
+  const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedOption, setSelectedOption] = useState('');
 
   useEffect(() => {
     dispatch(fetchQuestions());
   }, [dispatch]);
 
-  // Now, you don't need to pass questions as a prop to Survey
+  useEffect(() => {
+    // This will set the user's answer as the selected option whenever the question index changes
+    const id = questions[currentQuestionIndex]?._id;
+    let userAnswer = answers[id];
+    setSelectedOption(userAnswer ? userAnswer : "");
+  }, [answers, questions, currentQuestionIndex]);
+
   if (loading) {
     return <div>Loading questions...</div>;
   }
@@ -29,35 +40,44 @@ function Survey() {
 
   const handleNextQuestion = () => {
     if (!selectedOption) {
-      alert('Please select an option before proceeding.');
+      alert("Please select an option before proceeding.");
       return;
     }
-
-    // Assuming updateAnswer takes the question ID and the selected answer as arguments
-    dispatch(updateAnswer({ questionId: currentQuestion._id, answer: selectedOption }));
-
-    // Reset for next question
-    setSelectedOption('');
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    dispatch(
+      updateAnswer({ questionId: currentQuestion._id, answer: selectedOption })
+    );
+    const nextQuestionIndex = currentQuestionIndex + 1;
+    if (nextQuestionIndex < questions.length) {
+      setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       dispatch(submitAnswers());
-      alert('You have completed the survey!');
+      alert("You have completed the survey!");
     }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <h2>{currentQuestion.text}</h2>
       <p>{currentQuestion.description}</p>
-      {currentQuestion.faq && currentQuestion.faq.map((faq, index) => (
-        <details key={index} style={{ marginBottom: '10px' }}>
-          <summary>{faq.title}</summary>
-          <p>{faq.body}</p>
-        </details>
-      ))}
-      {currentQuestion.note && <p style={{ fontStyle: 'italic' }}>{currentQuestion.note}</p>}
-      {currentQuestion.answerType === 'multipleChoice' ? (
+      {currentQuestion.faq &&
+        currentQuestion.faq.map((faq, index) => (
+          <details key={index} style={{ marginBottom: "10px" }}>
+            <summary>{faq.title}</summary>
+            <p>{faq.body}</p>
+          </details>
+        ))}
+      {currentQuestion.note && (
+        <p style={{ fontStyle: "italic" }}>{currentQuestion.note}</p>
+      )}
+      {currentQuestion.answerType === "multipleChoice" ? (
         <form onSubmit={(e) => e.preventDefault()}>
           {currentQuestion.choices.map((choice, index) => (
             <div key={index}>
@@ -72,14 +92,19 @@ function Survey() {
               <label htmlFor={`choice-${index}`}>{choice.text}</label>
             </div>
           ))}
-          <button type="button" onClick={handleNextQuestion} style={{ marginTop: 20 }}>
+          <button
+            type="button"
+            onClick={handleNextQuestion}
+            style={{ marginTop: 20 }}
+          >
             Next
           </button>
         </form>
       ) : (
-        <div>
+        <div key={`question-${currentQuestion._id}`}>
           <input
             type="text"
+            id={currentQuestion._id}
             value={selectedOption}
             onChange={(e) => setSelectedOption(e.target.value)}
             placeholder={currentQuestion.description}

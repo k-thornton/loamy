@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  jwt: null,
-  isAuthenticated: false,
-};
-
 export const authSlice = createSlice({
   name: 'auth',
-  initialState,
+  initialState: {
+    jwt: null,
+    isAuthenticated: false,
+  },
   reducers: {
     setAuthInfo: (state, action) => {
       state.jwt = action.payload.jwt;

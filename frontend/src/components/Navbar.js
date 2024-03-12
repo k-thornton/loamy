@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Navbar = ({ isAuthenticated, onLogout }) => {
-  const greeting = useSelector((state) => state.survey.greeting); // Adjust path based on your state structure
+  const greeting = useSelector((state) => state.survey.greeting);
 
   return (
     <nav>
@@ -10,7 +10,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
         {/* Other navigation items */}
         {!isAuthenticated ? (
           <div>
-            <p>pls login below</p>
+            <p>You're logged out, please log in below.</p>
           </div>
         ) : (
           <div>

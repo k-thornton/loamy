@@ -4,8 +4,9 @@ import "./index.css";
 import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { Provider } from 'react-redux';
-import { store } from './app/store';
+import { Provider } from "react-redux";
+import { store, persistor } from "./app/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -13,8 +14,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <GoogleOAuthProvider clientId={clientId}>
-    <Provider store={store}>
-      <App />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <App />
+        </PersistGate>
       </Provider>
     </GoogleOAuthProvider>
   </React.StrictMode>

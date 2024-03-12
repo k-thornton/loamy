@@ -17,7 +17,24 @@ router.get("/greeting", authenticateToken, (req, res) => {
 router.get("/questions", authenticateToken, async (req, res) => {
   try {
     const questions = await Question.find({});
-    res.json(questions);
+    const user = await User.findOne({ email: req.user.email });
+    let questionsWithAnswers = [];
+
+    if (user && user.answers) {
+      // Map each question to include the user's answer if it exists
+      questionsWithAnswers = questions.map(question => {
+        const answer = user.answers.find(ans => ans.questionId.equals(question._id));
+        return {
+          question,
+          // ...question.toObject(), // Convert Mongoose document to plain object
+          answer: answer ? answer.answer : null, // Include the answer or null if not answered
+        };
+      });
+    } else {
+      // If the user has no answers, return questions as is
+      questionsWithAnswers = questions;
+    }
+    res.json(questionsWithAnswers);
   } catch (error) {
     console.error(error);
     res.status(500).send(error.message);
@@ -28,7 +45,7 @@ router.get("/questions/answered", authenticateToken, async (req, res) => {
   try {
     const user = await User.findOne({ email: req.user.email });
     if (!user || !user.answers) {
-      return res.status(404).send("No answers found for this user.");
+      return res.status(500).send("No answers found for this user.");
     }
 
     const answeredQuestionIds = user.answers.map((answer) => answer.questionId);
@@ -42,7 +59,6 @@ router.get("/questions/answered", authenticateToken, async (req, res) => {
       );
       return { question: answeredQuestions, answer: answer };
     });
-
     res.json(questionsWithAnswers);
   } catch (error) {
     console.log(error);
@@ -65,7 +81,6 @@ router.get("/questions/unanswered", authenticateToken, async (req, res) => {
 
 router.post("/answers", authenticateToken, async (req, res) => {
   const answersDict = req.body; // object format will be a dict of { questionId: answer, ... }
-
   try {
     // Load the user from the database
     const user = await User.findOne({ email: req.user.email });
@@ -82,7 +97,7 @@ router.post("/answers", authenticateToken, async (req, res) => {
       );
       if (existingAnswerIndex > -1) {
         // Update existing answer
-        user.answers[existingAnswerIndex].answer = submittedAnswer;
+        user.answers[existingAnswerIndex].answer = submittedAnswer;;
       } else {
         // Add new answer
         user.answers.push({ questionId, answer: submittedAnswer });

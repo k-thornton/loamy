@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { fetchZodiacSignDetails } from '../services/zodiacService'; // This is a hypothetical function you would need to implement
-
-const fetchZodiacSignDetails = ({ zodiacKey }) => {
-  return "cancer";
-}
+import { fetchZodiacSignDetails } from '../services/zodiacService'; // This is a hypothetical function you would need to implement
 
 const ZodiacSignPage = ({ zodiacKey }) => {
   const [signData, setSignData] = useState(null);

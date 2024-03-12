@@ -49,8 +49,9 @@ export const resetAnswers = createAsyncThunk(
 // Async thunk for submitting answers
 export const submitAnswers = createAsyncThunk(
   "survey/submitAnswers",
-  async (answers, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
+      const answers = getState().survey.answers;
       const data = await surveyService.submitAnswers(answers);
       return data; // Or return a success message/action
     } catch (error) {
@@ -111,14 +112,17 @@ const surveySlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchQuestions.fulfilled, (state, action) => {
-        state.questions = action.payload;
+        state.answers = action.payload.reduce((acc, current) => {
+          acc[current.question._id] = current.answer;
+          return acc;
+        }, {});
+        state.questions = action.payload.map((item) => item.question);
         state.loading = false;
       })
       .addCase(fetchQuestions.rejected, (state, action) => {
         state.error = action.error.message;
         state.loading = false;
       })
-      // Continue with other cases...
       .addCase(fetchUnansweredQuestions.pending, (state) => {
         state.loading = true;
       })
@@ -130,13 +134,13 @@ const surveySlice = createSlice({
         state.error = action.error.message;
         state.loading = false;
       })
-      // Include your other extraReducers using builder.addCase...
       .addCase(fetchAnsweredQuestions.fulfilled, (state, action) => {
         state.answers = action.payload.reduce((acc, current) => {
           acc[current.question._id] = current.answer.answer;
           return acc;
         }, {});
         state.questions = action.payload.map((item) => item.question);
+        state.loading = false;
       })
       .addCase(resetAnswers.fulfilled, (state) => {
         state.questions = [];
@@ -149,7 +153,6 @@ const surveySlice = createSlice({
       .addCase(submitAnswers.rejected, (state, action) => {
         state.error = action.payload; // Assuming error info is in payload
       });
-      // Add other cases as needed...
   },
 });
 

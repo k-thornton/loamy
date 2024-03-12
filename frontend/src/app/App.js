@@ -8,10 +8,9 @@ import GoogleSignIn from "../pages/GoogleSignIn";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchQuestions,
-  fetchUnansweredQuestions,
-  fetchAnsweredQuestions,
+  // fetchUnansweredQuestions,
+  // fetchAnsweredQuestions,
   fetchGreeting,
-  setGreeting,
   fetchMe,
   setSelectedZodiac,
   resetAnswers,
@@ -60,6 +59,7 @@ function App() {
         <GoogleSignIn />
       ) : (
         <>
+          <p>Hello </p>
           <Survey />
           <button onClick={() => dispatch(resetAnswers())}>Reset All Answers</button>
           <button onClick={() => dispatch(fetchMe())}>Who am I?</button>
