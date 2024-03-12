@@ -3,7 +3,6 @@ const router = express.Router();
 const Question = require("../models/Question");
 const User = require("../models/User");
 const authenticateToken = require("../middleware/authenticateToken");
-const calculateZodiacSign = require("../services/zodiacService");
 const axios = require('axios');
 
 const CALCULATION_SERVICE_URL = 'http://localhost:6000/calculate';
@@ -112,8 +111,6 @@ router.post("/answers", authenticateToken, async (req, res) => {
     });
 
     await user.save();
-    // const zodiacSign = await calculateZodiacSign(user);
-    // res.status(200).json(zodiacSign).send('Answers updated');
     res.status(200).send("Answers updated");
   } catch (error) {
     console.log(error);
@@ -143,8 +140,6 @@ router.get("/me", authenticateToken, async (req, res) => {
     questionsWithAnswers = await getAnsweredQuestions(user);
     const response = await axios.post(CALCULATION_SERVICE_URL, {'user_answers': user.answers});
     res.json(response.data.result);
-    // const zodiacSign = await calculateZodiacSign(user);
-    // res.json(zodiacSign);
   } catch (error) {
     // console.log(error);
     res.status(500).send(error.message);

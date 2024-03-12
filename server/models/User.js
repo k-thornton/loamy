@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { calculateZodiacSign } = require('../services/zodiacService');
 
 const userSchema = new mongoose.Schema({
   googleId: {
@@ -26,10 +25,5 @@ const userSchema = new mongoose.Schema({
     default: null
   }
 });
-
-// Adding calculateZodiacSign as an instance method
-userSchema.methods.calculateZodiacSign = async function() {
-  return await calculateZodiacSign(this);
-};
 
 module.exports = mongoose.model('User', userSchema);
