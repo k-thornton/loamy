@@ -1,8 +1,5 @@
-// src/services/surveyService.js
 import axios from 'axios';
-
-const BASE_URL = '/api/survey'; // Adjust this base URL as necessary
-
+const BASE_URL = '/api/survey';
 const withCredentials = true;
 
 const fetchGreeting = async () => {

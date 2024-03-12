@@ -1,5 +1,3 @@
-// src/data/zodiacSignsData.js
-
 const zodiacSignsData = {
     aries: {
       name: 'Aries',

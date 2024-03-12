@@ -4,6 +4,24 @@ const Question = require("../models/Question");
 const User = require("../models/User");
 const authenticateToken = require("../middleware/authenticateToken");
 const calculateZodiacSign = require("../services/zodiacService");
+const axios = require('axios');
+
+const CALCULATION_SERVICE_URL = 'http://localhost:6000/calculate';
+
+const getAnsweredQuestions = async (user) => {
+    const answeredQuestionIds = user.answers.map((answer) => answer.questionId);
+    const answeredQuestions = await Question.find({
+      _id: { $in: answeredQuestionIds },
+    });
+
+    const questionsWithAnswers = answeredQuestions.map((answeredQuestions) => {
+      const answer = user.answers.find((answer) =>
+        answer.questionId.equals(answeredQuestions._id)
+      );
+      return { question: answeredQuestions, answer: answer };
+    });
+    return questionsWithAnswers;
+}
 
 router.get("/greeting", authenticateToken, (req, res) => {
   try {
@@ -47,18 +65,7 @@ router.get("/questions/answered", authenticateToken, async (req, res) => {
     if (!user || !user.answers) {
       return res.status(500).send("No answers found for this user.");
     }
-
-    const answeredQuestionIds = user.answers.map((answer) => answer.questionId);
-    const answeredQuestions = await Question.find({
-      _id: { $in: answeredQuestionIds },
-    });
-
-    const questionsWithAnswers = answeredQuestions.map((answeredQuestions) => {
-      const answer = user.answers.find((answer) =>
-        answer.questionId.equals(answeredQuestions._id)
-      );
-      return { question: answeredQuestions, answer: answer };
-    });
+    questionsWithAnswers = getAnsweredQuestions(user);
     res.json(questionsWithAnswers);
   } catch (error) {
     console.log(error);
@@ -130,10 +137,16 @@ router.post("/reset", authenticateToken, async (req, res) => {
 router.get("/me", authenticateToken, async (req, res) => {
   try {
     const user = await User.findOne({ email: req.user.email });
-    const zodiacSign = await calculateZodiacSign(user);
-    res.json(zodiacSign);
+    if (!user || !user.answers) {
+      return res.status(500).send("No answers found for this user.");
+    }
+    questionsWithAnswers = await getAnsweredQuestions(user);
+    const response = await axios.post(CALCULATION_SERVICE_URL, {'user_answers': user.answers});
+    res.json(response.data.result);
+    // const zodiacSign = await calculateZodiacSign(user);
+    // res.json(zodiacSign);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).send(error.message);
   }
 });

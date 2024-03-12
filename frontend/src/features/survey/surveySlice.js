@@ -65,11 +65,8 @@ export const fetchMe = createAsyncThunk(
   "survey/fetchMe",
   async (_, { dispatch }) => {
     const zodiacDetails = await surveyService.fetchMe();
-    console.log(zodiacDetails);
-    // Assuming zodiacDetails contains both the new zodiac sign and additional info
-    dispatch(setSelectedZodiac(zodiacDetails.zodiacSign));
-    dispatch(setMyPersona(zodiacDetails)); // Adjust based on actual data structure
-
+    console.log(`zd: ${zodiacDetails}`);
+    dispatch(setMyPersona(zodiacDetails));
     return zodiacDetails;
   }
 );
@@ -79,7 +76,6 @@ const surveySlice = createSlice({
   initialState: {
     questions: [],
     answers: {},
-    selectedZodiac: null,
     myPersona: null,
     greeting: "",
     loading: false,
@@ -98,9 +94,6 @@ const surveySlice = createSlice({
     },
     setMyPersona: (state, action) => {
       state.myPersona = action.payload;
-    },
-    setSelectedZodiac: (state, action) => {
-      state.selectedZodiac = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -160,7 +153,6 @@ export const {
   setGreeting,
   setAnswers,
   setMyPersona,
-  setSelectedZodiac,
   updateAnswer,
 } = surveySlice.actions;
 

@@ -38,3 +38,12 @@ Thumbs.db
 
 # .env file should not be committed
 .env
+
+# Python cache and distribution
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+*.pyc
+__pycache__/

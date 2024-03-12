@@ -5,6 +5,7 @@ import {
   updateAnswer,
   submitAnswers,
 } from "../features/survey/surveySlice";
+import Outcomes from "./Outcomes";
 
 function Survey() {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function Survey() {
   // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
 
   useEffect(() => {
     dispatch(fetchQuestions());
@@ -23,14 +25,6 @@ function Survey() {
     let userAnswer = answers[id];
     setSelectedOption(userAnswer ? userAnswer : "");
   }, [answers, questions, currentQuestionIndex]);
-
-  if (loading) {
-    return <div>Loading questions...</div>;
-  }
-
-  if (!questions || questions.length === 0) {
-    return <div>No questions to display</div>;
-  }
 
   const currentQuestion = questions[currentQuestionIndex];
 
@@ -51,9 +45,26 @@ function Survey() {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       dispatch(submitAnswers());
+      setIsSurveyCompleted(true);
       alert("You have completed the survey!");
     }
   };
+
+  if (loading) {
+    return <div>Loading questions...</div>;
+  }
+
+  if (!questions || questions.length === 0) {
+    return <div>No questions to display</div>;
+  }
+
+  if (isSurveyCompleted) {
+    return <Outcomes />;
+  }
+
+  const speedRun = () =>{
+    setIsSurveyCompleted(true);
+  }
 
   return (
     <div
@@ -65,6 +76,11 @@ function Survey() {
         height: "100vh",
       }}
     >
+    <button
+            type="button"
+            onClick={speedRun}
+            style={{ marginTop: 20 }}
+          >Go Fast</button>
       <h2>{currentQuestion.text}</h2>
       <p>{currentQuestion.description}</p>
       {currentQuestion.faq &&
