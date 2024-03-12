@@ -7,22 +7,17 @@ import ChatBot from "../components/ChatBot";
 import GoogleSignIn from "../pages/GoogleSignIn";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchQuestions,
-  // fetchUnansweredQuestions,
-  // fetchAnsweredQuestions,
   fetchGreeting,
   fetchMe,
   setSelectedZodiac,
-  resetAnswers,
-  updateAnswer,
-  submitAnswers,
+  resetAnswers
 } from "../features/survey/surveySlice";
-import { logout } from "../features/auth/authSlice";
+import { handleLogout } from "../services/AuthService";
 
 function App() {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
-  const { questions, answers, greeting, selectedZodiac, myPersona, loading } =
+  const { selectedZodiac, myPersona } =
     useSelector((state) => state.survey);
 
   useEffect(() => {
@@ -30,14 +25,6 @@ function App() {
       dispatch(fetchGreeting());
     }
   }, [isAuthenticated, dispatch]);
-
-  const handleAnswerChange = (questionId, answer) => {
-    dispatch(updateAnswer({ questionId, answer }));
-  };
-
-  const handleAnswerSubmit = () => {
-    dispatch(submitAnswers(answers)); // Assuming answers is the object containing all current answers
-  };
 
   const selectZodiac = async (zodiacKey) => {
     const zodiacData = zodiacSignsData[zodiacKey.toLowerCase()];
@@ -53,7 +40,7 @@ function App() {
     <div className="App">
       <Navbar
         isAuthenticated={isAuthenticated}
-        onLogout={() => dispatch(logout())}
+        onLogout={() => handleLogout()}
       />
       {!isAuthenticated ? (
         <GoogleSignIn />

@@ -28,12 +28,10 @@ initializeAuthHeader();
 
 export const handleLogout = () => {
   store.dispatch(logout());
-  axios.defaults.headers.common["Authorization"] = "";
-  localStorage.removeItem("jwt");
+  delete axios.defaults.headers.common["Authorization"];
 };
 
 export const handleGoogleLoginSuccess = async (response) => {
-  console.log("Google login success:", response);
   const token = response?.credential;
   await sendGoogleTokenToBackend(token);
 };
@@ -45,7 +43,6 @@ export const handleGoogleLoginFailure = (response) => {
 const sendGoogleTokenToBackend = async (token) => {
   try {
     const response = await axios.post("/api/auth/google", { token });
-    console.log("Backend response:", response.data);
     const jwt = response.data.token;
     // Update the authentication state in the Redux store
     store.dispatch(setAuthInfo({ jwt, isAuthenticated: true }));
