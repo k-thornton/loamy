@@ -5,7 +5,7 @@ import ZodiacSignPage from "./ZodiacSignPage";
 
 function Outcomes() {
   const dispatch = useDispatch();
-  const { myPersona } = useSelector((state) => state.survey);
+  const { myPersona, loading, error } = useSelector((state) => state.survey);
   const [selectedZodiac, setSelectedZodiac] = useState('');
 
   useEffect(() => {
@@ -21,6 +21,14 @@ function Outcomes() {
 
   if (!selectedZodiac || !myPersona) {
     return <div>No questions to display</div>;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   return (

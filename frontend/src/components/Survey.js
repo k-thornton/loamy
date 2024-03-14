@@ -9,7 +9,7 @@ import Outcomes from "./Outcomes";
 
 function Survey() {
   const dispatch = useDispatch();
-  const { questions, loading, answers } = useSelector((state) => state.survey);
+  const { questions, loading, answers, error } = useSelector((state) => state.survey);
   // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -50,16 +50,20 @@ function Survey() {
     }
   };
 
+  if (isSurveyCompleted) {
+    return <Outcomes />;
+  }
+
   if (loading) {
-    return <div>Loading questions...</div>;
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   if (!questions || questions.length === 0) {
     return <div>No questions to display</div>;
-  }
-
-  if (isSurveyCompleted) {
-    return <Outcomes />;
   }
 
   const speedRun = () =>{

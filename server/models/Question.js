@@ -8,10 +8,12 @@ const faqSchema = new mongoose.Schema({
 
 const questionSchema = new mongoose.Schema({
   text: { type: String, required: true },
+  tag: { type: String, required: false },
   description: { type: String, required: false },
   faq: [faqSchema],
   note: { type: String, required: false },
   answerType: { type: String, required: true },
+  expectedDataType: { type: String, required: true },
   choices: { type: Array, required: false }
 });
 

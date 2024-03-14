@@ -17,6 +17,7 @@
       }
     ],
     "answerType": "multipleChoice",
+    "expectedDataType": "string",
     "choices": [
       {
         "text": "In Vitro Fertilization (IVF)"
@@ -30,6 +31,7 @@
     ]
   },
   {
+    "tag": "age",
     "text": "How old are you?",
     "description": "🎂 Enter your age:",
     "faq": [
@@ -40,9 +42,11 @@
     ],
     "note": "Our dataset is only representative of women ages 25 - 45.",
     "answerType": "freeEntry",
+    "expectedDataType": "numeric",
     "choices": []
   },
   {
+    "tag": "diagnosis",
     "text": "What is your primary diagnosis?",
     "description": "Select your primary diagnosis:",
     "faq": [
@@ -72,6 +76,7 @@
       }
     ],
     "answerType": "multipleChoice",
+    "expectedDataType": "string",
     "choices": [
       {
         "text": "Endometriosis"
@@ -100,6 +105,7 @@
     ]
   },
   {
+    "tag": "amh",
     "text": "What is your Anti-Müllerian Hormone level?",
     "description": "What is your AMH level (ng/mL):",
     "faq": [
@@ -110,9 +116,11 @@
     ],
     "note": " We did not filter the data using AMH due to the size of the dataset. AMH is not a good single indicator of overall fertility or the ability to get pregnant.",
     "answerType": "freeEntry",
+    "expectedDataType": "numeric",
     "choices": []
   },
   {
+    "tag": "afc",
     "text": "What is your Antral Follicle Count?",
     "description": "Input your AFC (the number of antral follicles in both ovaries):",
     "faq": [
@@ -123,6 +131,7 @@
     ],
     "note": "Leave this question blank if you are unsure.",
     "answerType": "freeEntry",
+    "expectedDataType": "numeric",
     "choices": []
   },
   {
@@ -138,8 +147,9 @@
         "body": "It is now used in over 90% of IVF cycles regardless of whether male factor is the reason. Many patients report using it for its psychological benefits, even if the evidence for its improvements on live birth are thin. ICSI costs the patient between $800 - 2,500 per cycle and the clinic $50 - 250 to perform."
       }
     ],
-    "note": "Your finished! Click the button below to see real-world outcomes for women like you ⬇️",
+    "note": "You're finished! Click the button below to see real-world outcomes for women like you ⬇️",
     "answerType": "multipleChoice",
+    "expectedDataType": "string",
     "choices": [
       {
         "text": "Intracytoplasmic Sperm Injection (ICSI)"

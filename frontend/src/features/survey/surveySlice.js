@@ -144,8 +144,21 @@ const surveySlice = createSlice({
         // Handle success, maybe clear current answers or fetch new questions
       })
       .addCase(submitAnswers.rejected, (state, action) => {
-        state.error = action.payload; // Assuming error info is in payload
-      });
+        console.error("Failed to submit answers:", action.error.message);
+        // Update state to indicate an error has occurred
+        state.error = action.error.message;
+        // here you could display the error message to the user
+      })
+      .addCase(fetchMe.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchMe.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(fetchMe.rejected, (state, action) => {
+        state.error = action.error.message;
+        state.loading = false;
+      })
   },
 });
 

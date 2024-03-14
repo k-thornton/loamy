@@ -7,20 +7,46 @@ const axios = require('axios');
 
 const CALCULATION_SERVICE_URL = 'http://localhost:6000/calculate';
 
-const getAnsweredQuestions = async (user) => {
-    const answeredQuestionIds = user.answers.map((answer) => answer.questionId);
-    const answeredQuestions = await Question.find({
-      _id: { $in: answeredQuestionIds },
-    });
+async function fetchQuestions(user, filter = 'all') {
+  // Fetch all current questions from the database regardless of the filter
+  const allQuestions = await Question.find({});
 
-    const questionsWithAnswers = answeredQuestions.map((answeredQuestions) => {
-      const answer = user.answers.find((answer) =>
-        answer.questionId.equals(answeredQuestions._id)
-      );
-      return { question: answeredQuestions, answer: answer };
+  let questionsWithAnswers = allQuestions.map(question => {
+    // Find if the user has answered this question
+    const answerObj = user.answers.find(ans => ans.questionId.equals(question._id));
+    return {
+      question: question.toObject(), // Convert Mongoose document to a plain object
+      answer: answerObj ? answerObj.answer : null, // Attach the answer if present; otherwise null
+    };
+  });
+
+  // If the filter is not 'all', adjust the returned data accordingly
+  if (filter !== 'all') {
+    questionsWithAnswers = questionsWithAnswers.filter(qwa => {
+      // For 'answered', return only questions with non-null answers
+      if (filter === 'answered') return qwa.answer !== null;
+      // For 'unanswered', return only questions with null answers
+      if (filter === 'unanswered') return qwa.answer === null;
+      return true;
     });
-    return questionsWithAnswers;
+  }
+
+  return questionsWithAnswers;
 }
+
+// Utility function to determine if an answer matches the expected data type
+const isAnswerValid = async (questionId, answer) => {
+  const question = await Question.findById(questionId);
+  // This assumes you have a way to determine if a question expects a numeric answer
+  const expectsNumeric = question.answerType === 'freeEntry' && question.expectedDataType === 'numeric';
+  
+  if (expectsNumeric) {
+    return !isNaN(parseFloat(answer)) && isFinite(answer);
+  } else {
+    // Assuming all non-numeric answers are valid for simplicity
+    return typeof answer === 'string';
+  }
+};
 
 router.get("/greeting", authenticateToken, (req, res) => {
   try {
@@ -33,24 +59,8 @@ router.get("/greeting", authenticateToken, (req, res) => {
 
 router.get("/questions", authenticateToken, async (req, res) => {
   try {
-    const questions = await Question.find({});
     const user = await User.findOne({ email: req.user.email });
-    let questionsWithAnswers = [];
-
-    if (user && user.answers) {
-      // Map each question to include the user's answer if it exists
-      questionsWithAnswers = questions.map(question => {
-        const answer = user.answers.find(ans => ans.questionId.equals(question._id));
-        return {
-          question,
-          // ...question.toObject(), // Convert Mongoose document to plain object
-          answer: answer ? answer.answer : null, // Include the answer or null if not answered
-        };
-      });
-    } else {
-      // If the user has no answers, return questions as is
-      questionsWithAnswers = questions;
-    }
+    const questionsWithAnswers = await fetchQuestions(user);
     res.json(questionsWithAnswers);
   } catch (error) {
     console.error(error);
@@ -61,13 +71,10 @@ router.get("/questions", authenticateToken, async (req, res) => {
 router.get("/questions/answered", authenticateToken, async (req, res) => {
   try {
     const user = await User.findOne({ email: req.user.email });
-    if (!user || !user.answers) {
-      return res.status(500).send("No answers found for this user.");
-    }
-    questionsWithAnswers = getAnsweredQuestions(user);
-    res.json(questionsWithAnswers);
+    const answeredQuestions = await fetchQuestions(user, 'answered');
+    res.json(answeredQuestions);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send(error.message);
   }
 });
@@ -75,10 +82,7 @@ router.get("/questions/answered", authenticateToken, async (req, res) => {
 router.get("/questions/unanswered", authenticateToken, async (req, res) => {
   try {
     const user = await User.findOne({ email: req.user.email });
-    const answeredQuestionIds = user.answers.map((answer) => answer.questionId);
-    const unansweredQuestions = await Question.find({
-      _id: { $nin: answeredQuestionIds },
-    });
+    const unansweredQuestions = await fetchQuestions(user, 'unanswered');
     res.json(unansweredQuestions);
   } catch (error) {
     res.status(500).send(error.message);
@@ -86,34 +90,37 @@ router.get("/questions/unanswered", authenticateToken, async (req, res) => {
 });
 
 router.post("/answers", authenticateToken, async (req, res) => {
-  const answersDict = req.body; // object format will be a dict of { questionId: answer, ... }
+  const answersDict = req.body; // Object format: { questionId: answer, ... }
+  
   try {
-    // Load the user from the database
     const user = await User.findOne({ email: req.user.email });
-
-    // Ensure user.answers is initialized as an array if it's not already
-    if (!user.answers) {
-      user.answers = [];
+    if (!user) {
+      return res.status(404).send("User not found");
     }
+
     // Iterate through the submitted answers
-    Object.entries(answersDict).forEach(([questionId, submittedAnswer]) => {
+    for (const [questionId, submittedAnswer] of Object.entries(answersDict)) {
+      const valid = await isAnswerValid(questionId, submittedAnswer);
+      if (!valid) {
+        // Immediately return if any answer is invalid
+        return res.status(400).send(`Invalid answer for question ${questionId}`);
+      }
+      
       // Check if an answer for the current question already exists
-      const existingAnswerIndex = user.answers.findIndex(
-        (answer) => answer.questionId.toString() === questionId
-      );
+      const existingAnswerIndex = user.answers.findIndex(answer => answer.questionId.toString() === questionId);
       if (existingAnswerIndex > -1) {
         // Update existing answer
-        user.answers[existingAnswerIndex].answer = submittedAnswer;;
+        user.answers[existingAnswerIndex].answer = submittedAnswer;
       } else {
         // Add new answer
         user.answers.push({ questionId, answer: submittedAnswer });
       }
-    });
+    }
 
     await user.save();
-    res.status(200).send("Answers updated");
+    res.status(200).send("Answers updated successfully");
   } catch (error) {
-    console.log(error);
+    console.error(error);
     res.status(500).send(error.message);
   }
 });
@@ -137,8 +144,15 @@ router.get("/me", authenticateToken, async (req, res) => {
     if (!user || !user.answers) {
       return res.status(500).send("No answers found for this user.");
     }
-    questionsWithAnswers = await getAnsweredQuestions(user);
-    const response = await axios.post(CALCULATION_SERVICE_URL, {'user_answers': user.answers});
+    const userAnswers = await fetchQuestions(user, 'answered');
+    const userInfo = {
+      age: userAnswers.find(item => item.question.tag === 'age')?.answer,
+      amh: userAnswers.find(item => item.question.tag === 'amh')?.answer,
+      diagnosis: userAnswers.find(item => item.question.tag === 'diagnosis')?.answer,
+      afc: userAnswers.find(item => item.question.tag === 'afc')?.answer
+    }
+    const response = await axios.post(CALCULATION_SERVICE_URL, userInfo);
+    console.log(response);
     res.json(response.data.result);
   } catch (error) {
     // console.log(error);

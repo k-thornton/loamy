@@ -1,43 +1,48 @@
-require('dotenv').config(); // To use environment variables from .env file
-const mongoose = require('mongoose');
-const Question = require('../models/Question'); // Adjust the path as necessary
-const fs = require('fs').promises;
-const path = require('path');
+require("dotenv").config();
+const mongoose = require("mongoose");
+const Question = require("../models/Question"); // Adjust the path as necessary
+const fs = require("fs").promises;
+const path = require("path");
 
-
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Database connected successfully'))
-  .catch((err) => console.error('Database connection error:', err));
-
-
-// Function to load questions
 async function loadQuestions(filePath) {
   try {
-    // Read the file content
-    const data = await fs.readFile(filePath, 'utf8');
-    // Parse the JSON content
-    const questions = JSON.parse(data);
-    for (const questionData of questions) {
+    const data = await fs.readFile(filePath, "utf8");
+    const questionsFromFile = JSON.parse(data);
+
+    // Get all question texts from the file
+    const questionTextsFromFile = questionsFromFile.map((q) => q.text);
+
+    // Upsert questions from the file
+    for (const questionData of questionsFromFile) {
       await Question.updateOne(
-        { text: questionData.text }, // Unique identifier
+        { text: questionData.text },
         { $set: questionData },
-        { upsert: true } // Update existing or insert new
+        { upsert: true }
       );
     }
-    console.log('Questions loaded successfully');
+
+    // Remove questions not present in the file
+    await Question.deleteMany({
+      text: { $nin: questionTextsFromFile },
+    });
+
+    console.log("Questions synchronized successfully");
   } catch (error) {
-    console.error('Error loading questions:', error);
+    console.error("Error synchronizing questions:", error);
   } finally {
     mongoose.connection.close();
   }
 }
 
-
-// Specify the path to your JSON file
-const fileName = './questions.json';
-// Construct the absolute path to the JSON file
+const fileName = "./questions.json";
 const filePath = path.join(__dirname, fileName);
 
-// Execute the function
-loadQuestions(filePath);
+// Connect to MongoDB
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("Database connected successfully"))
+  .then(() => loadQuestions(filePath))
+  .catch((err) => console.error("Database connection error:", err));
