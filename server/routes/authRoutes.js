@@ -14,21 +14,21 @@ router.post('/google', async (req, res) => {
         audience: process.env.GOOGLE_CLIENT_ID, 
     });
     const payload = ticket.getPayload(); // This object includes user's information
-
     // Extract user details
-    const { sub: googleId, email } = payload;
+    const { sub: googleId, email, picture } = payload;
     
     // Check if the user already exists
     let user = await User.findOne({ googleId });
     if (!user) {
       // If user doesn't exist, create a new one
-      user = new User({ googleId, email });
+      user = new User({ googleId, email, picture });
       await user.save();
     }
 
     const userPayload = {
         id: user._id,
-        email: user.email
+        email: user.email,
+        picture: user.picture
     };
 
     const jwtToken = jwt.sign(

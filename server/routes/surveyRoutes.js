@@ -12,6 +12,12 @@ async function fetchQuestions(user, filter = 'all') {
   const allQuestions = await Question.find({});
 
   let questionsWithAnswers = allQuestions.map(question => {
+    if (!user) {
+      return {
+        question: question.toObject(),
+        answer: null,
+      };
+    }
     // Find if the user has answered this question
     const answerObj = user.answers.find(ans => ans.questionId.equals(question._id));
     return {
@@ -50,7 +56,10 @@ const isAnswerValid = async (questionId, answer) => {
 
 router.get("/greeting", authenticateToken, (req, res) => {
   try {
-    res.type("text").send(`Hello ${req.user.email}`);
+    res.json({
+      email: `${req.user.email}`,
+      picture: `${req.user.picture}`
+    });
   } catch (error) {
     console.error(error);
     res.status(500).send(error.message);

@@ -11,7 +11,7 @@ function Home() {
         alignItems: "center",
         height: "100vh",
       }}
-    ><h1>Hello Loamy</h1>
+    ><h1 className="text-3xl font-bold underline">Hello Loamy</h1>
       <Link to="/womenlikeme">
         <button>Go to Survey</button>
       </Link>

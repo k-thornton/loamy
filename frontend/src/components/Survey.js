@@ -89,10 +89,14 @@ function Survey() {
       <p>{currentQuestion.description}</p>
       {currentQuestion.faq &&
         currentQuestion.faq.map((faq, index) => (
-          <details key={index} style={{ marginBottom: "10px" }}>
-            <summary>{faq.title}</summary>
-            <p>{faq.body}</p>
-          </details>
+          <div tabIndex={0} className="collapse bg-primary text-primary-content focus:bg-secondary focus:text-secondary-content">
+  <div className="collapse-title">
+  {faq.title}
+  </div>
+  <div className="collapse-content"> 
+    <p>{faq.body}</p>
+  </div>
+</div>
         ))}
       {currentQuestion.note && (
         <p style={{ fontStyle: "italic" }}>{currentQuestion.note}</p>

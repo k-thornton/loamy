@@ -77,7 +77,7 @@ const surveySlice = createSlice({
     questions: [],
     answers: {},
     myPersona: null,
-    greeting: "",
+    greeting: {},
     loading: false,
     error: null,
   },
@@ -99,7 +99,16 @@ const surveySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchGreeting.fulfilled, (state, action) => {
-        state.greeting = action.payload;
+        console.log(action.payload);
+        state.greeting.email = action.payload.email;
+        state.greeting.picture = action.payload.picture;
+        console.log(state.greeting);
+      })
+      .addCase(fetchGreeting.pending, (state) => {
+        // Handle loading state, e.g., state.loading = true;
+      })
+      .addCase(fetchGreeting.rejected, (state, action) => {
+        state.error = action.error.message;
       })
       .addCase(fetchQuestions.pending, (state) => {
         state.loading = true;
@@ -158,15 +167,11 @@ const surveySlice = createSlice({
       .addCase(fetchMe.rejected, (state, action) => {
         state.error = action.error.message;
         state.loading = false;
-      })
+      });
   },
 });
 
-export const {
-  setGreeting,
-  setAnswers,
-  setMyPersona,
-  updateAnswer,
-} = surveySlice.actions;
+export const { setGreeting, setAnswers, setMyPersona, updateAnswer } =
+  surveySlice.actions;
 
 export default surveySlice.reducer;

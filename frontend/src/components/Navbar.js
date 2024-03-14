@@ -1,29 +1,46 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom"; // Import the Link component
+import { Link } from "react-router-dom";
 
 const Navbar = ({ isAuthenticated, onLogout }) => {
   const greeting = useSelector((state) => state.survey.greeting);
 
   return (
     <nav>
-      <ul>
-        {/* Home navigation item */}
-        <li>
-          <Link to="/">Home</Link> {/* Add this line to include a link to the home page */}
-        </li>
-        {/* Other navigation items */}
-        {!isAuthenticated ? (
-          <li>
-            <p>You're logged out, please log in below.</p>
-          </li>
-        ) : (
-          <li>
-            <p>{greeting}</p>
-            <button onClick={onLogout}>Logout</button>
-          </li>
+      <div className="navbar bg-base-100">
+        <div className="flex-1">
+          <Link to="/" className="btn btn-ghost text-xl">
+            Home
+          </Link>
+        </div>
+        {isAuthenticated && (
+          <div className="flex-none gap-2">
+            <p>{greeting.email}</p>
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={greeting.picture}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <button onClick={onLogout}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          </div>
         )}
-      </ul>
+      </div>
     </nav>
   );
 };
