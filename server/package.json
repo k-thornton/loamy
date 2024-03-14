@@ -21,6 +21,10 @@
     "mongoose": "^8.2.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
+    "plotly": "^1.0.6",
+    "plotly.js": "^2.30.0",
+    "react-plotly": "^1.0.0",
+    "react-plotly.js": "^2.6.0",
     "swagger-ui-express": "^5.0.0"
   }
 }

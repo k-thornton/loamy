@@ -115,9 +115,22 @@
       }
     ],
     "note": " We did not filter the data using AMH due to the size of the dataset. AMH is not a good single indicator of overall fertility or the ability to get pregnant.",
-    "answerType": "freeEntry",
-    "expectedDataType": "numeric",
-    "choices": []
+    "answerType": "multipleChoice",
+    "expectedDataType": "string",
+    "choices": [
+      {
+        "text": "<2"
+      },
+      {
+        "text": "2-4"
+      },
+      {
+        "text": ">4"
+      },
+      {
+        "text": "I don't know my AMH"
+      }
+    ]
   },
   {
     "tag": "afc",

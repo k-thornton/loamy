@@ -91,7 +91,7 @@ def calculate():
     data = request.json
     diagnosis = data.get("diagnosis")
     age = int(data.get("age"))
-    amh = float(data.get("amh"))
+    amh = data.get("amh")
     afc = int(data.get("afc"))
     df = load_data()
     min_df_size = 50  # Pulled from streamlit code

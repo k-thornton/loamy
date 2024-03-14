@@ -131,7 +131,7 @@ router.post("/reset", authenticateToken, async (req, res) => {
       { email: req.user.email },
       { $set: { answers: [], zodiacSign: null } }
     );
-    res.status(200).send("User answers and zodiac sign reset");
+    res.status(200).send("User answers reset");
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
@@ -152,7 +152,6 @@ router.get("/me", authenticateToken, async (req, res) => {
       afc: userAnswers.find(item => item.question.tag === 'afc')?.answer
     }
     const response = await axios.post(CALCULATION_SERVICE_URL, userInfo);
-    console.log(response);
     res.json(response.data.result);
   } catch (error) {
     // console.log(error);
