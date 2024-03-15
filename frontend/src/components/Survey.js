@@ -6,6 +6,7 @@ import {
   submitAnswers,
 } from "../features/survey/surveySlice";
 import Outcomes from "./Outcomes";
+import Steps from "./Steps";
 
 function Survey() {
   const dispatch = useDispatch();
@@ -157,6 +158,7 @@ function Survey() {
           Next
         </button>
       </div>
+      <Steps currentStep={currentQuestionIndex+1} totalSteps={questions.length} />
     </div>
   );
 }
