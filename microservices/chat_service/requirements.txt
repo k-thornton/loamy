@@ -1,0 +1,15 @@
+ipython==8.12.0
+openai
+pinecone-client
+python-dotenv==1.0.0
+uuid
+pathlib
+uvicorn
+fastapi
+jinja2
+slowapi
+httpx
+git+https://github.com/casics/nostril.git
+tiktoken
+bs4
+apscheduler

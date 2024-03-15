@@ -25,6 +25,7 @@ Thumbs.db
 # Generated files
 dist/
 *.pem
+output_files
 
 # OS generated files
 .DS_Store
