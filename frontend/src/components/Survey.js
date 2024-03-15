@@ -131,13 +131,16 @@ function Survey() {
         </form>
       ) : (
         <div key={`question-${currentQuestion._id}`}>
-          <input
-            type="text"
-            id={currentQuestion._id}
-            value={selectedOption}
-            onChange={(e) => setSelectedOption(e.target.value)}
-            placeholder={currentQuestion.description}
-          />
+          <label className="form-control w-full max-w-xs">
+            <input
+              type="text"
+              id={currentQuestion._id}
+              placeholder={currentQuestion.description}
+              onChange={(e) => setSelectedOption(e.target.value)}
+              value={selectedOption}
+              className="input input-bordered w-full max-w-xs"
+            />
+          </label>
         </div>
       )}
       <div className="join grid grid-cols-2">
@@ -158,7 +161,10 @@ function Survey() {
           Next
         </button>
       </div>
-      <Steps currentStep={currentQuestionIndex+1} totalSteps={questions.length} />
+      <Steps
+        currentStep={currentQuestionIndex + 1}
+        totalSteps={questions.length}
+      />
     </div>
   );
 }
