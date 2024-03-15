@@ -1,12 +1,12 @@
 import React from 'react';
 import { GoogleLogin } from '@react-oauth/google';
-import { handleGoogleLoginSuccess, handleGoogleLoginFailure } from '../services/AuthService';
+import { authService } from '../services/AuthService';
 
 const GoogleSignIn = () => {
     return (
         <GoogleLogin
-            onSuccess={handleGoogleLoginSuccess}
-            onFailure={handleGoogleLoginFailure}
+            onSuccess={authService.handleGoogleLoginSuccess}
+            onFailure={authService.handleGoogleLoginFailure}
             // any other props you need, like clientId
         />
     );

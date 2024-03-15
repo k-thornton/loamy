@@ -1,10 +1,11 @@
 import axios from "axios";
-import { store } from "../app/store"; // Adjust the path as necessary
-import { setAuthInfo, logout } from "../features/auth/authSlice";
-import { fetchGreeting } from "../features/survey/surveySlice";
+import { store } from "../app/store";
+import { setAuthInfo, logout, fetchGreeting } from "../features/auth/authSlice";
 
+const withCredentials = true;
+const BASE_URL = '/api/auth';
 
-export const setAxiosAuthHeader = (jwt) => {
+const setAxiosAuthHeader = (jwt) => {
     if (jwt) {
       axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
     } else {
@@ -26,23 +27,28 @@ store.subscribe(() => {
 
 initializeAuthHeader();
 
-export const handleLogout = () => {
+const handleLogout = () => {
   store.dispatch(logout());
   delete axios.defaults.headers.common["Authorization"];
 };
 
-export const handleGoogleLoginSuccess = async (response) => {
+const handleGoogleLoginSuccess = async (response) => {
   const token = response?.credential;
   await sendGoogleTokenToBackend(token);
 };
 
-export const handleGoogleLoginFailure = (response) => {
+const handleGoogleLoginFailure = (response) => {
   console.error("Google login failed:", response);
+};
+
+const fetchGreetingFromAPI = async () => {
+  const response = await axios.get(`${BASE_URL}/greeting`, { withCredentials });
+  return response.data;
 };
 
 const sendGoogleTokenToBackend = async (token) => {
   try {
-    const response = await axios.post("/api/auth/google", { token });
+    const response = await axios.post(`${BASE_URL}/google`, { token });
     const jwt = response.data.token;
     // Update the authentication state in the Redux store
     store.dispatch(setAuthInfo({ jwt, isAuthenticated: true }));
@@ -54,3 +60,10 @@ const sendGoogleTokenToBackend = async (token) => {
   }
 };
 
+export const authService = {
+  setAxiosAuthHeader,
+  handleLogout,
+  handleGoogleLoginSuccess,
+  handleGoogleLoginFailure,
+  fetchGreetingFromAPI,
+};

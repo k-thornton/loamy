@@ -54,18 +54,6 @@ const isAnswerValid = async (questionId, answer) => {
   }
 };
 
-router.get("/greeting", authenticateToken, (req, res) => {
-  try {
-    res.json({
-      email: `${req.user.email}`,
-      picture: `${req.user.picture}`
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send(error.message);
-  }
-});
-
 router.get("/questions", authenticateToken, async (req, res) => {
   try {
     const user = await User.findOne({ email: req.user.email });

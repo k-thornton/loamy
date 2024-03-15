@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Navbar = ({ isAuthenticated, onLogout }) => {
-  const greeting = useSelector((state) => state.survey.greeting);
+  const greeting = useSelector((state) => state.auth.greeting);
 
   return (
     <nav>

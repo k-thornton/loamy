@@ -1,15 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { surveyService } from "../../services/SurveyService";
 
-// Async thunk for fetching greeting
-export const fetchGreeting = createAsyncThunk(
-  "survey/fetchGreeting",
-  async () => {
-    const data = await surveyService.fetchGreeting();
-    return data;
-  }
-);
-
 // Async thunk for fetching questions
 export const fetchQuestions = createAsyncThunk(
   "survey/fetchQuestions",
@@ -77,14 +68,10 @@ const surveySlice = createSlice({
     questions: [],
     answers: {},
     myPersona: null,
-    greeting: {},
     loading: false,
     error: null,
   },
   reducers: {
-    setGreeting: (state, action) => {
-      state.greeting = action.payload;
-    },
     updateAnswer: (state, action) => {
       const { questionId, answer } = action.payload;
       state.answers[questionId] = answer;
@@ -98,18 +85,6 @@ const surveySlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGreeting.fulfilled, (state, action) => {
-        console.log(action.payload);
-        state.greeting.email = action.payload.email;
-        state.greeting.picture = action.payload.picture;
-        console.log(state.greeting);
-      })
-      .addCase(fetchGreeting.pending, (state) => {
-        // Handle loading state, e.g., state.loading = true;
-      })
-      .addCase(fetchGreeting.rejected, (state, action) => {
-        state.error = action.error.message;
-      })
       .addCase(fetchQuestions.pending, (state) => {
         state.loading = true;
       })
@@ -171,7 +146,7 @@ const surveySlice = createSlice({
   },
 });
 
-export const { setGreeting, setAnswers, setMyPersona, updateAnswer } =
+export const { setAnswers, setMyPersona, updateAnswer } =
   surveySlice.actions;
 
 export default surveySlice.reducer;
