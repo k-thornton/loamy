@@ -5,6 +5,7 @@ import {
   updateAnswer,
   submitAnswers,
 } from "../features/survey/surveySlice";
+import { showModal } from "../features/modal/modalSlice";
 import Outcomes from "./Outcomes";
 import Steps from "./Steps";
 import Accordion from "./Accordion";
@@ -62,7 +63,8 @@ function Survey() {
     } else {
       dispatch(submitAnswers());
       setIsSurveyCompleted(true);
-      alert("You have completed the survey!");
+      dispatch(showModal("You have completed the survey!"));
+      // alert("You have completed the survey!");
     }
   };
 
@@ -87,15 +89,15 @@ function Survey() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <button
+    <div className="flex flex-col items-center justify-center min-h-screen overflow-auto p-4">
+      {/* <button
         type="button"
         onClick={speedRun}
         className="mt-4 mb-8 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg shadow transition duration-150 ease-in-out"
       >
         Go Fast
-      </button>
-
+      </button> */}
+      {/* <div className="overflow-auto mb-4 w-full flex flex-col items-center" style={{ maxHeight: '80vh' }}> */}
       <h2 className="text-xl font-semibold text-gray-800">
         {currentQuestion.text}
       </h2>
@@ -104,11 +106,26 @@ function Survey() {
       </p>
       {currentQuestion.faq && <Faq faqs={currentQuestion.faq} />}
       {currentQuestion.note && (
-        <p style={{ fontStyle: "italic" }}>{currentQuestion.note}</p>
+        <div role="alert" className="alert w-1/2 space-y-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            className="stroke-info shrink-0 w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>{currentQuestion.note}</span>
+        </div>
       )}
       {currentQuestion.answerType === "multipleChoice" ? (
         <form onSubmit={(e) => e.preventDefault()}>
-          <RadioGroup 
+          <RadioGroup
             options={currentQuestion.choices}
             selectedOption={selectedOption}
             setSelectedOption={setSelectedOption}
@@ -123,27 +140,31 @@ function Survey() {
               placeholder={currentQuestion.description}
               onChange={(e) => setSelectedOption(e.target.value)}
               value={selectedOption}
-              className="input input-bordered w-full max-w-xs"
+              className="input input-bordered w-full max-w-xs mt-4"
             />
           </label>
         </div>
       )}
-      <div className="join grid grid-cols-2 gap-0 mt-4">
-        {currentQuestionIndex > 0 && (
+      <div className="flex justify-center mt-4 mb-8">
+        <div className="join grid grid-cols-2 gap-0 max-w-xs">
+            <button
+              onClick={handlePreviousQuestion}
+              className="join-item btn btn-outline"
+              disabled={currentQuestionIndex <= 0}
+            >
+              Back
+            </button>
           <button
-            onClick={handlePreviousQuestion}
+            onClick={handleNextQuestion}
             className="join-item btn btn-outline"
           >
-            Back
+            {currentQuestionIndex < questions.length - 1
+              ? "Next"
+              : "See Results"}
           </button>
-        )}
-        <button
-          onClick={handleNextQuestion}
-          className="join-item btn btn-outline"
-        >
-          Next
-        </button>
+        </div>
       </div>
+      {/* </div> */}
       <Steps
         currentStep={currentQuestionIndex + 1}
         totalSteps={questions.length}
