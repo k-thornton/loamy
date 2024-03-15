@@ -7,6 +7,9 @@ import {
 } from "../features/survey/surveySlice";
 import Outcomes from "./Outcomes";
 import Steps from "./Steps";
+import Accordion from "./Accordion";
+import Faq from "./Faq";
+import RadioGroup from "./RadioGroup";
 
 function Survey() {
   const dispatch = useDispatch();
@@ -84,50 +87,32 @@ function Survey() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        height: "100vh",
-      }}
-    >
-      <button type="button" onClick={speedRun} style={{ marginTop: 20 }}>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <button
+        type="button"
+        onClick={speedRun}
+        className="mt-4 mb-8 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg shadow transition duration-150 ease-in-out"
+      >
         Go Fast
       </button>
-      <h2>{currentQuestion.text}</h2>
-      <p>{currentQuestion.description}</p>
-      {currentQuestion.faq &&
-        currentQuestion.faq.map((faq, index) => (
-          <div
-            tabIndex={0}
-            className="collapse bg-primary text-primary-content focus:bg-secondary focus:text-secondary-content"
-          >
-            <div className="collapse-title">{faq.title}</div>
-            <div className="collapse-content">
-              <p>{faq.body}</p>
-            </div>
-          </div>
-        ))}
+
+      <h2 className="text-xl font-semibold text-gray-800">
+        {currentQuestion.text}
+      </h2>
+      <p className="mb-4 text-md text-gray-600">
+        {currentQuestion.description}
+      </p>
+      {currentQuestion.faq && <Faq faqs={currentQuestion.faq} />}
       {currentQuestion.note && (
         <p style={{ fontStyle: "italic" }}>{currentQuestion.note}</p>
       )}
       {currentQuestion.answerType === "multipleChoice" ? (
         <form onSubmit={(e) => e.preventDefault()}>
-          {currentQuestion.choices.map((choice, index) => (
-            <div key={index}>
-              <input
-                type="radio"
-                id={`choice-${index}`}
-                name="answer"
-                value={choice.text}
-                checked={selectedOption === choice.text}
-                onChange={handleOptionChange}
-              />
-              <label htmlFor={`choice-${index}`}>{choice.text}</label>
-            </div>
-          ))}
+          <RadioGroup 
+            options={currentQuestion.choices}
+            selectedOption={selectedOption}
+            setSelectedOption={setSelectedOption}
+          />
         </form>
       ) : (
         <div key={`question-${currentQuestion._id}`}>
@@ -143,16 +128,14 @@ function Survey() {
           </label>
         </div>
       )}
-      <div className="join grid grid-cols-2">
-        {currentQuestionIndex > 0 ? (
+      <div className="join grid grid-cols-2 gap-0 mt-4">
+        {currentQuestionIndex > 0 && (
           <button
             onClick={handlePreviousQuestion}
             className="join-item btn btn-outline"
           >
             Back
           </button>
-        ) : (
-          <></>
         )}
         <button
           onClick={handleNextQuestion}
