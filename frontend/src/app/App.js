@@ -2,6 +2,7 @@ import React from "react";
 import ChatBot from "../components/ChatBot";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
+import Footer from "../components/Footer"
 import SurveyPage from "../pages/WomenLikeMe";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <div>
+          <Footer/>
           <ChatBot />
         </div>
       </div>

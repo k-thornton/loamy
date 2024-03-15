@@ -9,7 +9,9 @@ import Outcomes from "./Outcomes";
 
 function Survey() {
   const dispatch = useDispatch();
-  const { questions, loading, answers, error } = useSelector((state) => state.survey);
+  const { questions, loading, answers, error } = useSelector(
+    (state) => state.survey
+  );
   // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -30,6 +32,16 @@ function Survey() {
 
   const handleOptionChange = (e) => {
     setSelectedOption(e.target.value);
+  };
+
+  const handlePreviousQuestion = () => {
+    const nextQuestionIndex = currentQuestionIndex - 1;
+    if (nextQuestionIndex >= 0) {
+      setCurrentQuestionIndex(nextQuestionIndex);
+    } else {
+      //should be unreachable
+      alert("Can't go back");
+    }
   };
 
   const handleNextQuestion = () => {
@@ -66,9 +78,9 @@ function Survey() {
     return <div>No questions to display</div>;
   }
 
-  const speedRun = () =>{
+  const speedRun = () => {
     setIsSurveyCompleted(true);
-  }
+  };
 
   return (
     <div
@@ -80,23 +92,22 @@ function Survey() {
         height: "100vh",
       }}
     >
-    <button
-            type="button"
-            onClick={speedRun}
-            style={{ marginTop: 20 }}
-          >Go Fast</button>
+      <button type="button" onClick={speedRun} style={{ marginTop: 20 }}>
+        Go Fast
+      </button>
       <h2>{currentQuestion.text}</h2>
       <p>{currentQuestion.description}</p>
       {currentQuestion.faq &&
         currentQuestion.faq.map((faq, index) => (
-          <div tabIndex={0} className="collapse bg-primary text-primary-content focus:bg-secondary focus:text-secondary-content">
-  <div className="collapse-title">
-  {faq.title}
-  </div>
-  <div className="collapse-content"> 
-    <p>{faq.body}</p>
-  </div>
-</div>
+          <div
+            tabIndex={0}
+            className="collapse bg-primary text-primary-content focus:bg-secondary focus:text-secondary-content"
+          >
+            <div className="collapse-title">{faq.title}</div>
+            <div className="collapse-content">
+              <p>{faq.body}</p>
+            </div>
+          </div>
         ))}
       {currentQuestion.note && (
         <p style={{ fontStyle: "italic" }}>{currentQuestion.note}</p>
@@ -116,13 +127,6 @@ function Survey() {
               <label htmlFor={`choice-${index}`}>{choice.text}</label>
             </div>
           ))}
-          <button
-            type="button"
-            onClick={handleNextQuestion}
-            style={{ marginTop: 20 }}
-          >
-            Next
-          </button>
         </form>
       ) : (
         <div key={`question-${currentQuestion._id}`}>
@@ -133,11 +137,26 @@ function Survey() {
             onChange={(e) => setSelectedOption(e.target.value)}
             placeholder={currentQuestion.description}
           />
-          <button onClick={handleNextQuestion} style={{ marginTop: 20 }}>
-            Next
-          </button>
         </div>
       )}
+      <div className="join grid grid-cols-2">
+        {currentQuestionIndex > 0 ? (
+          <button
+            onClick={handlePreviousQuestion}
+            className="join-item btn btn-outline"
+          >
+            Back
+          </button>
+        ) : (
+          <></>
+        )}
+        <button
+          onClick={handleNextQuestion}
+          className="join-item btn btn-outline"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
