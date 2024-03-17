@@ -8,9 +8,10 @@ import {
 import { showModal } from "../features/modal/modalSlice";
 import Outcomes from "./Outcomes";
 import Steps from "./Steps";
-import Accordion from "./Accordion";
 import Faq from "./Faq";
 import RadioGroup from "./RadioGroup";
+import Drawer from './Drawer';
+
 
 function Survey() {
   const dispatch = useDispatch();
@@ -21,8 +22,10 @@ function Survey() {
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
+    
     dispatch(fetchQuestions());
   }, [dispatch]);
 
@@ -41,7 +44,7 @@ function Survey() {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       //should be unreachable
-      alert("Can't go back");
+      dispatch(showModal({content: "Can't go back", title: "Alert"}));
     }
   };
 
@@ -82,6 +85,10 @@ function Survey() {
   const speedRun = () => {
     setIsSurveyCompleted(true);
   };
+
+  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+  
+  const sidebarItems = ['Home', 'Profile', 'Settings'];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-90 overflow-auto p-4">
