@@ -35,10 +35,6 @@ function Survey() {
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
-
   const handlePreviousQuestion = () => {
     const nextQuestionIndex = currentQuestionIndex - 1;
     if (nextQuestionIndex >= 0) {
@@ -51,7 +47,7 @@ function Survey() {
 
   const handleNextQuestion = () => {
     if (!selectedOption) {
-      alert("Please select an option before proceeding.");
+      dispatch(showModal({content: "Please select an option before proceeding.", title: "Whoa there"}));
       return;
     }
     dispatch(
@@ -63,7 +59,6 @@ function Survey() {
     } else {
       dispatch(submitAnswers());
       setIsSurveyCompleted(true);
-      dispatch(showModal("You have completed the survey!"));
       // alert("You have completed the survey!");
     }
   };
@@ -89,7 +84,7 @@ function Survey() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen overflow-auto p-4">
+    <div className="flex flex-col items-center justify-center min-h-90 overflow-auto p-4">
       {/* <button
         type="button"
         onClick={speedRun}

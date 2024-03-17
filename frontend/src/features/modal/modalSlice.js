@@ -5,16 +5,19 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState: {
     isVisible: false,
-    content: ''
+    content: '',
+    title: ''
   },
   reducers: {
     showModal: (state, action) => {
       state.isVisible = true;
-      state.content = action.payload;
+      state.content = action.payload.content;
+      state.title = action.payload.title? action.payload.title : "Alert";
     },
     hideModal: (state) => {
       state.isVisible = false;
       state.content = '';
+      state.title = '';
     },
   },
 });
