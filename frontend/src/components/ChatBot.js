@@ -49,8 +49,9 @@ const ChatBot = () => {
         <div className="chat-window">
           <div className="messages">
             {messages.map((message, index) => (
-              <div key={index} className={`message ${message.sender}`}>
-                {message.text}
+              <div key={index} className={`chat ${message.sender === 'user' ? 'chat-end' : 'chat-start'}`}>
+              <div className="chat-bubble">
+                {message.text}</div>
               </div>
             ))}
             <div ref={endOfMessagesRef} />

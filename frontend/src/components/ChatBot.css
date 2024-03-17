@@ -4,14 +4,7 @@
     right: 20px;
     font-family: Arial, sans-serif;
   }
-  
-  .chat-bubble {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+
   
   .chat-window {
     background-color: #f9f9f9;
