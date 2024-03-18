@@ -10,6 +10,6 @@ load_dotenv(dotenv_path)
 CONFIG = {
     "PINECONE_API_KEY": os.getenv("PINECONE_API_KEY"),
     "OPENAI_API_KEY": os.getenv("OPENAI_API_KEY"),
-    "OUTPUT_DIRECTORY": "output_files",
+    "OUTPUT_DIRECTORY": os.path.abspath("output_files"),
     "ARTICLE_URLS":  [line.strip() for line in open(urls_path, 'r')]
 }

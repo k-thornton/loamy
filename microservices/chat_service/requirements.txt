@@ -9,7 +9,6 @@ fastapi
 jinja2
 slowapi
 httpx
-git+https://github.com/casics/nostril.git
 tiktoken
 bs4
 apscheduler

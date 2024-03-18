@@ -43,7 +43,7 @@ def run_chunker(input_directory_path, output_file_path, max_chunk_size=500):
             chunk_id = generate_chunk_id(url, i)
             chunked_contents.append({
                 'id': chunk_id,
-                'metadata': content['metadata'],
+                'metadata': {**content['metadata'], 'text': chunk},
                 'text': chunk
             })
 
