@@ -4,6 +4,7 @@ import {
   fetchQuestions,
   updateAnswer,
   submitAnswers,
+  clearError
 } from "../features/survey/surveySlice";
 import { showModal } from "../features/modal/modalSlice";
 import Outcomes from "./Outcomes";
@@ -11,6 +12,8 @@ import Steps from "./Steps";
 import Faq from "./Faq";
 import RadioGroup from "./RadioGroup";
 import Drawer from './Drawer';
+import { logout } from "../features/auth/authSlice";
+
 
 
 function Survey() {
@@ -18,6 +21,7 @@ function Survey() {
   const { questions, loading, answers, error } = useSelector(
     (state) => state.survey
   );
+  const { isAuthenticated } = useSelector((state) => state.auth);
   // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -25,9 +29,13 @@ function Survey() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
-    
-    dispatch(fetchQuestions());
-  }, [dispatch]);
+    dispatch(clearError());
+    dispatch(fetchQuestions()).unwrap()
+    .catch((error) => {
+      console.error('Session expired.  Redirecting to login...', error);
+      dispatch(logout());
+    });
+  }, [dispatch, isAuthenticated]);
 
   useEffect(() => {
     // This will set the user's answer as the selected option whenever the question index changes

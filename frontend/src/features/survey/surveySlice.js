@@ -82,6 +82,9 @@ const surveySlice = createSlice({
     setMyPersona: (state, action) => {
       state.myPersona = action.payload;
     },
+    clearError: (state) => {
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -146,7 +149,7 @@ const surveySlice = createSlice({
   },
 });
 
-export const { setAnswers, setMyPersona, updateAnswer } =
+export const { setAnswers, setMyPersona, updateAnswer, clearError } =
   surveySlice.actions;
 
 export default surveySlice.reducer;

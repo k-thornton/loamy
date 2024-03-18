@@ -25,6 +25,7 @@ export const authSlice = createSlice({
     logout: (state) => {
       state.jwt = null;
       state.isAuthenticated = false;
+      state.greeting = {};
     },
   },extraReducers: (builder) => {
     builder
