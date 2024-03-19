@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMe } from "../features/survey/surveySlice";
 import ZodiacSignPage from "./ZodiacSignPage";
 import Create3DPieChart from "../components/Create3DPieChart"
+import ChatBot from "./ChatBot";
 
 function Outcomes() {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ function Outcomes() {
         title={`${(myPersona[selectedBinType].highest_percent * 100).toFixed(0)}% of women like you have ${myPersona[selectedBinType].highest} ${selectedBinType}`}
       />
       <ZodiacSignPage sign={selectedZodiac} />
+      <ChatBot />
     </div>
   );
 }

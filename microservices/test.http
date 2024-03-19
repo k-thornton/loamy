@@ -1,0 +1,7 @@
+POST http://localhost:7000/chat
+Content-Type: application/json
+
+{
+  "user_input": "Tell me more about endometriosis in women under 30",
+  "user_id": "1"
+}

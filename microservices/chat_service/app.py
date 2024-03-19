@@ -22,6 +22,7 @@ PINECONE_API_KEY = os.environ["PINECONE_API_KEY"]
 
 
 class Query(BaseModel):
+    """ Pydantic model """
     user_input: str
     user_id: str
 
@@ -147,34 +148,35 @@ async def react_description(query: Query, request: Request):
     if user_id not in user_states:
         user_states[user_id] = {"previous_queries": [], "timestamp": time.time()}
 
-        try:
-            retrieve(user_input, user_id)
+    try:
+        retrieve(user_input, user_id)
 
-            # Start Retrieval
-            augmented_query = retrieve(user_input, user_id)
-            print(augmented_query)
-            res = client.chat.completions.create(
-                temperature=0.0,
-                # model='gpt-4',
-                model=conversation_model,
-                messages=[
-                    {"role": "system", "content": primer},
-                    {"role": "user", "content": augmented_query},
-                ],
-            )
-            response = res.choices[0].message.content
+        # Start Retrieval
+        augmented_query = retrieve(user_input, user_id)
+        print(augmented_query)
+        res = client.chat.completions.create(
+            temperature=0.0,
+            # model='gpt-4',
+            model=conversation_model,
+            messages=[
+                {"role": "system", "content": primer},
+                {"role": "user", "content": augmented_query},
+            ],
+        )
+        response = res.choices[0].message.content
 
-            # Save the response to a thread
-            user_states[user_id] = {
-                "previous_queries": user_states[user_id].get("previous_queries", [])
-                + [(user_input, response)],
-                "timestamp": time.time(),
-            }
-            return {"output": response}
+        # Save the response to a thread
+        user_states[user_id] = {
+            "previous_queries": user_states[user_id].get("previous_queries", [])
+            + [(user_input, response)],
+            "timestamp": time.time(),
+        }
+        return {"output": response}
 
-        except ValueError as e:
-            print(e)
-            raise HTTPException(status_code=400, detail="Invalid input")
+    except ValueError as e:
+        print(e)
+        raise HTTPException(status_code=400, detail="Invalid input")
+
 
 
 # Local start command: uvicorn app:app --reload --port 8800

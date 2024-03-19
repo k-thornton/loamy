@@ -100,13 +100,13 @@ function Survey() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-90 overflow-auto p-4">
-      {/* <button
+      <button
         type="button"
         onClick={speedRun}
         className="mt-4 mb-8 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg shadow transition duration-150 ease-in-out"
       >
         Go Fast
-      </button> */}
+      </button>
       {/* <div className="overflow-auto mb-4 w-full flex flex-col items-center" style={{ maxHeight: '80vh' }}> */}
       <h2 className="text-xl font-semibold text-gray-800">
         {currentQuestion.text}
