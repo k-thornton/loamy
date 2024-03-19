@@ -1,23 +1,27 @@
 // features/modal/modalSlice.js
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const modalSlice = createSlice({
-  name: 'modal',
+  name: "modal",
   initialState: {
     isVisible: false,
-    content: '',
-    title: ''
+    content: "",
+    title: "",
+    componentId: null,
   },
   reducers: {
     showModal: (state, action) => {
       state.isVisible = true;
       state.content = action.payload.content;
-      state.title = action.payload.title? action.payload.title : "Alert";
+      state.title = action.payload.title;
+      state.componentId = action.payload.componentId;
     },
     hideModal: (state) => {
       state.isVisible = false;
-      state.content = '';
-      state.title = '';
+      state.content = "";
+      state.title = "";
+
+      state.componentId = null; // Store the component identifier
     },
   },
 });

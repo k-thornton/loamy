@@ -13,6 +13,7 @@ import Faq from "./Faq";
 import RadioGroup from "./RadioGroup";
 import Drawer from './Drawer';
 import { logout } from "../features/auth/authSlice";
+import Disclaimer from "./static/Disclaimer";
 
 
 
@@ -27,6 +28,10 @@ function Survey() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    dispatch(showModal({componentId:"Disclaimer"}));
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(clearError());
