@@ -1,20 +1,20 @@
-// models/Question.js
 const mongoose = require('mongoose');
 
-const faqSchema = new mongoose.Schema({
-  title: String,
-  body: String,
+const choiceSchema = new mongoose.Schema({
+  text: { type: String, required: true },
+  tooltip: { type: String, required: false } // Optional tooltip for each choice
 });
 
 const questionSchema = new mongoose.Schema({
+  tag: { type: String, required: true },
   text: { type: String, required: true },
-  tag: { type: String, required: false },
   description: { type: String, required: false },
-  faq: [faqSchema],
-  note: { type: String, required: false },
+  subHeading: { type: String, required: false },
+  tooltip: { type: String, required: false }, // General tooltip for the question itself
   answerType: { type: String, required: true },
   expectedDataType: { type: String, required: true },
-  choices: { type: Array, required: false }
+  choices: [choiceSchema], // Use the choiceSchema for choices
+  note: { type: String, required: false } // Additional notes for the question
 });
 
 module.exports = mongoose.model('Question', questionSchema);

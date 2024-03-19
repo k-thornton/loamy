@@ -26,7 +26,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                   <img
                     alt="Tailwind CSS Navbar component"
                     src={greeting.picture}
-                    referrerpolicy="no-referrer"
+                    referrerPolicy="no-referrer"
                   />
                 </div>
               </div>

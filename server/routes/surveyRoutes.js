@@ -43,14 +43,17 @@ async function fetchQuestions(user, filter = 'all') {
 // Utility function to determine if an answer matches the expected data type
 const isAnswerValid = async (questionId, answer) => {
   const question = await Question.findById(questionId);
-  // This assumes you have a way to determine if a question expects a numeric answer
-  const expectsNumeric = question.answerType === 'freeEntry' && question.expectedDataType === 'numeric';
   
-  if (expectsNumeric) {
-    return !isNaN(parseFloat(answer)) && isFinite(answer);
-  } else {
-    // Assuming all non-numeric answers are valid for simplicity
-    return typeof answer === 'string';
+  // Handle different expected data types more granularly
+  switch (question.expectedDataType) {
+    case 'numeric':
+      return !isNaN(parseFloat(answer)) && isFinite(answer);
+    case 'string':
+      // Potentially add more specific string validation here if needed
+      return typeof answer === 'string';
+    // Extend with more cases as needed
+    default:
+      return false;
   }
 };
 
