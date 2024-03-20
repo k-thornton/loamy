@@ -8,13 +8,11 @@ import {
 } from "../features/survey/surveySlice";
 import Outcomes from "./Outcomes";
 import Steps from "./Steps";
-import Faq from "./Faq";
-import RadioGroup from "./RadioGroup";
-import Drawer from "./Drawer";
 import { logout, acceptDisclaimer } from "../features/auth/authSlice";
 import Question from "./Question";
 import Disclaimer from "./static/Disclaimer";
 import { useModal } from '../contexts/ModalContext';
+import FullscreenLoader from "./FullscreenLoader";
 
 function Survey() {
   const { showModal } = useModal();
@@ -27,7 +25,7 @@ function Survey() {
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  // const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // This commented out code always shows the disclaimer for testing purposes
   // useEffect(() => {
@@ -103,7 +101,7 @@ function Survey() {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <FullscreenLoader />;;
   }
 
   if (error) {
@@ -118,9 +116,9 @@ function Survey() {
     setIsSurveyCompleted(true);
   };
 
-  const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
+  // const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
-  const sidebarItems = ["Home", "Profile", "Settings"];
+  // const sidebarItems = ["Home", "Profile", "Settings"];
 
   return (
     <div className="flex flex-col items-center justify-between min-h-90 overflow-auto p-4">
