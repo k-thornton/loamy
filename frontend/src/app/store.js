@@ -5,13 +5,11 @@ import { persistStore, persistReducer } from 'redux-persist';
 
 import surveyReducer from '../features/survey/surveySlice';
 import authReducer from '../features/auth/authSlice';
-import modalReducer from '../features/modal/modalSlice';
 // Import other reducers...
 
 const rootReducer = combineReducers({
   survey: surveyReducer,
-  auth: authReducer,
-  modal: modalReducer,
+  auth: authReducer
   // other reducers...
 });
 

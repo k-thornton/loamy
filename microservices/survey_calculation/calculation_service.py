@@ -93,6 +93,9 @@ def calculate():
     age = int(data.get("age"))
     amh = data.get("amh")
     afc = int(data.get("afc"))
+    goal = data.get("goal")
+    familiarity = data.get("familiarity")
+    
     df = load_data()
     min_df_size = 50  # Pulled from streamlit code
     filtered_df_list = filter_dataframe(df, diagnosis, age, amh, afc, min_df_size)
@@ -131,7 +134,6 @@ def calculate():
         "eggs_mature_bins": eggs_mature_bins
         
     }
-    print(result)
     response = jsonify({"result": result})
     return response
 

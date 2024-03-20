@@ -1,7 +1,6 @@
 import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { authService } from "../services/AuthService";
-import DataPrivacyCommitment from "./static/Privacy";
 
 const GoogleSignIn = () => {
   return (

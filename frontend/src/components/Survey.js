@@ -6,31 +6,38 @@ import {
   submitAnswers,
   clearError,
 } from "../features/survey/surveySlice";
-import { showModal } from "../features/modal/modalSlice";
 import Outcomes from "./Outcomes";
 import Steps from "./Steps";
 import Faq from "./Faq";
 import RadioGroup from "./RadioGroup";
 import Drawer from "./Drawer";
-import { logout } from "../features/auth/authSlice";
-import Disclaimer from "./static/Disclaimer";
+import { logout, acceptDisclaimer } from "../features/auth/authSlice";
 import Question from "./Question";
+import Disclaimer from "./static/Disclaimer";
+import { useModal } from '../contexts/ModalContext';
 
 function Survey() {
+  const { showModal } = useModal();
   const dispatch = useDispatch();
   const { questions, loading, answers, error } = useSelector(
     (state) => state.survey
   );
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, disclaimerAccepted } = useSelector((state) => state.auth);
   // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+  // This commented out code always shows the disclaimer for testing purposes
+  // useEffect(() => {
+  //   showModal({ content: <Disclaimer/>, buttonText: "Accept"});
+  // }, [dispatch]);
+
   useEffect(() => {
-    dispatch(showModal({ componentId: "Disclaimer" }));
-  }, [dispatch]);
+    if (!disclaimerAccepted){
+    showModal({ content: <Disclaimer/>, onClose: () => dispatch(acceptDisclaimer()), buttonText: "Accept"});}
+  }, [dispatch, showModal, disclaimerAccepted]);
 
   useEffect(() => {
     dispatch(clearError());

@@ -16,6 +16,7 @@ export const authSlice = createSlice({
     jwt: null,
     isAuthenticated: false,
     greeting: {},
+    disclaimerAccepted: false,
   },
   reducers: {
     setAuthInfo: (state, action) => {
@@ -26,14 +27,18 @@ export const authSlice = createSlice({
       state.jwt = null;
       state.isAuthenticated = false;
       state.greeting = {};
+      state.disclaimerAccepted = false;
     },
+    acceptDisclaimer: (state) => {
+      state.disclaimerAccepted = true;
+    }
   },extraReducers: (builder) => {
     builder
       .addCase(fetchGreeting.fulfilled, (state, action) => {
         state.greeting.email = action.payload.email;
         state.greeting.picture = action.payload.picture;
       })
-      .addCase(fetchGreeting.pending, (state) => {
+      .addCase(fetchGreeting.pending, () => {
         // Handle loading state, e.g., state.loading = true;
       })
       .addCase(fetchGreeting.rejected, (state, action) => {
@@ -41,6 +46,6 @@ export const authSlice = createSlice({
       })}
 });
 
-export const { setAuthInfo, logout } = authSlice.actions;
+export const { setAuthInfo, logout, acceptDisclaimer } = authSlice.actions;
 
 export default authSlice.reducer;

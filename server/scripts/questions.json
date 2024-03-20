@@ -10,19 +10,19 @@
     "choices": [
       {
         "text": "In Vitro Fertilization (IVF)",
-        "tooltip": "🤰 In vitro fertilization (IVF) can be a helpful option for couples who are struggling to have a baby through natural conception..."
+        "tooltip": "🤰 In vitro fertilization (IVF) can be a helpful option for couples who are struggling to have a baby through natural conception. It involves stimulating the ovaries of a woman to retrieve egg(s), and then combining the egg with male sperm outside the body in a laboratory dish to create an embryo. This embryo is then implanted in the woman's uterus, in the hope of a successful pregnancy and a healthy baby"
       },
       {
         "text": "Embryo Freezing",
-        "tooltip": "🧊🧫 Embryo freezing, also known as cryopreservation, involves stimulating the ovaries of a woman to retrieve egg(s)..."
+        "tooltip": "🧊🧫 Embryo freezing, also known as cryopreservation, is a medical procedure that involves stimulating the ovaries of a woman to retrieve egg(s), and then fertilizing the egg with male sperm outside the body in a laboratory dish to create an embryo. The embryos (early-stage fertilized eggs) are then stored at very low temperatures, typically in liquid nitrogen, to preserve their biologic age. Yes, if you freeze them at age 25 and come back to use them at age 37, the embryo hasn’t aged."
       },
       {
         "text": "Egg Freezing",
-        "tooltip": "🧊🥚 Egg freezing, also known as oocyte cryopreservation, is a procedure in which a woman's eggs are extracted, frozen, and stored..."
+        "tooltip": "🧊🥚 Egg freezing, also known as oocyte cryopreservation, is a medical procedure in which a woman stimulates her ovaries (as well as suppresses ovulation) to retrieve egg(s). These eggs are extracted, frozen, and stored for future use. Egg freezing freezes an unfertilized egg (not combined with male sperm), whereas embryo freezing freezes a fertilized egg."
       },
       {
         "text": "Elective Egg Freezing (Fertility Preservation)",
-        "tooltip": "Elective egg freezing is for purposes of fertility preservation rather than for the presence of an infertility diagnosis..."
+        "tooltip": "Elective egg freezing is for the purposes of fertility preservation rather than for the presence of an infertility diagnosis. Reasons for elective egg freezing may include delaying childbearing due to career, educational pursuits, or personal circumstances, preserving fertility before undergoing medical treatments such as chemotherapy or radiation therapy, or the most common reason: you haven’t found the one yet (85% freeze because they can’t find a suitable partner). "
       },
       {
         "text": "I am just here to learn!"
