@@ -137,7 +137,7 @@
     "description": "What is your AMH level (ng/mL):",
     "tooltip": "AMH levels give insights into your ovarian reserve but are not the sole indicator of fertility.",
     "answerType": "freeEntry",
-    "expectedDataType": "string",
+    "expectedDataType": "numeric",
     "note": "Enter a number between 0-40. Leave this question blank if you are unsure. We will share information on how to collect this at the end."
   },
   {

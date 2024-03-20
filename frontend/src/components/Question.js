@@ -2,6 +2,7 @@ import React from 'react';
 import RadioGroup from './RadioGroup';
 
 function Question({ question, selectedOption, setSelectedOption }) {
+  const isNumericInput = question.expectedDataType === 'numeric';
   return (
     <div className="mb-8 flex flex-col items-center justify-center relative w-full">
       <h2 className="text-xl font-semibold text-gray-800 flex items-center justify-center">
@@ -31,6 +32,12 @@ function Question({ question, selectedOption, setSelectedOption }) {
               onChange={(e) => setSelectedOption(e.target.value)}
               value={selectedOption}
               className="input input-bordered w-full mt-3"
+              // If numeric input is expected, prevent non-numeric characters
+              onKeyDown={isNumericInput ? (e) => {
+              if (!["Backspace", "ArrowLeft", "ArrowRight", "Tab", ".", "-"].includes(e.key) && isNaN(Number(e.key))) {
+                e.preventDefault();
+              }
+            } : undefined}
             />
           </label>
         </div>

@@ -71,19 +71,17 @@ function Survey() {
     if (nextQuestionIndex >= 0) {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
-      //should be unreachable
-      dispatch(showModal({ content: "Can't go back", title: "Alert" }));
+      //this should be unreachable
+      showModal({ text: "Can't go back", title: "Alert" });
     }
   };
 
   const handleNextQuestion = () => {
     if (!selectedOption) {
-      dispatch(
-        showModal({
-          content: "Please select an option before proceeding.",
+      showModal({
           title: "Whoa there",
-        })
-      );
+          text: "Please provide an answer before proceeding.",
+        });
       return;
     }
     dispatch(
@@ -94,7 +92,8 @@ function Survey() {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       dispatch(submitAnswers());
-      setIsSurveyCompleted(true);
+      if (!error){
+      setIsSurveyCompleted(true);}
       // alert("You have completed the survey!");
     }
   };

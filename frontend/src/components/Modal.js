@@ -8,7 +8,7 @@ const Modal = () => {
 
   return (
     <dialog
-      className="modal modal-bottom sm:modal-middle"
+      className="modal"
       open={isVisible}
       onClick={hideModal}
     >
