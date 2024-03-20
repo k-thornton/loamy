@@ -98,9 +98,12 @@ def retrieve(user_input, user_id):
     # Construct the contexts
     contexts = []
     for idx, item in enumerate(sorted_items):
-        context = item["metadata"]["text"]
-        context += "\nLearn more: " + item["metadata"].get("source", "N/A")
-        contexts.append(context)
+        metadata = item.get("metadata")
+        if metadata:
+            context = metadata.get("text")
+            if context and metadata.get("source"):
+                context += f"\nLearn more: {metadata.get("source")}"
+            contexts.append(context)
 
     # Retrieve and format previous conversation history for a specific user_id
     print(contexts)

@@ -22,16 +22,16 @@ function Outcomes() {
     }
   }, [myPersona]);
 
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   if (!selectedZodiac || !myPersona) {
-    return <div>No questions to display</div>;
+    return <div>No outcome to display</div>;
   }
 
   if (loading) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
   }
 
   const setSelectedBins = (binType) => () => {

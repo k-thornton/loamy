@@ -19,7 +19,7 @@ router.post('/', authenticateToken, async (req, res) => {
     res.json({ reply: reply.data.output });
   } catch (error) {
     console.error("Axios error details:", error.response?.data, error.message);
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: `Internal Server Error: ${error.response?.data} ${error.message}` });
   }
 });
 

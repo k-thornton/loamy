@@ -70,10 +70,10 @@ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6210343/
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2886596/
 https://www.hfea.gov.uk/about-us/publications/research-and-data/ethnic-diversity-in-fertility-treatment-2018/
 https://www.hfea.gov.uk/about-us/publications/research-and-data/fertility-treatment-2019-trends-and-figures/
-https://www.hfea.gov.uk/media/2992/donor-registrations-2012_17-website-copy.xlsx
+#https://www.hfea.gov.uk/media/2992/donor-registrations-2012_17-website-copy.xlsx
 https://www.hfea.gov.uk/about-us/publications/research-and-data/impact-of-covid-19-on-fertility-treatment-2020/
-https://www.hfea.gov.uk/media/2702/pilot-national-fertility-patient-survey-2018.pdf
-https://www.hfea.gov.uk/media/2656/egg-freezing-in-fertility-treatment-trends-and-figures-2010-2016-final.pdf
+#https://www.hfea.gov.uk/media/2702/pilot-national-fertility-patient-survey-2018.pdf
+#https://www.hfea.gov.uk/media/2656/egg-freezing-in-fertility-treatment-trends-and-figures-2010-2016-final.pdf
 https://pubmed.ncbi.nlm.nih.gov/29266782/
 https://pubmed.ncbi.nlm.nih.gov/28333357/
 https://www.sciencedirect.com/science/article/pii/S2161831322005129?via%3Dihub

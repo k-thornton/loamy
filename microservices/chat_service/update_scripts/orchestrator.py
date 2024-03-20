@@ -4,8 +4,10 @@ from config import CONFIG
 from scraper import run_scraper
 from chunker import run_chunker
 from updater import run_updater
+from index_booter import manage_index
 
 if __name__ == "__main__":
+    manage_index(index_name='loamy')
     output_directory = CONFIG['OUTPUT_DIRECTORY']
     os.makedirs(f"{output_directory}/scraped_articles", exist_ok=True)
     # Run the pipeline steps
