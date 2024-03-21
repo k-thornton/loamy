@@ -26,12 +26,9 @@ function findClosestRange(number) {
     { start: 36, end: 40, label: "36-40" },
     { start: 41, end: 45, label: "41-45" },
   ];
-  console.log(number);
   // Check if the number is within any of the ranges
   for (const range of ranges) {
-    console.log(range);
     if (number >= range.start && number <= range.end) {
-      console.log("hi");
       return range.label;
     }
   }
@@ -77,27 +74,50 @@ const LabValues = ({ myPersona }) => {
           AMH (Anti-Müllerian Hormone) and AFC (Antral Follicle Count) for women
           in your age group.
         </p>
-        <ul className="mt-5 p-4">
-          <li>
+        <div className="mt-5 mb-4 p-4">
+          <div className="mb-6">
             <strong>Typical AMH level for women like you:</strong> A typical AMH
             level is 1.0–4.0 ng/ml, but, depending on age, many women will be
             higher or lower than this range.
-            {amhLevel(myPersona.age) &&
-              ` For women your age, the typical range is ${amhLevel(
-                myPersona.age
-              )}.`}
-          </li>
-          <li>
+            {amhLevel(myPersona.age) && (
+              <div className="text text-accent mt-2 mb-2">
+                For women your age, the typical range is{" "}
+                {amhLevel(myPersona.age)}.
+              </div>
+            )}
+            <div className="mb-4">
+              <a
+                className="link"
+                href="https://www.fertstert.org/article/S0015-0282(10)02687-7/fulltext"
+              >
+                Source: Age-specific serum anti-Müllerian hormone values for
+                17,120 women presenting to fertility centers within the United
+                States - Fertility and Sterility (fertstert.org)
+              </a>
+            </div>
+          </div>
+          <div>
             <strong>Typical AFC for women like you:</strong> Understanding the
             number of antral follicles present in your ovaries relative to your
             age can provide valuable insight for both you and your fertility
             specialist regarding your ovarian reserve.
-            {afcLevel(myPersona.age) &&
-              `Typically, women in your age group fall within the following range: ${afcLevel(
-                myPersona.age
-              )}.`}
-          </li>
-        </ul>
+            {afcLevel(myPersona.age) && (
+              <div className="text text-accent mt-2 mb-2">
+                Typically, women in your age group fall within the following
+                range: {afcLevel(myPersona.age)}.
+              </div>
+            )}
+            <div>
+              <a
+                className="link"
+                href="https://www.fertstert.org/article/S0015-0282(10)02461-1/fulltext"
+              >
+                Source: Age-related normogram for antral follicle count: McGill
+                reference guide (fertstert.org)
+              </a>
+            </div>
+          </div>
+        </div>
         <p className="text">
           Comparing your AMH (Anti-Müllerian Hormone) and AFC (Antral Follicle
           Count) levels to those of women in your age group can provide valuable
@@ -106,7 +126,6 @@ const LabValues = ({ myPersona }) => {
           do not guarantee the ability to conceive. AMH alone is not a reliable
           predictor of overall fertility.
         </p>
-        {/* You can add more detailed content here as needed. */}
       </ReadMore>
     </section>
   );
