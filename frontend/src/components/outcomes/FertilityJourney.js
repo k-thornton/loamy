@@ -104,7 +104,7 @@ const FertilityJourney = ({ stepsCompleted = 0 }) => {
                   <div className={"timeline-end timeline-box"}>{event}</div>
                 </>
               )}
-              {index <= events.length && <hr className="bg-secondary" />}{" "}
+              {index !== events.length-1 && <hr className="bg-secondary" />}{" "}
               {/* Only show the line below if it's not the last item */}
             </>
           )}
