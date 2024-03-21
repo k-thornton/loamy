@@ -47,7 +47,7 @@ function transformData(input) {
 
 function ChartCards({ myPersona }) {
   return (
-    <div className="flex flex-wrap justify-start items-center overflow-y-auto p-10 min-h-screen">
+    <div className="flex flex-wrap min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
       {Object.entries(myPersona.outcomes).map(
         ([outcomeType, outcomeData], index) => {
           const binData = transformData(outcomeData);

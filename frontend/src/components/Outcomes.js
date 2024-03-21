@@ -1,27 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMe } from "../features/survey/surveySlice";
-import ZodiacSignPage from "./ZodiacSignPage";
 import ChatBot from "./ChatBot";
 import FullscreenLoader from "./FullscreenLoader";
-import ResultsIntro from "./static/ResultsIntro";
+import ResultsIntro from "./outcomes/ResultsIntro";
 import ChartCards from "./ChartCards";
+import ReadMore from "./ReadMore";
 
 function Outcomes() {
   const dispatch = useDispatch();
   const { myPersona, loading, error } = useSelector((state) => state.survey);
-  const [selectedZodiac, setSelectedZodiac] = useState("");
 
   useEffect(() => {
     dispatch(fetchMe());
   }, [dispatch]);
-
-  useEffect(() => {
-    // Anytime myPersona is updated, also select the user's zodiac
-    if (myPersona) {
-      setSelectedZodiac(myPersona.zodiac);
-    }
-  }, [myPersona]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -31,14 +23,22 @@ function Outcomes() {
     return <FullscreenLoader />;
   }
 
-  if (!selectedZodiac || !myPersona) {
-    return <div>No outcome to display</div>;
+  if (!myPersona) {
+    return <div><button>Take the survey</button>No outcome to display</div>;
   }
 
   return (
     <div>
     <ResultsIntro/>
+    <ReadMore maxItems={2}>
+      <p>Paragraph 1: Some interesting content here.</p>
+      <p>Paragraph 2: More interesting content here.</p>
+      <p>Paragraph 3: Even more interesting content here.</p>
+      <ResultsIntro></ResultsIntro>
+</ReadMore>
+    {/* <div className="flex w-full justify-center items-center min-h-screen"> */}
     <ChartCards myPersona={myPersona}/>
+    {/* </div> */}
       {/* <div>
         {myPersona &&
           Object.entries(myPersona).map(([key, value], index) => (

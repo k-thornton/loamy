@@ -47,15 +47,16 @@ def filter_dataframe(df, diagnosis, age, amh, afc, size):
                 diagnosis_str, na=False, case=False
             )
         ]
-    df_filtered_afc = pd.DataFrame()
-    if len(df_filtered_dx) >= size:
-        df_filtered_temp = df_filtered_dx.copy()
-        if afc < 10 and afc != 0:
-            df_filtered_afc = df_filtered_temp[df_filtered_temp["afc_group"] == "Low"]
-        elif afc >= 10 and afc != 0:
-            df_filtered_afc = df_filtered_temp[df_filtered_temp["afc_group"] == "High"]
+    # df_filtered_afc = pd.DataFrame()
+    # if len(df_filtered_dx) >= size:
+    #     df_filtered_temp = df_filtered_dx.copy()
+    #     if afc < 10 and afc != 0:
+    #         df_filtered_afc = df_filtered_temp[df_filtered_temp["afc_group"] == "Low"]
+    #     elif afc >= 10 and afc != 0:
+    #         df_filtered_afc = df_filtered_temp[df_filtered_temp["afc_group"] == "High"]
 
-    return [df_filtered_afc, df_filtered_dx, df_filtered_age, df]
+    # return [df_filtered_afc, df_filtered_dx, df_filtered_age, df]
+    return [df_filtered_dx, df_filtered_age, df]
 
 
 def get_outcomes(filtered_df_list, threshold, category):
@@ -101,31 +102,13 @@ def calculate():
     min_df_size = 50  # Pulled from streamlit code
     filtered_df_list = filter_dataframe(df, diagnosis, age, amh, afc, min_df_size)
     outcomes = {outcome_name: get_outcomes(filtered_df_list, min_df_size, outcome_options[outcome_name]) for outcome_name in outcome_options}
-    concatenated_answers = "".join([str(x) for x in [age, amh, afc, diagnosis]])
-    hash_object = hashlib.md5(concatenated_answers.encode())
-    hash_hex = hash_object.hexdigest()
-    index = int(hash_hex[:8], 16) % 12
-
-    zodiac_signs = [
-        "Aries",
-        "Taurus",
-        "Gemini",
-        "Cancer",
-        "Leo",
-        "Virgo",
-        "Libra",
-        "Scorpio",
-        "Sagittarius",
-        "Capricorn",
-        "Aquarius",
-        "Pisces",
-    ]
-    zodiac_sign = zodiac_signs[index]
+    
     result = {
-        "zodiac": zodiac_sign,
-        "hash": hash_hex,
-        "index": index,
-        "hashedValue": concatenated_answers,
+        "familiarity": familiarity,
+        "goal": goal,
+        "amh": amh,
+        "afc": afc,
+        "diagnosis": diagnosis,
         "age": age,
         "outcomes": outcomes        
     }
