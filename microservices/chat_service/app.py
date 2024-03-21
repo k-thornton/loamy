@@ -32,8 +32,7 @@ index_name = "loamy"
 pc = Pinecone(api_key=PINECONE_API_KEY)
 index = pc.Index(index_name)
 
-# embed_model = "text-embedding-ada-002"
-embed_model = "text-embedding-3-small"
+embed_model = "text-embedding-3-large"
 conversation_model = "gpt-3.5-turbo-0613"
 score_threshold = 0.3
 

@@ -19,7 +19,7 @@ def check_existing_documents(index, document_ids):
 
 def upsert_documents(documents, index):
     """Upserts documents to Pinecone index in batches, checking for existing embeddings first."""
-    embed_model = 'text-embedding-3-small'
+    embed_model = 'text-embedding-3-large'
     batch_size = 100
 
     for start in tqdm(range(0, len(documents), batch_size), desc="Checking and Upserting Batches"):

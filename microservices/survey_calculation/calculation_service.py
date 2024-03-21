@@ -97,12 +97,10 @@ def calculate():
     familiarity = data.get("familiarity")
     
     df = load_data()
+    outcome_options = {'Eggs Retrieved': 'eggs_retrieved_bins', 'Mature Eggs': 'eggs_mature_bins', 'Fertilized Eggs': 'eggs_fertilized_bins', 'Day Five Embryos': 'day_5_embryos_bins'}
     min_df_size = 50  # Pulled from streamlit code
     filtered_df_list = filter_dataframe(df, diagnosis, age, amh, afc, min_df_size)
-    stim_day_bins = get_outcomes(filtered_df_list, min_df_size, 'stim_day_bins')
-    eggs_retrieved_bins = get_outcomes(filtered_df_list, min_df_size, 'eggs_retrieved_bins')
-    eggs_mature_bins = get_outcomes(filtered_df_list, min_df_size, 'eggs_mature_bins')
-    
+    outcomes = {outcome_name: get_outcomes(filtered_df_list, min_df_size, outcome_options[outcome_name]) for outcome_name in outcome_options}
     concatenated_answers = "".join([str(x) for x in [age, amh, afc, diagnosis]])
     hash_object = hashlib.md5(concatenated_answers.encode())
     hash_hex = hash_object.hexdigest()
@@ -129,11 +127,10 @@ def calculate():
         "index": index,
         "hashedValue": concatenated_answers,
         "age": age,
-        "stim_day_bins": stim_day_bins,
-        "eggs_retrieved_bins": eggs_retrieved_bins,
-        "eggs_mature_bins": eggs_mature_bins
-        
+        "outcomes": outcomes        
     }
+    
+    print(result)
     response = jsonify({"result": result})
     return response
 

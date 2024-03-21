@@ -2,7 +2,7 @@ from pinecone import Pinecone, ServerlessSpec
 from config import CONFIG
 
 
-def manage_index(index_name="loamy", dimension=1536, metric="cosine"):
+def manage_index(index_name="loamy", dimension=3072, metric="cosine"):
     """Ensures the Pinecone index is correctly set up."""
     pc = Pinecone(api_key=CONFIG["PINECONE_API_KEY"])
     indexes = pc.list_indexes().index_list
