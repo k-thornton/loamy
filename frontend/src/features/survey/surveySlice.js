@@ -55,10 +55,9 @@ export const submitAnswers = createAsyncThunk(
 export const fetchMe = createAsyncThunk(
   "survey/fetchMe",
   async (_, { dispatch }) => {
-    const zodiacDetails = await surveyService.fetchMe();
-    console.log(`zd: ${zodiacDetails}`);
-    dispatch(setMyPersona(zodiacDetails));
-    return zodiacDetails;
+    const persona = await surveyService.fetchMe();
+    dispatch(setMyPersona(persona));
+    return persona;
   }
 );
 

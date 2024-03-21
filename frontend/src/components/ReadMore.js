@@ -1,6 +1,6 @@
 import React, { useState, Children, cloneElement, useRef } from 'react';
 
-export const ReadMore = ({ children, maxItems = 3 }) => {
+export const ReadMore = ({ children, maxItems = 1 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const childrenArray = Children.toArray(children);
   const itCanOverflow = childrenArray.length > maxItems;
@@ -16,7 +16,7 @@ export const ReadMore = ({ children, maxItems = 3 }) => {
   };
 
   return (
-    <div className="read-more-container w-screen p-4 md:p-8" ref={containerRef}>
+    <div className="read-more-container w-full md:p-8" ref={containerRef}>
       {displayedChildren.map((child, index) => (
         cloneElement(child, { key: index })
       ))}
@@ -25,14 +25,14 @@ export const ReadMore = ({ children, maxItems = 3 }) => {
       )}
       {itCanOverflow && (
         <button
-          className="text-accent focus:outline-none focus:ring focus:ring-accent"
+          className="btn btn-gray-100 focus:outline-none mt-5 focus:ring focus:ring-accent"
           onClick={handleExpandClick}
           aria-expanded={isExpanded}
         >
           {isExpanded ? 'Show Less' : 'Show More'}
         </button>
       )}
-      <hr className='border'/>
+      {/* <hr className='border'/> */}
     </div>
   );
 };

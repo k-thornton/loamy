@@ -1,13 +1,17 @@
 import React from "react";
+import ChartCards from "../ChartCards";
+import ReadMore from "../ReadMore";
+import Methodology from "./Methodology";
+import LabValues from "./LabValues";
+import Heading from "./Heading";
+import YourResults from "./YourResults";
 
-const HereToLearn = () => {
+const HereToLearn = ({ myPersona }) => {
   return (
-    <div className="bg-gray-100 p-5">
+    <div className="p-5">
       <div className="container mx-auto">
+        <Heading />
         <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">
-            Outcomes for Women Like You
-          </h2>
           <p>
             You may have found yourself leaving a few questions blank or
             encountering some that made no sense at all. Not to worry - we're
@@ -18,8 +22,14 @@ const HereToLearn = () => {
             given attention until we reach our 30s or encounter difficulties
             conceiving. Unfortunately, our current systems have not prioritized
             fertility education, research, or women's health overall. To put it
-            bluntly, "We literally know less about every aspect of female
-            biology compared to male biology."
+            bluntly,{" "}
+            <a
+              className="link"
+              href="https://www.theguardian.com/lifeandstyle/2019/nov/13/the-female-problem-male-bias-in-medical-trials"
+            >
+              "We literally know less about every aspect of female biology
+              compared to male biology."
+            </a>
           </p>
           <p>
             This is precisely why we're developing Loamy - to bridge the
@@ -28,155 +38,86 @@ const HereToLearn = () => {
           </p>
         </section>
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Your Results</h2>
-          <p>
-            There’s a lot of information here, and some of it may be new to you.
-            We’ve partnered with reproductive endocrinologists (REIs), CMOs,
-            researchers, international fertility drug pharmacies, acupuncturist,
-            nutritionist, fertility and longevity supplement providers,
-            consultants, and even a neurologic music therapist to make sense of
-            it.
-          </p>
-        </section>
+        <YourResults myPersona={myPersona} />
 
         <section className="mb-10">
           <h2 className="text-2xl font-bold mb-4">
             How To Interpret Your Outcomes
           </h2>
-          <div className="mb-6">
-            <p>
-              Data on fertility treatment outcomes can help you determine
-              whether egg freezing, IVF, or natural conception could be viable
-              options for you. While age stands out as one of the primary
-              indicators of success, it's just one among several factors. If
-              these statistics appear overwhelming, it's crucial to bear in mind
-              that they may not fully represent your overall health and vitality
-              profile.
-            </p>
-          </div>
-          <aside className="bg-blue-100 p-4 mb-6">
-            <h3 className="font-semibold">💡 Insights</h3>
-            <ul className="list-disc list-inside">
-              <li>Women like you often aim to collect 10-20 mature eggs.</li>
-              <li>
-                It's common for not all retrieved eggs to be mature; many times,
-                40% of the eggs collected may be immature. This reduction from
-                retrieved to mature eggs is anticipated.
-              </li>
-              <li>
-                The purpose of egg freezing is to bring as many follicles to
-                maturity as possible, which will then be stored and used for a
-                future IVF cycle.
-              </li>
-              <li>
-                In IVF, the objective is to fertilize these mature eggs and
-                develop as many of the fertilized eggs (embryos) to the
-                blastocyst stage (day five or day six embryo), where they will
-                be transferred into the uterus.
-              </li>
-              <li>
-                Typically, multiple retrievals are needed to accumulate a
-                sufficiently large egg bank for those desiring more than one
-                child.
-              </li>
-            </ul>
-          </aside>
-          <aside className="bg-blue-100 p-4">
-            <h3 className="font-semibold">💡 Questions to consider:</h3>
-            <ul className="list-disc list-inside">
-              <li>Do I want children? If so, why? If not, why not?</li>
-              <li>When would I like to have children?</li>
-              <li>
-                Do I want to delay having children or plan the timing of my
-                children?
-              </li>
-              <li>How many children do I envision having?</li>
-              <li>
-                What aspects of starting a family excite me? Are there any
-                concerns or reservations holding me back?
-              </li>
-              <li>
-                What budget am I prepared to allocate for family planning?
-              </li>
-              <li>
-                How do I plan to handle stress, and what kind of support will I
-                need from my friends and family?
-              </li>
-            </ul>
-          </aside>
+          <ReadMore maxItems={1}>
+            <div className="mb-6">
+              <p>
+                Data on fertility treatment outcomes can help you determine
+                whether egg freezing, IVF, or natural conception could be viable
+                options for you. While age stands out as one of the primary
+                indicators of success, it's just one among several factors. If
+                these statistics appear overwhelming, it's crucial to bear in
+                mind that they may not fully represent your overall health and
+                vitality profile.
+              </p>
+            </div>
+            <div className="mb-6">
+              <p>
+                Outcomes can vary significantly among women. However, knowing
+                the typical range of outcomes for individuals with similar
+                demographics and diagnoses can help you better understand your
+                reproductive status.
+              </p>
+            </div>
+            <aside className="bg-blue-100 p-4 mb-6">
+              <h3 className="font-semibold">💡 Insights</h3>
+              <ul className="list-disc list-inside">
+                <li>Women like you often aim to collect 10-20 mature eggs.</li>
+                <li>
+                  It's common for not all retrieved eggs to be mature; many
+                  times, 40% of the eggs collected may be immature. This
+                  reduction from retrieved to mature eggs is anticipated.
+                </li>
+                <li>
+                  The purpose of egg freezing is to bring as many follicles to
+                  maturity as possible, which will then be stored and used for a
+                  future IVF cycle.
+                </li>
+                <li>
+                  In IVF, the objective is to fertilize these mature eggs and
+                  develop as many of the fertilized eggs (embryos) to the
+                  blastocyst stage (day five or day six embryo), where they will
+                  be transferred into the uterus.
+                </li>
+                <li>
+                  Typically, multiple retrievals are needed to accumulate a
+                  sufficiently large egg bank for those desiring more than one
+                  child.
+                </li>
+              </ul>
+            </aside>
+            <aside className="bg-blue-100 p-4 mb-6">
+              <h3 className="font-semibold">💡 Questions to consider:</h3>
+              <ul className="list-disc list-inside">
+                <li>Do I want children? If so, why? If not, why not?</li>
+                <li>When would I like to have children?</li>
+                <li>
+                  Do I want to delay having children or plan the timing of my
+                  children?
+                </li>
+                <li>How many children do I envision having?</li>
+                <li>
+                  What aspects of starting a family excite me? Are there any
+                  concerns or reservations holding me back?
+                </li>
+                <li>
+                  What budget am I prepared to allocate for family planning?
+                </li>
+                <li>
+                  How do I plan to handle stress, and what kind of support will
+                  I need from my friends and family?
+                </li>
+              </ul>
+            </aside>
+          </ReadMore>
         </section>
-        {/* Loamy’s Methodology Section */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Loamy’s Methodology</h2>
-          <div className="mb-6">
-            <p>
-              We’re committed to providing transparent, accessible fertility
-              data to our users so they can understand their options and make
-              informed reproductive decisions.
-            </p>
-          </div>
-          <aside className="bg-blue-100 p-4">
-            <h3 className="font-semibold">💡 How we filtered the data:</h3>
-            <p>
-              We filter the data based on the following ranges of ages,
-              diagnoses, and antral follicle counts:
-            </p>
-            <ul className="list-disc list-inside">
-              <li>Age ranges: ('25-29','30-34', '35-39','40+’)</li>
-              <li>Each single primary infertility diagnosis</li>
-              <li>
-                Antral follicle counts: AFC {">"} 10 and AFC {"<"}10
-              </li>
-            </ul>
-            <p>
-              We digest the data, then progress through the filters in order
-              (age → diagnosis → AFC).
-            </p>
-            <p>
-              If no diagnosis or AFC count is present, the data provided is
-              filtered only by age. Age has been found to be among the single
-              biggest predictors of egg quality and treatment success.
-            </p>
-            <p>
-              AMH alone is also not a good single indicator of egg freezing
-              success, so we don’t filter on AMH. However, we use your AMH
-              inputs to inform the content below.
-            </p>
-            <p>
-              We maintain a minimal threshold of 50 like-outcomes for each data
-              visualization to make sure it provides a useful representative
-              sample.
-            </p>
-          </aside>
-        </section>
-
-        {/* Understanding Lab Values Section */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">Understanding Lab Values</h2>
-          <p>
-            Lab values are crucial for assessing your chances of success with
-            fertility treatments and understanding your remaining fertile years.
-            Loamy can help interpret what these numbers mean for you.
-          </p>
-          <aside className="bg-blue-100 p-4 mb-6">
-            <p>
-              💡 👉 The accuracy of at-home tests can vary widely, influenced by
-              the manufacturer, the conditions during shipping, and whether the
-              test was conducted on the appropriate day of your cycle. Often,
-              these tests cannot provide a comprehensive overview without a
-              physical examination, and your Reproductive Endocrinologist (REI)
-              will likely require you to repeat them.
-            </p>
-          </aside>
-          <p>
-            Baseline hormone levels, such as AMH and AFC, offer insights into
-            how time affects your fertility. They also provide information about
-            your egg reserve, aiding in decisions about when to conceive or
-            freeze eggs/embryos.
-          </p>
-          {/* Additional content related to lab values and insights can be added here */}
-        </section>
+        <Methodology />
+        <LabValues myPersona={myPersona} />
 
         {/* What To Expect Section */}
         <section className="mb-10">

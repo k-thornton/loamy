@@ -6,6 +6,8 @@ import FullscreenLoader from "./FullscreenLoader";
 import ResultsIntro from "./outcomes/ResultsIntro";
 import ChartCards from "./ChartCards";
 import ReadMore from "./ReadMore";
+import HereToLearn from "./outcomes/HereToLearn";
+import Heading from "./outcomes/Heading";
 
 function Outcomes() {
   const dispatch = useDispatch();
@@ -29,15 +31,9 @@ function Outcomes() {
 
   return (
     <div>
-    <ResultsIntro/>
-    <ReadMore maxItems={2}>
-      <p>Paragraph 1: Some interesting content here.</p>
-      <p>Paragraph 2: More interesting content here.</p>
-      <p>Paragraph 3: Even more interesting content here.</p>
-      <ResultsIntro></ResultsIntro>
-</ReadMore>
+    <Heading/>
+    <HereToLearn myPersona={myPersona}/>
     {/* <div className="flex w-full justify-center items-center min-h-screen"> */}
-    <ChartCards myPersona={myPersona}/>
     {/* </div> */}
       {/* <div>
         {myPersona &&

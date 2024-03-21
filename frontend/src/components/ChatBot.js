@@ -69,6 +69,7 @@ const ChatBot = () => {
     const newUserMessage = { text: userInput, sender: "user" };
     setMessages([...messages, newUserMessage]);
     setIsLoading(true); // Start loading
+    scrollToBottom();
 
     // Await the response from sendQuery and handle errors gracefully
     const response = await sendQuery(userInput);
@@ -83,6 +84,7 @@ const ChatBot = () => {
     }
 
     setUserInput(""); // Clear input after handling
+    scrollToBottom();
   };
 
   const handleInputChange = (event) => {

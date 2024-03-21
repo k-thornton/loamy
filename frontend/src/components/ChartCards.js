@@ -1,10 +1,10 @@
 import React from "react";
 import RadialBar from "./RadialBar";
 
-function transformData(input) {
+function transformData(input, label) {
   // This code squishes the calculation data into the format expected by the RadialBar chart
   const unsortedData = Object.keys(input.groups).map((key) => ({
-    id: input.labels[key],
+    id: `${input.labels[key]}`,
     data: [
       {
         x: input.labels[key],
@@ -47,19 +47,22 @@ function transformData(input) {
 
 function ChartCards({ myPersona }) {
   return (
-    <div className="flex flex-wrap min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
       {Object.entries(myPersona.outcomes).map(
         ([outcomeType, outcomeData], index) => {
-          const binData = transformData(outcomeData);
+          const binData = transformData(outcomeData, outcomeType);
           return (
-            <div key={outcomeType} className="card w-96 h-96 bg-base-100 shadow-xl mr-7 mb-7 p-1">
-              <RadialBar data={binData} />
+            <div
+              key={outcomeType}
+              className="card bg-base-100 shadow-xl m-4 aspect-w-1 aspect-h-1"
+            >
               <div
                 id={outcomeType}
-                className="relative card-body h-20 flex items-center justify-center"
+                className="relative card-body pt-5 pb-0 flex items-center justify-center"
               >
                 <h2 className="card-title text-center">{outcomeType}</h2>
               </div>
+              <div className="p-5 w-full h-96"><RadialBar data={binData} /></div>
             </div>
           );
         }

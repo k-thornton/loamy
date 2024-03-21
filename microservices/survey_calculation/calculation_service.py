@@ -92,7 +92,7 @@ def calculate():
     data = request.json
     diagnosis = data.get("diagnosis")
     age = int(data.get("age"))
-    amh = data.get("amh")
+    amh = int(data.get("amh"))
     afc = int(data.get("afc"))
     goal = data.get("goal")
     familiarity = data.get("familiarity")
