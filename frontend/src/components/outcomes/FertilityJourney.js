@@ -1,20 +1,21 @@
 import React from "react";
 
-const FertilityJourney = ({ stepsCompleted = 0 }) => {
+const FertilityJourney = ({ stepsCompleted = 5 }) => {
   // Define steps in the fertility journey
   const events = [
-    "Starting to research fertility treatments and clinics",
-    "Obtained my fertility lab testing (transvaginal ultrasound and blood test)",
-    "Completed my first consultation at a fertility clinic",
-    "Deciding to start my first fertility cycle",
-    "Purchasing fertility medications and/or hormone injections",
-    "Undergoing daily hormone injections and hormone monitoring at my clinic",
+    "Start to research fertility treatments and clinics",
+    "Obtain fertility lab testing",
+    "First consultation at a fertility clinic",
+    "Start the first fertility cycle",
+    "Purchase fertility medications and/or hormone injections",
+    "Undergo daily hormone injections and hormone monitoring at clinic",
     "Completed one cycle of IVF or egg/embryo freezing",
     "Completed 2+ Fertility Cycles",
   ];
 
   return (
-    <ul className="timeline">
+    <div className="">
+    <ul className="timeline timeline-vertical lg:timeline-horizontal overflow-x-auto">
       {events.map((event, index) => (
         <li key={index}>
           {index < stepsCompleted ? (
@@ -22,7 +23,7 @@ const FertilityJourney = ({ stepsCompleted = 0 }) => {
               {index !== 0 && <hr className="bg-primary" />}
               {index % 2 === 0 ? (
                 <>
-                  <div className="timeline-start timeline-box">{event}</div>
+                  <div className={`timeline-start timeline-box ${index === stepsCompleted - 1 && "bg-primary text-white"}`}>{event}</div>
                   <div className="timeline-middle">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +55,7 @@ const FertilityJourney = ({ stepsCompleted = 0 }) => {
                       />
                     </svg>
                   </div>
-                  <div className={"timeline-end timeline-box"}>{event}</div>
+                  <div className={`timeline-end timeline-box ${index === stepsCompleted - 1 && "bg-primary text-white"}`}>{event}</div>
                 </>
               )}
               {index !== stepsCompleted - 1 ? (
@@ -110,7 +111,7 @@ const FertilityJourney = ({ stepsCompleted = 0 }) => {
           )}
         </li>
       ))}
-    </ul>
+    </ul></div>
   );
 };
 
