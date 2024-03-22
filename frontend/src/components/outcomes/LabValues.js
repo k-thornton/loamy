@@ -77,7 +77,7 @@ const LabValues = ({ myPersona }) => {
         <div className="mt-5 mb-4 p-4">
           <div className="mb-6">
             <strong>Typical AMH level for women like you:</strong> A typical AMH
-            level is 1.0–4.0 ng/ml, but, depending on age, many women will be
+            level is 1.0 – 4.0 ng/ml, but, depending on age, many women will be
             higher or lower than this range.
             {amhLevel(myPersona.age) && (
               <div className="text text-accent mt-2 mb-2">
@@ -85,6 +85,8 @@ const LabValues = ({ myPersona }) => {
                 {amhLevel(myPersona.age)}.
               </div>
             )}
+            {/* Plot goes here */}
+
             <div className="mb-4">
               <a
                 className="link"
@@ -107,6 +109,7 @@ const LabValues = ({ myPersona }) => {
                 range: {afcLevel(myPersona.age)}.
               </div>
             )}
+            {/* Plot goes here */}
             <div>
               <a
                 className="link"

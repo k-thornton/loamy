@@ -31,7 +31,7 @@ function Outcomes() {
 
   return (
     <div>
-    <Heading/>
+    {/* <Heading/> */}
     <HereToLearn myPersona={myPersona}/>
     {/* <div className="flex w-full justify-center items-center min-h-screen"> */}
     {/* </div> */}
@@ -44,6 +44,7 @@ function Outcomes() {
           ))}
       </div> */}
       {/* <ZodiacSignPage sign={selectedZodiac} /> */}
+      <div className="mt-20"></div>
       <ChatBot />
     </div>
   );
