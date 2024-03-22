@@ -69,6 +69,7 @@ const surveySlice = createSlice({
     myPersona: null,
     loading: false,
     error: null,
+    surveyCompleted: false
   },
   reducers: {
     updateAnswer: (state, action) => {
@@ -84,6 +85,12 @@ const surveySlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
+    setSurveyCompleted: (state) => {
+      state.surveyCompleted = true;
+    },
+    unsetSurveyCompleted: (state) => {
+      state.surveyCompleted = false;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -95,7 +102,12 @@ const surveySlice = createSlice({
           acc[current.question._id] = current.answer;
           return acc;
         }, {});
-        state.questions = action.payload.map((item) => item.question);
+        const sortedQuestions = action.payload.sort((a, b) => a.question.order - b.question.order);
+        state.questions = sortedQuestions.map(item => item.question);
+
+        // Determine if all questions have an answer to set surveyCompleted status
+        const allQuestionsAnswered = sortedQuestions.every(q => q.answer !== null);
+        state.surveyCompleted = allQuestionsAnswered;
         state.loading = false;
       })
       .addCase(fetchQuestions.rejected, (state, action) => {
@@ -122,12 +134,12 @@ const surveySlice = createSlice({
         state.loading = false;
       })
       .addCase(resetAnswers.fulfilled, (state) => {
-        state.questions = [];
         state.answers = {};
+        state.surveyCompleted = false;
       })
       .addCase(submitAnswers.fulfilled, (state, action) => {
         console.log("Answers submitted successfully");
-        // Handle success, maybe clear current answers or fetch new questions
+        state.surveyCompleted = true;
       })
       .addCase(submitAnswers.rejected, (state, action) => {
         console.error("Failed to submit answers:", action.error.message);
@@ -148,7 +160,7 @@ const surveySlice = createSlice({
   },
 });
 
-export const { setAnswers, setMyPersona, updateAnswer, clearError } =
+export const { setAnswers, setMyPersona, updateAnswer, clearError, setSurveyCompleted, unsetSurveyCompleted } =
   surveySlice.actions;
 
 export default surveySlice.reducer;

@@ -1,16 +1,23 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import logo from "./static/logo.webp"; // Assuming the logo is stored locally
+import { resetAnswers } from "../features/survey/surveySlice";
 
 const Navbar = ({ isAuthenticated, onLogout }) => {
   const greeting = useSelector((state) => state.auth.greeting);
+  const dispatch = useDispatch();
 
   return (
     <nav>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <Link to="/" className="btn btn-ghost text-xl">
-            Home
+          <Link to="/">
+            <img
+              className="w-40 p-3 flex items-center justify-center"
+              src={logo}
+              alt="Home"
+            />
           </Link>
         </div>
         {isAuthenticated && (
@@ -24,7 +31,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
               >
                 <div className="w-10 rounded-full">
                   <img
-                    alt="Tailwind CSS Navbar component"
+                    alt="Navbar Profile"
                     src={greeting.picture}
                     referrerPolicy="no-referrer"
                   />
@@ -34,6 +41,9 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                 tabIndex={0}
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
+                <li>
+                  <button onClick={() => dispatch(resetAnswers())}>Reset My Answers</button>
+                </li>
                 <li>
                   <button onClick={onLogout}>Logout</button>
                 </li>

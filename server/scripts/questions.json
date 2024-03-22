@@ -1,5 +1,6 @@
 [
   {
+    "questionNumber": 1,
     "tag": "goal",
     "text": "What is your fertility goal?",
     "description": "Select your goal:",
@@ -30,6 +31,7 @@
     ]
   },
   {
+    "questionNumber": 2,
     "tag": "familiarity",
     "text": "How familiar are you with the fertility journey?",
     "answerType": "multipleChoice",
@@ -47,6 +49,7 @@
     ]
   },
   {
+    "questionNumber": 3,
     "tag": "stage",
     "text": "How far along the fertility journey are you?",
     "answerType": "multipleChoice",
@@ -79,6 +82,7 @@
     ]
   },
   {
+    "questionNumber": 4,
     "tag": "age",
     "text": "How old are you?",
     "description": "Enter your age:",
@@ -88,6 +92,7 @@
     "note": "Our dataset is only representative of women ages 25 - 45."
   },
   {
+    "questionNumber": 5,
     "tag": "diagnosis",
     "text": "What is your primary diagnosis?",
     "description": "Select your primary diagnosis:",
@@ -132,6 +137,7 @@
     ]
   },
   {
+    "questionNumber": 6,
     "tag": "amh",
     "text": "What is your Anti-Müllerian Hormone level?",
     "description": "What is your AMH level (ng/mL):",
@@ -141,6 +147,7 @@
     "note": "Enter a number between 0-40. Leave this question blank if you are unsure. We will share information on how to collect this at the end."
   },
   {
+    "questionNumber": 7,
     "tag": "afc",
     "text": "What is your Antral Follicle Count?",
     "description": "Input your AFC (the number of antral follicles in both ovaries):",
@@ -150,6 +157,7 @@
     "note": "Enter a number between 0-100. Leave this question blank if you are unsure. Information on how to collect this will be provided."
   },
   {
+    "questionNumber": 8,
     "tag": "location",
     "text": "Last question, are you located in Massachusetts?",
     "subHeading": "Asking so that we can show you relevant resources and providers in your area.",

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMe } from "../features/survey/surveySlice";
+import { fetchMe, unsetSurveyCompleted } from "../features/survey/surveySlice";
+import { resetAnswers } from "../features/survey/surveySlice";
 import ChatBot from "./ChatBot";
 import FullscreenLoader from "./FullscreenLoader";
 import ResultsIntro from "./outcomes/ResultsIntro";
@@ -26,15 +27,19 @@ function Outcomes() {
   }
 
   if (!myPersona) {
-    return <div><button>Take the survey</button>No outcome to display</div>;
+    return (
+      <div>
+        <button>Take the survey</button>No outcome to display
+      </div>
+    );
   }
 
   return (
     <div>
-    {/* <Heading/> */}
-    <HereToLearn myPersona={myPersona}/>
-    {/* <div className="flex w-full justify-center items-center min-h-screen"> */}
-    {/* </div> */}
+      {/* <Heading/> */}
+      <HereToLearn myPersona={myPersona} />
+      {/* <div className="flex w-full justify-center items-center min-h-screen"> */}
+      {/* </div> */}
       {/* <div>
         {myPersona &&
           Object.entries(myPersona).map(([key, value], index) => (
@@ -44,7 +49,7 @@ function Outcomes() {
           ))}
       </div> */}
       {/* <ZodiacSignPage sign={selectedZodiac} /> */}
-      <div className="mt-20"></div>
+      <div className="ml-10 mt-10 mb-10 text text-xs">Want to start over? <button className="btn btn-xs" onClick={() => dispatch(unsetSurveyCompleted())}>Back to Survey</button></div>
       <ChatBot />
     </div>
   );

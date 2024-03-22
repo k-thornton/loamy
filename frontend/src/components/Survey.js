@@ -11,21 +11,22 @@ import Steps from "./Steps";
 import { logout, acceptDisclaimer } from "../features/auth/authSlice";
 import Question from "./Question";
 import Disclaimer from "./static/Disclaimer";
-import { useModal } from '../contexts/ModalContext';
+import { useModal } from "../contexts/ModalContext";
 import FullscreenLoader from "./FullscreenLoader";
 
 function Survey() {
   const { showModal } = useModal();
   const dispatch = useDispatch();
-  const { questions, loading, answers, error } = useSelector(
+  const { questions, loading, answers, error, surveyCompleted } = useSelector(
     (state) => state.survey
   );
-  const { isAuthenticated, disclaimerAccepted } = useSelector((state) => state.auth);
+  const { isAuthenticated, disclaimerAccepted } = useSelector(
+    (state) => state.auth
+  );
+
   // Manage selectedOption and currentQuestionIndex state locally since they're not necessary as global state
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [isSurveyCompleted, setIsSurveyCompleted] = useState(false);
-  // const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // This commented out code always shows the disclaimer for testing purposes
   // useEffect(() => {
@@ -33,22 +34,20 @@ function Survey() {
   // }, [dispatch]);
 
   useEffect(() => {
-    if (!disclaimerAccepted){
-    showModal({ content: <Disclaimer/>, onClose: () => dispatch(acceptDisclaimer()), buttonText: "Accept"});}
+    if (!disclaimerAccepted) {
+      showModal({
+        content: <Disclaimer />,
+        onClose: () => dispatch(acceptDisclaimer()),
+        buttonText: "Accept",
+      });
+    }
   }, [dispatch, showModal, disclaimerAccepted]);
 
   useEffect(() => {
+    setCurrentQuestionIndex(0);
     dispatch(clearError());
     dispatch(fetchQuestions())
       .unwrap()
-      // .then(() => {
-      //   // After fetching questions, check if all have been answered
-      //   if (questions.length > 0 && Object.keys(answers).length >= questions.length) {
-      //     setIsSurveyCompleted(true);
-      //   } else {
-      //     setIsSurveyCompleted(false);
-      //   }
-      // })
       .catch((error) => {
         console.error("Session expired. Redirecting to login...", error);
         dispatch(logout());
@@ -66,6 +65,15 @@ function Survey() {
 
   const handlePreviousQuestion = () => {
     const nextQuestionIndex = currentQuestionIndex - 1;
+    if (selectedOption) {
+      dispatch(
+        updateAnswer({
+          questionId: currentQuestion._id,
+          answer: selectedOption,
+        })
+      );
+    }
+
     if (nextQuestionIndex >= 0) {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
@@ -77,9 +85,9 @@ function Survey() {
   const handleNextQuestion = () => {
     if (!selectedOption) {
       showModal({
-          title: "Whoa there",
-          text: "Please provide an answer before proceeding.",
-        });
+        title: "Whoa there",
+        text: "Please provide an answer before proceeding.",
+      });
       return;
     }
     dispatch(
@@ -90,18 +98,15 @@ function Survey() {
       setCurrentQuestionIndex(nextQuestionIndex);
     } else {
       dispatch(submitAnswers());
-      if (!error){
-      setIsSurveyCompleted(true);}
-      // alert("You have completed the survey!");
     }
   };
 
-  if (isSurveyCompleted) {
+  if (surveyCompleted) {
     return <Outcomes />;
   }
 
   if (loading) {
-    return <FullscreenLoader />;;
+    return <FullscreenLoader />;
   }
 
   if (error) {
@@ -109,11 +114,11 @@ function Survey() {
   }
 
   if (!questions || questions.length === 0) {
-    return <div>No questions to display</div>;
+    return <div>Error: No questions to display</div>;
   }
 
   const speedRun = () => {
-    setIsSurveyCompleted(true);
+    // setIsSurveyCompleted(true);
   };
 
   // const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
@@ -122,16 +127,15 @@ function Survey() {
 
   return (
     <div className="flex flex-col items-center justify-between min-h-90 overflow-auto p-4">
-
-      <button
+      {/* <button
         type="button"
         onClick={speedRun}
         className="mt-4 mb-8 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg shadow transition duration-150 ease-in-out"
       >
         Go Fast
-      </button>
+      </button> */}
       {/* <div className="overflow-auto mb-4 w-full flex flex-col items-center" style={{ maxHeight: '80vh' }}> */}
-      {!isSurveyCompleted && currentQuestion && (
+      {currentQuestion && (
         <Question
           question={currentQuestion}
           selectedOption={selectedOption}
@@ -161,10 +165,11 @@ function Survey() {
           </div>
         </div>
         <div className="flex justify-center mt-4 mb-8">
-        <Steps
-          currentStep={currentQuestionIndex + 1}
-          totalSteps={questions.length}
-        /></div>
+          <Steps
+            currentStep={currentQuestionIndex + 1}
+            totalSteps={questions.length}
+          />
+        </div>
       </div>
     </div>
   );
