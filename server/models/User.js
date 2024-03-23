@@ -29,10 +29,6 @@ const userSchema = new mongoose.Schema({
     ],
     default: [],
   },
-  zodiacSign: {
-    type: String, // The result from their answers, could be null initially
-    default: null,
-  },
 });
 
 module.exports = mongoose.model("User", userSchema);

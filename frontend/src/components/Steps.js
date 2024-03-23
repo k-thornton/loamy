@@ -6,7 +6,7 @@ const Steps = ({ currentStep, totalSteps }) => {
       {Array.from({ length: totalSteps }, (_, index) => (
         <li
           key={index}
-          className={`step ${index + 1 <= currentStep ? "step-primary" : ""}`}
+          className={`step ${index + 1 <= currentStep ? "step-primary text-white" : ""}`}
         />
       ))}
     </ul>

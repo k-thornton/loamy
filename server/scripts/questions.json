@@ -38,13 +38,16 @@
     "expectedDataType": "string",
     "choices": [
       {
-        "text": "Beginner"
+        "text": "Beginner",
+        "tag": "1"
       },
       {
-        "text": "Undergoing my first cycle now"
+        "text": "Undergoing my first cycle now",
+        "tag": "2"
       },
       {
-        "text": "Completed 1+ IVF or egg/embryo freezing cycles"
+        "text": "Completed 1+ IVF or egg/embryo freezing cycles",
+        "tag": "3"
       }
     ]
   },
@@ -144,7 +147,7 @@
     "tooltip": "AMH levels give insights into your ovarian reserve but are not the sole indicator of fertility.",
     "answerType": "freeEntry",
     "expectedDataType": "numeric",
-    "note": "Enter a number between 0-40. Leave this question blank if you are unsure. We will share information on how to collect this at the end."
+    "note": "Enter a number between 0-40. Leave this set to 0 if you are unsure. We will share information on how to collect this at the end."
   },
   {
     "questionNumber": 7,
@@ -154,7 +157,7 @@
     "tooltip": "An Antral Follicle Count is a transvaginal ultrasound, specifically to count the number of immature follicles available to release an egg each cycle. To get the most accurate results, it is typically done on days 2-3 of the menstrual cycle. In combination with an Anti-Müllerian Hormone test, it can indicate your total remaining egg supply. It does not reveal the quality of the eggs, however.",
     "answerType": "freeEntry",
     "expectedDataType": "numeric",
-    "note": "Enter a number between 0-100. Leave this question blank if you are unsure. Information on how to collect this will be provided."
+    "note": "Enter a number between 0-100. Leave this set to 0 if you are unsure. Information on how to collect this will be provided."
   },
   {
     "questionNumber": 8,

@@ -8,38 +8,13 @@ import YourResults from "./YourResults";
 import FertilityJourney from "./FertilityJourney";
 import Accordion from "../Accordion";
 import Sources from "./Sources";
+import Intro from "./Intro";
 
 const HereToLearn = ({ myPersona }) => {
   return (
     <div className="p-5">
       <div className="container mx-auto">
-        <Heading />
-        <section className="mb-10">
-          <p>
-            You may have found yourself leaving a few questions blank or
-            encountering some that made no sense at all. Not to worry - we're
-            here to help!
-          </p>
-          <p>
-            Reproductive health and fertility can be complex subjects, often not
-            given attention until we reach our 30s or encounter difficulties
-            conceiving. Unfortunately, our current systems have not prioritized
-            fertility education, research, or women's health overall. To put it
-            bluntly,{" "}
-            <a
-              className="link"
-              href="https://www.theguardian.com/lifeandstyle/2019/nov/13/the-female-problem-male-bias-in-medical-trials"
-            >
-              "We literally know less about every aspect of female biology
-              compared to male biology."
-            </a>
-          </p>
-          <p>
-            This is precisely why we're developing Loamy - to bridge the
-            knowledge gap in women's health and provide clear fertility
-            expectations for individuals like you.
-          </p>
-        </section>
+        <Intro myPersona={myPersona}/>
 
         <YourResults myPersona={myPersona} />
 

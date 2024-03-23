@@ -102,7 +102,7 @@ const surveySlice = createSlice({
           acc[current.question._id] = current.answer;
           return acc;
         }, {});
-        const sortedQuestions = action.payload.sort((a, b) => a.question.order - b.question.order);
+        const sortedQuestions = action.payload.sort((a, b) => a.question.questionNumber - b.question.questionNumber);
         state.questions = sortedQuestions.map(item => item.question);
 
         // Determine if all questions have an answer to set surveyCompleted status

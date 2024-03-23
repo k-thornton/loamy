@@ -47,14 +47,14 @@ function transformData(input, label) {
 
 function ChartCards({ myPersona }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
+    <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4 min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
       {Object.entries(myPersona.outcomes).map(
         ([outcomeType, outcomeData], index) => {
           const binData = transformData(outcomeData, outcomeType);
           return (
             <div
               key={outcomeType}
-              className="card bg-base-100 shadow-xl m-4 aspect-w-1 aspect-h-1"
+              className="card bg-base-100 shadow-xl m-4 aspect-w-1 aspect-h-1 min-w-100"
             >
               <div
                 id={outcomeType}

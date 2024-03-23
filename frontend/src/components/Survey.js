@@ -44,7 +44,11 @@ function Survey() {
   }, [dispatch, showModal, disclaimerAccepted]);
 
   useEffect(() => {
+    // Start the survey over whenever the surveyCompleted flag changes.
     setCurrentQuestionIndex(0);
+  }, [dispatch, surveyCompleted]);
+
+  useEffect(() => {
     dispatch(clearError());
     dispatch(fetchQuestions())
       .unwrap()
@@ -149,14 +153,14 @@ function Survey() {
           <div className="join grid grid-cols-2 gap-0 max-w-xs">
             <button
               onClick={handlePreviousQuestion}
-              className="join-item btn btn-outline"
+              className="join-item btn btn-outline btn-neutral"
               disabled={currentQuestionIndex <= 0}
             >
               Back
             </button>
             <button
               onClick={handleNextQuestion}
-              className="join-item btn btn-outline"
+              className="join-item btn btn-outline btn-neutral"
             >
               {currentQuestionIndex < questions.length - 1
                 ? "Next"

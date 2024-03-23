@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "./static/logo.webp"; // Assuming the logo is stored locally
+import logo from "./static/logo.png";
 import { resetAnswers } from "../features/survey/surveySlice";
 
 const Navbar = ({ isAuthenticated, onLogout }) => {

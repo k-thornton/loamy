@@ -12,15 +12,17 @@ module.exports = {
     themes: [
       {
         loamy: {
-          "primary": "#1D8A99",
-          "secondary": "#DECDF5",
-          "accent": "#CF5C36",
-          "neutral": "#534D56",
-          "base-100": "#F8F1FF",
-          "loamy-home": "#edf4f3",
-          "loamy-green": "#6c9189",
-          "loamy-red": "#cec0b5",
-          "loamy-grey": "#e8e6e6",
+          "primary": "#1D8A99", // Munsell Blue
+          "secondary": "#DECDF5", // Thistle (lavender)
+          "accent": "#edf4f3", //Mint cream
+          "neutral": "#534D56", //Davy's Gray
+          "base-100": "#F8F1FF", //Magnolia (pale purple)
+          "neutral-content": "#F5F5F5", //White Smoke
+          // "accent-2": "#F8F1FF",
+          // "loamy-home": "#edf4f3",
+          // "loamy-green": "#6c9189",
+          // "loamy-red": "#cec0b5",
+          // "loamy-grey": "#e8e6e6",
         },
       },
       "light",

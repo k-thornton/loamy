@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const choiceSchema = new mongoose.Schema({
   text: { type: String, required: true },
-  tooltip: { type: String, required: false } // Tooltip for each choice
+  tooltip: { type: String, required: false }, // Tooltip for each choice
+  tag: { type: String, required: false }
 });
 
 const questionSchema = new mongoose.Schema({

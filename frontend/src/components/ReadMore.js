@@ -16,7 +16,7 @@ export const ReadMore = ({ children, maxItems = 1 }) => {
   };
 
   return (
-    <div className="read-more-container w-full md:p-8" ref={containerRef}>
+    <div className="read-more-container w-full" ref={containerRef}>
       {displayedChildren.map((child, index) => (
         cloneElement(child, { key: index })
       ))}
