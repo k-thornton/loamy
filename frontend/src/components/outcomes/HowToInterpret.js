@@ -16,7 +16,7 @@ const embryoFreezing = (
         diagnoses can help you better understand your reproductive status.
       </p>
 
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -68,7 +68,7 @@ const embryoFreezing = (
         disposition of surplus embryos and eggs.
       </p>
 
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -133,7 +133,7 @@ const eggFreezing = (
         diagnoses can help you better understand your reproductive status.
       </p>
 
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>Women like you often aim to collect 10-20 mature eggs.</li>
@@ -160,7 +160,7 @@ const eggFreezing = (
         </ul>
       </aside>
 
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>Why am I considering freezing my eggs?</li>
@@ -220,7 +220,7 @@ const IVF = (
         reproductive status.
       </p>
 
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -249,7 +249,7 @@ const IVF = (
         and relationships.
       </p>
 
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -308,7 +308,7 @@ const justHereToLearn = (
         typical range of outcomes for individuals with similar demographics and
         diagnoses can help you better understand your reproductive status.
       </p>
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>Women like you often aim to collect 10-20 mature eggs.</li>
@@ -334,7 +334,7 @@ const justHereToLearn = (
           </li>
         </ul>
       </aside>
-      <aside className="bg-blue-100 p-4 mb-6">
+      <aside className="bg-secondary p-4 mb-6">
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>Do I want children? If so, why? If not, why not?</li>

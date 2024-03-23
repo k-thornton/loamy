@@ -73,7 +73,7 @@ const justHereToLearn = (
         {integrativeSteps}
       </div>
     </div>
-    <aside className="bg-blue-100 p-4 mb-6">
+    <aside className="bg-secondary p-4 mb-6">
       <h3 className="font-semibold">💡 Myths and Truths:</h3>
       <p className="mb-1 mt-7">
         <strong>Myth: </strong>Success in fertility treatment requires
@@ -190,7 +190,7 @@ const embryoFreezing = (
         {integrativeSteps}
       </div>
     </div>
-    <aside className="bg-blue-100 p-4 mb-6">
+    <aside className="bg-secondary p-4 mb-6">
       <h3 className="font-semibold">💡 Myths and Truths:</h3>
       <p className="mb-1 mt-7">
         <strong>Myth: </strong>Success in fertility treatment requires
@@ -260,7 +260,7 @@ const eggFreezing = (
       {integrativeSteps}
       </div>
     </div>
-    <aside className="bg-blue-100 p-4 mb-6">
+    <aside className="bg-secondary p-4 mb-6">
       <h3 className="font-semibold">💡 Myths and Truths:</h3>
       <p className="mb-1 mt-7">
         <strong>Myth: </strong>Success in fertility treatment requires
@@ -345,7 +345,7 @@ const IVF = (
         {integrativeSteps}
       </div>
     </div>
-    <aside className="bg-blue-100 p-4 mb-6">
+    <aside className="bg-secondary p-4 mb-6">
       <h3 className="font-semibold">💡 Myths and Truths:</h3>
       <p className="mb-1 mt-7">
         <strong>Myth: </strong>Success in fertility treatment requires

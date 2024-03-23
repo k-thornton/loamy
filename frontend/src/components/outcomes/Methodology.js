@@ -13,7 +13,7 @@ const Methodology = () => {
             reproductive decisions.
           </p>
         </div>
-        <aside className="bg-blue-100 p-4 m-6">
+        <aside className="bg-secondary p-4 m-6">
           <h3 className="font-semibold mb-4">💡 How we filtered the data:</h3>
           <p className="mb-4 text">
             We filter the data based on the following ranges of ages and

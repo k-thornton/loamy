@@ -183,6 +183,7 @@ router.get("/me", authenticateToken, async (req, res) => {
       diagnosis: userAnswers.find((item) => item.question.tag === "diagnosis")
         ?.answer,
       afc: userAnswers.find((item) => item.question.tag === "afc")?.answer,
+      location: userAnswers.find((item) => item.question.tag === "location")?.answer,
       goal: goal,
       familiarity: familiarity,
       stage: stage

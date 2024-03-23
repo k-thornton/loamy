@@ -59,7 +59,7 @@ const LabValues = ({ myPersona }) => {
           useful initial data, though they may not be as accurate as laboratory
           testing.
         </p>
-        <aside className="bg-blue-100 p-4 m-6 ">
+        <aside className="bg-secondary p-4 m-6 ">
           <p className="text">
             💡 👉 The accuracy of at-home tests can vary widely, influenced by
             the manufacturer, the conditions during shipping, and whether the

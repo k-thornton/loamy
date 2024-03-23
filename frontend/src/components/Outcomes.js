@@ -16,6 +16,7 @@ import Sources from "./outcomes/Sources";
 import Intro from "./outcomes/Intro";
 import HowToInterpret from "./outcomes/HowToInterpret";
 import WhatToExpect from "./outcomes/WhatToExpect";
+import NextSteps from "./outcomes/NextSteps";
 
 function Outcomes() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function Outcomes() {
         <LabValues myPersona={myPersona} />
 
         <WhatToExpect myPersona={myPersona}/>
+        <NextSteps myPersona={myPersona}/>
 
         {/* Conclusion Section */}
         <section className="mb-10">

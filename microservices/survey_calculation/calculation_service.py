@@ -97,6 +97,7 @@ def calculate():
     goal = data.get("goal")
     familiarity = data.get("familiarity")
     stage = data.get("stage")
+    location = data.get("location")
     
     df = load_data()
     outcome_options = {'Eggs Retrieved': 'eggs_retrieved_bins', 'Mature Eggs': 'eggs_mature_bins', 'Fertilized Eggs': 'eggs_fertilized_bins', 'Day Five Embryos': 'day_5_embryos_bins'}
@@ -112,7 +113,8 @@ def calculate():
         "diagnosis": diagnosis,
         "age": age,
         "outcomes": outcomes,
-        "stage": stage     
+        "stage": stage,
+        "local": location == "Yes"
     }
     
     print(result)
