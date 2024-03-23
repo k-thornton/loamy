@@ -1,5 +1,5 @@
 // src/contexts/ModalContext.js
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useCallback } from "react";
 
 const ModalContext = createContext();
 
@@ -15,7 +15,7 @@ export const ModalProvider = ({ children }) => {
     buttonText: null,
   });
 
-  const showModal = ({ content, onClose,  title, text, buttonText = "Close"}) => {
+  const showModal = useCallback(({ content, onClose,  title, text, buttonText = "Close"}) => {
     setModalProps({
       isVisible: true,
       content,
@@ -24,7 +24,7 @@ export const ModalProvider = ({ children }) => {
       text,
       buttonText
     });
-  };
+  }, []);
 
   const hideModal = () => {
     if (modalProps.onClose) {

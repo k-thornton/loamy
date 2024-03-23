@@ -20,7 +20,7 @@ function Survey() {
   const { questions, loading, answers, error, surveyCompleted } = useSelector(
     (state) => state.survey
   );
-  const { isAuthenticated, disclaimerAccepted } = useSelector(
+  const { disclaimerAccepted } = useSelector(
     (state) => state.auth
   );
 
@@ -56,7 +56,7 @@ function Survey() {
         console.error("Session expired. Redirecting to login...", error);
         dispatch(logout());
       });
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch]);
 
   useEffect(() => {
     // This will set the user's answer as the selected option whenever the question index changes

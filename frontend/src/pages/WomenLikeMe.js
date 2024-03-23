@@ -12,7 +12,7 @@ function SurveyPage() {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <ModalProvider>
         <Modal />
         <Navbar

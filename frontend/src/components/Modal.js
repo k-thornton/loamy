@@ -7,23 +7,15 @@ const Modal = () => {
   if (!isVisible) return null;
 
   return (
-    <dialog
-      className="modal"
-      open={isVisible}
-      onClick={hideModal}
-    >
+    <dialog className="modal" open={isVisible} onClick={hideModal}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        {" "}
-        {/* Prevent modal close when clicking inside */}
         {title && <h3 className="font-bold text-lg">{title}</h3>}
         {text && <p className="py-4">{text}</p>}
         {content}
         <div className="modal-action">
-          <form method="dialog">
-            <button className="btn btn-active btn-accent" onClick={hideModal}>
-              {buttonText ? buttonText : "Close"}
-            </button>
-          </form>
+          <button className="btn btn-accent" onClick={hideModal}>
+            {buttonText ? buttonText : "Close"}
+          </button>
         </div>
       </div>
     </dialog>

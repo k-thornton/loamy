@@ -138,7 +138,6 @@ const surveySlice = createSlice({
         state.surveyCompleted = false;
       })
       .addCase(submitAnswers.fulfilled, (state, action) => {
-        console.log("Answers submitted successfully");
         state.surveyCompleted = true;
       })
       .addCase(submitAnswers.rejected, (state, action) => {
