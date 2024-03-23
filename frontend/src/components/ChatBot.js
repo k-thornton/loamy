@@ -108,7 +108,7 @@ const ChatBot = () => {
         </button>
       ) : (
         <div
-          className="pr-11 pl-11 pt-4 pb-4 cursor-pointer bg-primary text-white rounded-full shadow-lg flex items-center justify-center gap-2"
+          className="px-11 py-4 cursor-pointer bg-primary text-white rounded-full shadow-lg flex items-center justify-center gap-2"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg

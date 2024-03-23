@@ -4,14 +4,10 @@ import { fetchMe, setSurveyCompleted, unsetSurveyCompleted } from "../features/s
 import { resetAnswers } from "../features/survey/surveySlice";
 import ChatBot from "./ChatBot";
 import FullscreenLoader from "./FullscreenLoader";
-import ResultsIntro from "./outcomes/ResultsIntro";
-import ChartCards from "./ChartCards";
-import ReadMore from "./ReadMore";
 import Heading from "./outcomes/Heading";
 import Methodology from "./outcomes/Methodology";
 import LabValues from "./outcomes/LabValues";
 import YourResults from "./outcomes/YourResults";
-import FertilityJourney from "./outcomes/FertilityJourney";
 import Sources from "./outcomes/Sources";
 import Intro from "./outcomes/Intro";
 import HowToInterpret from "./outcomes/HowToInterpret";

@@ -135,7 +135,7 @@ router.post("/reset", authenticateToken, async (req, res) => {
   try {
     await User.updateOne(
       { email: req.user.email },
-      { $set: { answers: [], zodiacSign: null } }
+      { $set: { answers: [] } }
     );
     res.status(200).send("User answers reset");
   } catch (error) {

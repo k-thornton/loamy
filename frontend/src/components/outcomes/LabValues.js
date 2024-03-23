@@ -1,21 +1,22 @@
 import React from "react";
 import ReadMore from "../ReadMore";
+import BulletChart from "../BulletChart";
 
 const amhLevel = (age) => {
   const ageRange = findClosestRange(age);
   const rangeLookup = {
-    "25-35": "1.5 - 3 ng/mL",
-    "36-40": "1 - 1.5 ng/mL",
-    "41-45": "0.5 - 1 ng/mL",
+    "25-35": { start: 1.5, end: 3, unit: "ng/mL" },
+    "36-40": { start: 1, end: 1.5, unit: "ng/mL" },
+    "41-45": { start: 0.5, end: 1, unit: "ng/mL" }
   };
   return rangeLookup[ageRange] ?? null;
 };
 const afcLevel = (age) => {
   const ageRange = findClosestRange(age);
   const rangeLookup = {
-    "25-35": "10 - 13",
-    "36-40": "8 - 10",
-    "41-45": "5 - 7",
+    "25-35": { start: 10, end: 13, unit: "follicles" },
+    "36-40": { start: 8, end: 10, unit: "follicles" },
+    "41-45": { start: 5, end: 7, unit: "follicles" }
   };
   return rangeLookup[ageRange] ?? null;
 };
@@ -36,6 +37,10 @@ function findClosestRange(number) {
 }
 
 const LabValues = ({ myPersona }) => {
+  const amh = amhLevel(myPersona.age);
+  const afc = afcLevel(myPersona.age);
+  const myAmh = myPersona.amh;
+  const myAfc = myPersona.afc;
   return (
     <section className="mb-10">
       <h2 className="text-2xl font-bold mb-4">Understanding Lab Values</h2>
@@ -79,13 +84,7 @@ const LabValues = ({ myPersona }) => {
             <strong>Typical AMH level for women like you:</strong> A typical AMH
             level is 1.0 – 4.0 ng/ml, but, depending on age, many women will be
             higher or lower than this range.
-            {amhLevel(myPersona.age) && (
-              <div className="text text-accent mt-2 mb-2">
-                For women your age, the typical range is{" "}
-                {amhLevel(myPersona.age)}.
-              </div>
-            )}
-            {/* Plot goes here */}
+            <BulletChart min={1} max={4} highlightStart={amh.start} highlightEnd={amh.end} marker={myAmh} metricName={"AMH"} unit={amh.unit}/>
 
             <div className="mb-4">
               <a
@@ -103,13 +102,7 @@ const LabValues = ({ myPersona }) => {
             number of antral follicles present in your ovaries relative to your
             age can provide valuable insight for both you and your fertility
             specialist regarding your ovarian reserve.
-            {afcLevel(myPersona.age) && (
-              <div className="text text-accent mt-2 mb-2">
-                Typically, women in your age group fall within the following
-                range: {afcLevel(myPersona.age)}.
-              </div>
-            )}
-            {/* Plot goes here */}
+            <BulletChart min={0} max={30} highlightStart={afc.start} highlightEnd={afc.end} marker={myAfc} metricName={"AFC"} unit={afc.unit}/>
             <div>
               <a
                 className="link"

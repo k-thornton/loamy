@@ -1,5 +1,5 @@
 // SurveyPage.js
-import React, { useEffect, useState } from "react";
+import React from "react";
 import GoogleSignIn from "../components/GoogleSignIn";
 import Survey from "../components/Survey";
 import { useSelector } from "react-redux";
