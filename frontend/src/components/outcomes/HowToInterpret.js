@@ -1,22 +1,23 @@
 import React from "react";
 import ReadMore from "../ReadMore";
+import Callout from "../Callout";
 
 const embryoFreezing = (
   <section className="mb-10">
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
     <ReadMore maxItems={1}>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Access to fertility data is your right. Gaining insight into the typical
         range of outcomes for individuals who share your demographic profile and
         diagnosis is crucial for setting realistic expectations.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Outcomes can vary significantly among women. However, knowing the
         typical range of outcomes for individuals with similar demographics and
         diagnoses can help you better understand your reproductive status.
       </p>
 
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -45,9 +46,9 @@ const embryoFreezing = (
             child.
           </li>
         </ul>
-      </aside>
+        </Callout>
 
-      <p className="mb-4">
+      <p className="mb-4 text">
         Understanding potential outcomes is crucial for estimating your
         expenses, which include both time and effort. Consider the duration of
         the process, the number of cycles needed to achieve a live birth, the
@@ -55,20 +56,20 @@ const embryoFreezing = (
         and relationships. Another key decision is whether to freeze eggs or
         embryos.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         The success rate of live births per embryo transfer ranges between
         34-47%, varying with the egg quality's grading. Opting for genetic
         screening with embryos offers more insight into your frozen embryos
         regarding potential outcomes.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         The choice between egg and embryo freezing hinges on several factors,
         including whether infertility is primarily due to female or male
         diagnoses, your short-term budget, and discussions concerning the
         disposition of surplus embryos and eggs.
       </p>
 
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -114,7 +115,7 @@ const embryoFreezing = (
             consultations, for the expected number of cycles?
           </li>
         </ul>
-      </aside>
+      </Callout>
     </ReadMore>
   </section>
 );
@@ -122,18 +123,18 @@ const eggFreezing = (
   <section className="mb-10">
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
     <ReadMore maxItems={1}>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Access to fertility data is your right. Gaining insight into the typical
         range of outcomes for individuals who share your demographic profile and
         diagnosis is crucial for setting realistic expectations.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Outcomes can vary significantly among women. However, knowing the
         typical range of outcomes for individuals with similar demographics and
         diagnoses can help you better understand your reproductive status.
       </p>
 
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>Women like you often aim to collect 10-20 mature eggs.</li>
@@ -158,9 +159,9 @@ const eggFreezing = (
             sufficiently large egg bank for those desiring more than one child.
           </li>
         </ul>
-      </aside>
+      </Callout>
 
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>Why am I considering freezing my eggs?</li>
@@ -200,7 +201,7 @@ const eggFreezing = (
             consultations, for the number of cycles I might undergo?
           </li>
         </ul>
-      </aside>
+      </Callout>
     </ReadMore>
   </section>
 );
@@ -208,19 +209,19 @@ const IVF = (
   <section className="mb-10">
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
     <ReadMore maxItems={1}>
-      <p className="mb-4">
+      <p className="mb-4 text">
         While IVF outcomes can vary significantly from person to person, access
         to fertility data is your right. Gaining insight into the typical range
         of outcomes for individuals who share your demographic profile and
         diagnosis is crucial for setting realistic expectations.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Knowing the typical range of outcomes for individuals with similar
         demographics and diagnoses can help you better understand your
         reproductive status.
       </p>
 
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -239,9 +240,9 @@ const IVF = (
             (embryos) to the blastocyst stage (day five or day six embryo).
           </li>
         </ul>
-      </aside>
+      </Callout>
 
-      <p className="mb-4">
+      <p className="mb-4 text">
         Understanding potential outcomes is crucial for estimating your
         expenses, which include both time and effort. Consider the duration of
         the process, the number of cycles needed to achieve a live birth, the
@@ -249,7 +250,7 @@ const IVF = (
         and relationships.
       </p>
 
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>
@@ -286,7 +287,7 @@ const IVF = (
             and consultations, for the number of cycles I'm considering?
           </li>
         </ul>
-      </aside>
+      </Callout>
     </ReadMore>
   </section>
 );
@@ -295,7 +296,7 @@ const justHereToLearn = (
   <section className="mb-10">
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
     <ReadMore maxItems={1}>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Data on fertility treatment outcomes can help you determine whether egg
         freezing, IVF, or natural conception could be viable options for you.
         While age stands out as one of the primary indicators of success, it's
@@ -303,12 +304,12 @@ const justHereToLearn = (
         it's crucial to bear in mind that they may not fully represent your
         overall health and vitality profile.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Outcomes can vary significantly among women. However, knowing the
         typical range of outcomes for individuals with similar demographics and
         diagnoses can help you better understand your reproductive status.
       </p>
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>Women like you often aim to collect 10-20 mature eggs.</li>
@@ -333,8 +334,8 @@ const justHereToLearn = (
             sufficiently large egg bank for those desiring more than one child.
           </li>
         </ul>
-      </aside>
-      <aside className="bg-secondary p-4 mb-6">
+      </Callout>
+      <Callout>
         <h3 className="font-semibold">💡 Questions to consider:</h3>
         <ul className="list-disc list-inside">
           <li>Do I want children? If so, why? If not, why not?</li>
@@ -354,7 +355,7 @@ const justHereToLearn = (
             from my friends and family?
           </li>
         </ul>
-      </aside>
+      </Callout>
     </ReadMore>
   </section>
 );

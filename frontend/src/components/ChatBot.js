@@ -31,7 +31,7 @@ const ChatBot = () => {
 
   function linkify(text) {
     const markdownLinkRegex =
-      /\[([^\]]+)\]\((https?:\/\/[^\s\)]+?(?:\([^\s\)]+?\))*?)\)/g;
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+?(?:\([^\s)]+?\))*?)\)/g;
 
     const parts = [];
     let lastIndex = 0;

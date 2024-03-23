@@ -13,7 +13,7 @@ const Conclusion = ({ myPersona }) => {
         <li className="pl-2">How can I optimize my overall fertility?</li>
         <li className="pl-2">What should I do next?</li>
       </ol>
-      <p className="mb-4">
+      <p className="mb-4 text">
         If becoming a mother (or father) is your goal, remember that there are
         multiple paths to achieve it. Recognizing that you are not limited to
         one narrative can be liberating. Options like IVF, adoption, and
@@ -31,7 +31,7 @@ const Conclusion = ({ myPersona }) => {
         </a>
         .
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         The good news is that you have a range of options to consider and the
         freedom to decide your reproductive future.
       </p>

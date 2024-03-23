@@ -1,6 +1,7 @@
 import React from "react";
 import ReadMore from "../ReadMore";
 import BulletChart from "../BulletChart";
+import Callout from "../Callout";
 
 const amhLevel = (age) => {
   const ageRange = findClosestRange(age);
@@ -45,27 +46,27 @@ const LabValues = ({ myPersona }) => {
     <section className="mb-10">
       <h2 className="text-2xl font-bold mb-4">Understanding Lab Values</h2>
       <ReadMore>
-        <p className="text">
+        <p className="text mb-4">
           Lab values are crucial for assessing your chances of success with
           fertility treatments and understanding your remaining fertile years.
           Loamy can help interpret what these numbers mean for you.
         </p>
-        <p className="text">
+        <p className="text mb-4">
           Baseline hormone levels, such as AMH and AFC, offer insights into how
           time affects your fertility. They also provide information about your
           egg reserve, aiding in decisions about when to conceive or freeze
           eggs/embryos. For example, an antral follicle count of 20-40 suggests
           about a decade of fertile years remaining.
         </p>
-        <p className="text">
+        <p className="text mb-4">
           If this information is new to you and you haven't yet completed a
           hormone panel, consider getting tested at a fertility clinic, or ask
           your primary care provider for a test. At-home tests may also provide
           useful initial data, though they may not be as accurate as laboratory
           testing.
         </p>
-        <aside className="bg-secondary p-4 m-6 ">
-          <p className="text">
+        <Callout>
+          <p className="text mb-4">
             💡 👉 The accuracy of at-home tests can vary widely, influenced by
             the manufacturer, the conditions during shipping, and whether the
             test was conducted on the appropriate day of your cycle. Often,
@@ -73,8 +74,8 @@ const LabValues = ({ myPersona }) => {
             physical examination, and your Reproductive Endocrinologist (REI)
             will likely require you to repeat them.
           </p>
-        </aside>
-        <p className="text">
+        </Callout>
+        <p className="text mb-4">
           To provide a baseline for comparison, here are the average values of
           AMH (Anti-Müllerian Hormone) and AFC (Antral Follicle Count) for women
           in your age group.
@@ -114,7 +115,7 @@ const LabValues = ({ myPersona }) => {
             </div>
           </div>
         </div>
-        <p className="text">
+        <p className="text mb-4">
           Comparing your AMH (Anti-Müllerian Hormone) and AFC (Antral Follicle
           Count) levels to those of women in your age group can provide valuable
           context. Generally, higher levels of AMH and AFC indicate a larger

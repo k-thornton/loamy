@@ -1,5 +1,6 @@
 import React from "react";
 import ReadMore from "../ReadMore";
+import Callout from "../Callout";
 
 const Methodology = () => {
   return (
@@ -13,7 +14,7 @@ const Methodology = () => {
             reproductive decisions.
           </p>
         </div>
-        <aside className="bg-secondary p-4 m-6">
+        <Callout>
           <h3 className="font-semibold mb-4">💡 How we filtered the data:</h3>
           <p className="mb-4 text">
             We filter the data based on the following ranges of ages and
@@ -46,7 +47,7 @@ const Methodology = () => {
             visualization to make sure it provides a useful representative
             sample.
           </p>
-        </aside>
+        </Callout>
       </ReadMore>
     </section>
   );

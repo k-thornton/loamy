@@ -1,4 +1,5 @@
 import React from "react";
+import Callout from "../Callout";
 
 const NextSteps = ({ myPersona }) => {
   return (
@@ -6,12 +7,12 @@ const NextSteps = ({ myPersona }) => {
       <h2 id="nextSteps" className="text-2xl font-bold mb-4">
         Your Next Steps
       </h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         There's a considerable amount of misleading information online about
         fertility, with some sources suggesting simplistic solutions like "just
         relax" or take a specific supplement to miraculously boost fertility.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Fortunately, there's substantial research focused on behavior
         modifications that can genuinely enhance fertility—though these findings
         are frequently overshadowed by the noisy fertility wellness influencer
@@ -23,7 +24,7 @@ const NextSteps = ({ myPersona }) => {
       <h2 id="fertilityConsulting" className="text-l font-bold mb-4">
         Fertility Consulting
       </h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Before visiting an IVF clinic or even after your first IVF attempt,
         consider exploring data-driven, science-backed fertility consultants.
         These organizations focus on evidence-based approaches and may address
@@ -34,7 +35,7 @@ const NextSteps = ({ myPersona }) => {
         and <a className="link" href="https://denovofertility.com/">Denovo Fertility</a>, both
         known for their commitment to research and results.
       </p>
-      <aside className="bg-secondary p-4 mb-6">
+      <Callout>
         <h3 className="font-semibold mb-4">
           🏆 Denovo Fertility is a functional medicine program using self-paced
           and group coaching programs that has been found to help patients who
@@ -65,7 +66,7 @@ const NextSteps = ({ myPersona }) => {
             female-factor infertility types.
           </li>
         </ul>
-        <p className="mb-4">
+        <p className="mb-4 text">
           👉{" "}
           <strong>
             Consider, the 12-Week VIP Program or 12-Week CORE Plus Program from
@@ -73,12 +74,12 @@ const NextSteps = ({ myPersona }) => {
             patients with extensive fertility struggles or failed IVF cycles.
           </strong>
         </p>
-      </aside>
+      </Callout>
 
       <h2 id="mindfulness" className="text-l font-bold mb-4">
         Mental Health & Mindfulness
       </h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Research indicates a link between stress and fertility outcomes. A{" "}
         <a className="link" href="https://pubmed.ncbi.nlm.nih.gov/24664130/">study</a> found that
         women with higher levels of alpha-amylase, a stress biomarker,
@@ -86,7 +87,7 @@ const NextSteps = ({ myPersona }) => {
         pregnancy) and were over twice as likely to face infertility compared to
         women with lower levels of this biomarker.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Seeking a trustworthy therapist familiar with infertility, engaging your
         partner or community groups for support, and considering integrative
         therapies such as acupuncture are all viable options.
@@ -95,54 +96,54 @@ const NextSteps = ({ myPersona }) => {
       <h2 id="supplements" className="text-l font-bold mb-4">
         Supplements
       </h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         The human body optimally absorbs vitamins and minerals from food, but
         supplements can help bridge nutritional gaps missing from your diet when
         used appropriately. Here are our recommendations:
       </p>
-      <aside className="bg-secondary p-4 mb-6">
-        <p className="mb-4">
+      <Callout>
+        <p className="mb-4 text">
           💡 <strong>Top pick for pregnancy & fetal development:</strong>{" "}
           Choline
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           <strong>
             Top pick for men and women to support overall fertility:
           </strong>{" "}
           Prenatal vitamin (includes Folate/Folic acid and vitamin B-9)
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           <strong>Top pick for men and women over 35:</strong> Coenzyme Q10
           (CoQ10)
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           <strong>Supplements just for women with DOR:</strong>{" "}
           Dehydroepiandrosterone (DHEA)
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           <strong>Supplements for women with PCOS:</strong> Myoinositol;
           Corrects the LH/FSH ratio
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           <strong>
             Supplements just for men with low sperm count, motility, volume:
           </strong>{" "}
           Ashwagandha
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           <strong>
             Supplements just for men with low sperm count, concentration,
             motility, and ejaculate volume:
           </strong>{" "}
           Lycopene
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           Vitamin D is recommended for both men and women if you're Vitamin D
           deficient, which affects 40% of the population. Antioxidants like
           Vitamin C and E and Selenium may also help support healthy sperm
           count, motility, and morphology.
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text">
           👉{" "}
           <strong>
             Top pick for medical-grade, third-party tested supplements:
@@ -151,15 +152,15 @@ const NextSteps = ({ myPersona }) => {
             The Fertility and Pregnancy Institute
           </a>
         </p>
-      </aside>
+      </Callout>
       <h2 id="acupuncture" className="text-l font-bold mb-4">
         Acupuncture
       </h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         At the very least, we see acupuncture as an excellent mindfulness
         practice to alleviate stress during fertility treatments.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         A meta-analysis reviewed the effectiveness of acupuncture as a
         complementary therapy for diminished ovarian response (DOR) by examining
         seven randomized controlled trials involving 516 women. Although the
@@ -171,7 +172,7 @@ const NextSteps = ({ myPersona }) => {
         follicle-stimulating hormone (FSH) levels and raise estradiol levels,
         indicating its potential to improve ovarian function in DOR patients.
       </p>
-      <p className="mb-4">
+      <p className="mb-4 text">
         Despite the rarity of clinical studies on Western medicine interventions
         like acupuncture in well-known, mainstream medical journals, many women
         undergoing egg freezing report finding these treatments to be
@@ -179,11 +180,11 @@ const NextSteps = ({ myPersona }) => {
       </p>
       {myPersona.local && (
         <>
-          <p className="mb-4">
+          <p className="mb-4 text">
             <strong>Our top recommendation for acupuncture in Boston:</strong>{" "}
             <a className="link" href="https://yintuitionwellness.com/">Yintuition</a>.
           </p>
-          <p className="mb-4">
+          <p className="mb-4 text">
             <strong>Our top location for Onco-fertility patients:</strong>{" "}
             <a className="link" href="https://www.sacredhealingbodyworks.com/">
               Sacred Healings Bodyworks
@@ -195,12 +196,12 @@ const NextSteps = ({ myPersona }) => {
       <h2 id="lifestyle" className="text-l font-bold mb-4">
         Lifestyle
       </h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         To maximize your fertility treatment outcomes, a great initial step is
         to assess your lifestyle habits and identify potential adjustments.
       </p>
-      <aside className="bg-secondary p-4 mb-6">
-        <p className="mb-4">
+      <Callout>
+        <p className="mb-4 text">
           💡 <strong>Behavior Modifications to Enhance Fertility:</strong>
         </p>
         <ul className="list-none space-y-2 mb-4">
@@ -220,7 +221,7 @@ const NextSteps = ({ myPersona }) => {
             boost vitamin D levels.
           </li>
         </ul>
-        <p className="mb-4">
+        <p className="mb-4 text">
           💡 <strong>Lifestyle Factors to Avoid for Better Fertility:</strong>
         </p>
         <ul className="list-none space-y-2 mb-4">
@@ -256,19 +257,19 @@ const NextSteps = ({ myPersona }) => {
             <strong>Steroids:</strong> Avoid steroid use.
           </li>
         </ul>
-      </aside>
+      </Callout>
           <h2 id="savingMoney" className="text-l font-bold mb-4">
             Saving Money
           </h2>
-          <p className="mb-4">
+          <p className="mb-4 text">
             We hope these evidence-based suggestions have been useful in
             identifying ways to enhance your fertility. The journey toward
             preserving your fertility or trying to conceive should be filled
             with hope and empowerment, rather than being marred by the weight of
             decision-making and high costs.
           </p>
-          <aside className="bg-secondary p-4 mb-6">
-            <p className="mb-4">
+          <Callout>
+            <p className="mb-4 text">
               💡{" "}
               <strong>Cost-Saving Tips from Women Who Have Been There:</strong>
             </p>
@@ -319,7 +320,7 @@ const NextSteps = ({ myPersona }) => {
                 avoid unnecessary costs.
               </li>)}
             </ul>
-          </aside>
+          </Callout>
     </section>
   );
 };

@@ -4,7 +4,7 @@ const Disclaimer = () => {
   return (
     <div className="text-gray-700 p-4">
       <h2 className="text-xl font-bold mb-4">Disclaimer</h2>
-      <p className="mb-4">
+      <p className="mb-4 text">
         This tool is provided for <strong>educational and informational purposes only</strong> and does not constitute providing medical advice or professional services. The information you enter is used to estimate your chances of success. These estimates may not reflect your actual rates of success during treatment but represent an expectation of outcomes from women like you.
       </p>
       

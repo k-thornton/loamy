@@ -28,11 +28,6 @@ function Survey() {
   const [selectedOption, setSelectedOption] = useState("");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
-  // This commented out code always shows the disclaimer for testing purposes
-  // useEffect(() => {
-  //   showModal({ content: <Disclaimer/>, buttonText: "Accept"});
-  // }, [dispatch]);
-
   useEffect(() => {
     if (!disclaimerAccepted) {
       showModal({
@@ -139,24 +134,8 @@ function Survey() {
     return <div>Error: No questions to display</div>;
   }
 
-  const speedRun = () => {
-    // setIsSurveyCompleted(true);
-  };
-
-  // const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
-
-  // const sidebarItems = ["Home", "Profile", "Settings"];
-
   return (
     <div className="flex flex-col items-center justify-between min-h-90 overflow-auto p-4">
-      {/* <button
-        type="button"
-        onClick={speedRun}
-        className="mt-4 mb-8 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-bold rounded-lg shadow transition duration-150 ease-in-out"
-      >
-        Go Fast
-      </button> */}
-      {/* <div className="overflow-auto mb-4 w-full flex flex-col items-center" style={{ maxHeight: '80vh' }}> */}
       {currentQuestion && (
         <Question
           question={currentQuestion}

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMe, setSurveyCompleted, unsetSurveyCompleted } from "../features/survey/surveySlice";
-import { resetAnswers } from "../features/survey/surveySlice";
+import { fetchMe, unsetSurveyCompleted } from "../features/survey/surveySlice";
 import ChatBot from "./ChatBot";
 import FullscreenLoader from "./FullscreenLoader";
 import Heading from "./outcomes/Heading";
