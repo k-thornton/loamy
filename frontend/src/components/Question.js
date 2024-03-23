@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import RadioGroup from './RadioGroup';
 
 function Question({ question, selectedOption, setSelectedOption }) {
   const isNumericInput = question.expectedDataType === 'numeric';
+
+  // Create a ref for the input element
+  const inputRef = useRef(null);
+
+  // Use useEffect to focus on the input element when the component mounts
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div className="mb-8 flex flex-col items-center justify-center relative w-full">
       <h2 className="text-xl font-semibold text-gray-800 flex items-center justify-center">
@@ -26,6 +37,7 @@ function Question({ question, selectedOption, setSelectedOption }) {
         <div className="w-full max-w-xs">
           <label className="form-control w-full">
             <input
+              ref={inputRef}
               type="text"
               id={question._id}
               placeholder={question.description}

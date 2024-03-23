@@ -105,6 +105,8 @@
     "subHeading": "🎂 Asking because age is one of the best predictors of egg quality and success rates.",
     "answerType": "freeEntry",
     "expectedDataType": "numeric",
+    "minValue": 25,
+    "maxValue": 45,
     "note": "Our dataset is only representative of women ages 25 - 45."
   },
   {
@@ -161,6 +163,8 @@
     "answerType": "freeEntry",
     "expectedDataType": "numeric",
     "defaultValue": 0,
+    "minValue": 0,
+    "maxValue": 40,
     "note": "Enter a number between 0-40. Leave this question blank if you are unsure."
   },
   {
@@ -172,6 +176,8 @@
     "answerType": "freeEntry",
     "expectedDataType": "numeric",
     "defaultValue": 0,
+    "minValue": 0,
+    "maxValue": 100,
     "note": "Enter a number between 0-100. Leave this question blank if you are unsure."
   },
   {

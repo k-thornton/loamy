@@ -87,7 +87,7 @@ function Survey() {
   };
 
   const handleNextQuestion = () => {
-    const answer = selectedOption || questions[currentQuestionIndex].defaultValue
+    const answer = selectedOption || currentQuestion.defaultValue
     if (answer == null) {
       showModal({
           title: "Whoa there",
@@ -95,6 +95,23 @@ function Survey() {
         });
         return;
     }
+
+    if (currentQuestion.expectedDataType === "numeric") {
+      const { minValue, maxValue } = currentQuestion;
+      // Convert answer to a number in case it's a string, and check if it's within range
+      const numericAnswer = +answer; // Unary plus to ensure answer is treated as a number
+    
+      // Check if the minValue or maxValue is defined and if the answer is outside the range
+      if ((minValue !== undefined && numericAnswer < minValue) ||
+          (maxValue !== undefined && numericAnswer > maxValue)) {
+        showModal({
+          title: "Hang on!",
+          text: `Your answer should be between ${minValue} and ${maxValue}`,
+        });
+        return;
+      }
+    }
+
     dispatch(
       updateAnswer({ questionId: currentQuestion._id, answer: answer })
     );

@@ -16,6 +16,8 @@ const questionSchema = new mongoose.Schema({
   answerType: { type: String, required: true },
   expectedDataType: { type: String, required: true },
   defaultValue: {type: Number, required: false},
+  minValue: {type: Number, required: false},
+  maxValue: {type: Number, required: false},
   choices: [choiceSchema],
   note: { type: String, required: false }
 });
