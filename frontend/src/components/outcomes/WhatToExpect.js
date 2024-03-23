@@ -5,7 +5,7 @@ import FertilityJourney from "./FertilityJourney";
 const integrativeSteps = <><h3 className="font-bold text-lg mb-2">Integrative Steps</h3>
 <ul className="list-none space-y-2">
   {[
-    <p className="mb-4">Mental Health Support <a className="link "href="#mentalhealth" >Link</a></p>,
+    <p className="mb-4">Mental Health Support <a className="link "href="#mindfulness" >Link</a></p>,
     <p className="mb-4">Prenatal Vitamins & Supplements <a className="link "href="#supplements" >Link</a></p>,
     <p className="mb-4">Acupuncture <a className="link "href="#acupuncture" >Link</a></p>,
     <p className="mb-4">Nutrition Modifications <a className="link "href="#lifestyle" >Link</a></p>,

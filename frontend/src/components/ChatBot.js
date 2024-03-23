@@ -21,7 +21,7 @@ const ChatBot = () => {
       const timer = setTimeout(() => {
         inputRef.current?.focus();
       }, 0);
-  
+
       // Cleanup function to clear the timeout
       // This function is called by React before re-running the effect due to dependency changes,
       // and when the component unmounts, preventing memory leaks.
@@ -30,8 +30,8 @@ const ChatBot = () => {
   }, [isOpen, messages, isLoading]); // Dependencies array
 
   function linkify(text) {
-    const markdownLinkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s\)]+?(?:\([^\s\)]+?\))*?)\)/g;
-
+    const markdownLinkRegex =
+      /\[([^\]]+)\]\((https?:\/\/[^\s\)]+?(?:\([^\s\)]+?\))*?)\)/g;
 
     const parts = [];
     let lastIndex = 0;
@@ -48,7 +48,7 @@ const ChatBot = () => {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="link hover:text-blue-600 break-words"
+          className="link break-words"
         >
           {linkText}
         </a>
@@ -98,7 +98,7 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="fixed bottom-20 right-20">
+    <div className="fixed bottom-10 right-10">
       {isOpen ? (
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -108,10 +108,23 @@ const ChatBot = () => {
         </button>
       ) : (
         <div
-          className="pr-5 pl-5 pt-2 pb-2 cursor-pointer bg-primary text-white rounded-full shadow-lg"
+          className="pr-11 pl-11 pt-4 pb-4 cursor-pointer bg-primary text-white rounded-full shadow-lg flex items-center justify-center gap-2"
           onClick={() => setIsOpen(!isOpen)}
         >
-          Chat
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 32 32"
+            className="fill-current w-8 h-8"
+            style={{ fill: "rgb(255, 255, 255)" }}
+          >
+            <path
+              d="M16 2C8.28 2 2 7.8 2 14.93a12.144 12.144 0 001.696 6.15l-1.668 7.51A1.16 1.16 0 003.63 29.9l6.914-3.072A14.835 14.835 0 0016 27.861c7.72 0 14-5.8 14-12.93S23.72 2 16 2zm4.508 16.32h-9.016a1.16 1.16 0 010-2.32h9.016a1.16 1.16 0 010 2.32zm0-4.638h-9.016a1.16 1.16 0 010-2.318h9.016a1.16 1.16 0 110 2.318z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          Let's Chat!
         </div>
       )}
       {isOpen && (

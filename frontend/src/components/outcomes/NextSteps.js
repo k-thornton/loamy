@@ -25,10 +25,10 @@ const NextSteps = ({ myPersona }) => {
         consider exploring data-driven, science-backed fertility consultants.
         These organizations focus on evidence-based approaches and may address
         some root causes of infertility. Our top recommendations include{" "}
-        <a href="https://fertilitypregnancy.org/protocol/">
+        <a className="link" href="https://fertilitypregnancy.org/protocol/">
           The Fertility and Pregnancy Institute
         </a>{" "}
-        and <a href="https://denovofertility.com/">Denovo Fertility</a>, both
+        and <a className="link" href="https://denovofertility.com/">Denovo Fertility</a>, both
         known for their commitment to research and results.
       </p>
       <aside className="bg-secondary p-4 mb-6">
@@ -77,7 +77,7 @@ const NextSteps = ({ myPersona }) => {
       </h2>
       <p className="mb-4">
         Research indicates a link between stress and fertility outcomes. A{" "}
-        <a href="https://pubmed.ncbi.nlm.nih.gov/24664130/">study</a> found that
+        <a className="link" href="https://pubmed.ncbi.nlm.nih.gov/24664130/">study</a> found that
         women with higher levels of alpha-amylase, a stress biomarker,
         experienced a 29% decrease in fecundity (resulting in a longer time to
         pregnancy) and were over twice as likely to face infertility compared to
@@ -144,7 +144,7 @@ const NextSteps = ({ myPersona }) => {
           <strong>
             Top pick for medical-grade, third-party tested supplements:
           </strong>{" "}
-          <a href="https://fertilitypregnancy.org/protocol/">
+          <a className="link" href="https://fertilitypregnancy.org/protocol/">
             The Fertility and Pregnancy Institute
           </a>
         </p>
@@ -178,11 +178,11 @@ const NextSteps = ({ myPersona }) => {
         <>
           <p className="mb-4">
             <strong>Our top recommendation for acupuncture in Boston:</strong>{" "}
-            <a href="https://yintuitionwellness.com/">Yintuition</a>.
+            <a className="link" href="https://yintuitionwellness.com/">Yintuition</a>.
           </p>
           <p className="mb-4">
             <strong>Our top location for Onco-fertility patients:</strong>{" "}
-            <a href="https://www.sacredhealingbodyworks.com/">
+            <a className="link" href="https://www.sacredhealingbodyworks.com/">
               Sacred Healings Bodyworks
             </a>
             .
@@ -296,7 +296,7 @@ const NextSteps = ({ myPersona }) => {
                 You're entitled to fill your prescription at any pharmacy,
                 including international pharmacies, regardless of your insurance
                 company's preferred providers. Our top recommendation is{" "}
-                <a href="https://www.ivfpharmacy.com/">IVF Pharmacy</a>, who has
+                <a className="link" href="https://www.ivfpharmacy.com/">IVF Pharmacy</a>, who has
                 been in business the last 20 years selling medication at up to
                 70% discount. These drugs come from Europe, where IVF drug
                 prices are much cheaper than in the U.S, and all from brand name
