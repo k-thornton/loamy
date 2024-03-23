@@ -15,6 +15,7 @@ import FertilityJourney from "./outcomes/FertilityJourney";
 import Sources from "./outcomes/Sources";
 import Intro from "./outcomes/Intro";
 import HowToInterpret from "./outcomes/HowToInterpret";
+import WhatToExpect from "./outcomes/WhatToExpect";
 
 function Outcomes() {
   const dispatch = useDispatch();
@@ -48,134 +49,7 @@ function Outcomes() {
         <Methodology />
         <LabValues myPersona={myPersona} />
 
-        {/* What To Expect Section */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">What To Expect</h2>
-          <ReadMore>
-            <p className="mb-4">
-              While IVF or egg freezing might not be immediate considerations
-              for you, and perhaps they never will be, we view all women as the
-              Chief Fertility Officers of their households. If it matches your
-              goals, a valuable initial step is to become acquainted with your
-              reproductive baseline, lab levels, and overall fertility health.
-            </p>
-            {/* <p>Here is a glimpse of where you are at in the journey currently:</p> */}
-            <div className="mb-6">
-              <FertilityJourney stepsCompleted={0} />
-              <p className="mb-4">
-                The fertility journey involves a series of sequential decisions.
-                Due to the limited number of providers—around 1,300 reproductive
-                endocrinologists for 30 million women—most of these decisions
-                are made by you, the patient.
-              </p>
-              <p className="mb-4">
-                Beyond the clinic, many patients also explore integrative and
-                holistic services like supplements, acupuncture, or nutrition
-                packages.
-              </p>
-              <p className="mb-4">
-                We differentiate between optional and required steps in an IVF
-                cycle by focusing on evidence-based practices that are right for
-                you. You can find more detailed information here.{" "}
-                <a href="#">LINK TO “Your next Steps” section</a>
-              </p>
-            </div>
-            <div className="flex flex-wrap -mx-2">
-              <div className="w-full md:w-1/2 px-2 mb-4">
-                <h3 className="font-bold text-lg mb-2">Key Steps</h3>
-                <ul className="list-none space-y-2">
-                  {[
-                    "Medical evaluation & lab testing: Initial consult with a fertility clinic where you undergo tests to check hormone levels, ovarian function, and sperm quality",
-                    "Ovarian stimulation: Daily medication and hormone injections to encourage the ovaries to produce multiple eggs during a menstrual cycle.",
-                    "Egg retrieval: Minor surgical procedure where mature eggs are collected from the ovaries using an ultrasound-guided fine needle.",
-                    "Fertilization: Sperm and eggs are combined in a lab setting to facilitate the creation of embryos.",
-                    "Embryo Transfer: One or more embryos are placed into the uterus, typically via a thin catheter, with the hope of implantation.",
-                    "Pregnancy Test: Test done to measure the level of a hormone called human chorionic gonadotropin (hCG) in the urine or blood, which indicates pregnancy.",
-                  ].map((step, index) => (
-                    <li key={index} className="flex">
-                      <span className="text-primary mr-2">■</span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="w-full md:w-1/2 px-2">
-                <h3 className="font-bold text-lg mb-2">Integrative Steps</h3>
-                <ul className="list-none space-y-2">
-                  {[
-                    "Mental Health Support [Link to “Mental Health & Mindfulness” in the “Your Next Steps” section]",
-                    "Prenatal Vitamins & Supplements [Link to “Supplements” in the “Your Next Steps” section]",
-                    "Acupuncture [Link to “Acupuncture” in the “Your Next Steps” section]",
-                    "Nutrition Modifications [Link to “Lifestyle” in the “Your Next Steps” section]",
-                    "Omission of Chemicals & Drugs [Link to “Lifestyle” in the “Your Next Steps” section]",
-                  ].map((step, index) => (
-                    <li key={index} className="flex">
-                      <span className="text-primary mr-2">■</span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <aside className="bg-blue-100 p-4 mb-6">
-              <h3 className="font-semibold">💡 Myths and Truths:</h3>
-              <p className="mb-1 mt-7">
-                <strong>Myth: </strong>Success in fertility treatment requires
-                taking numerous specialized supplements and adhering to strict
-                fertility diets.
-              </p>
-              <p>
-                {" "}
-                <strong>Truth:</strong> Eating nutritious, whole foods, engaging
-                in regular exercise, and avoiding harmful habits like smoking,
-                using cannabis, and excessive drinking are beneficial for your
-                health and fertility, regardless of your treatment plan.
-              </p>
-              <p className="mb-1 mt-7">
-                <strong>Myth: </strong>Egg freezing guarantees a future live
-                birth.
-              </p>
-              <p>
-                {" "}
-                <strong>Truth:</strong> The success rate for live births from
-                thawed eggs is approximately 39%, with the most significant
-                factor being the age at which the eggs are frozen.
-                Statistically, freezing eggs at a younger age is associated with
-                higher success rates.
-              </p>
-              <p className="mb-1 mt-7">
-                <strong>Myth: </strong>To achieve the best outcomes, you must
-                opt for every available IVF add-on.{" "}
-              </p>
-              <p>
-                <strong>Truth:</strong> ICSI (Intracytoplasmic Sperm Injection)
-                is utilized in over 90% of IVF cycles, not just for cases of
-                male factor infertility. Many choose it for the perceived
-                psychological benefits, although the evidence supporting its
-                impact on increasing live birth rates is limited. ICSI costs
-                patients between $800 and $2,500 per cycle, while clinics incur
-                costs of $50 to $250 to perform it. We'll explore the economics
-                of IVF further below.
-              </p>
-            </aside>
-            <section className="mb-10">
-              <h2 className="text-2xl font-bold mb-4">Your Next Steps</h2>
-              <p>
-                There's a considerable amount of misleading information online
-                about fertility, with some sources suggesting simplistic
-                solutions like "just relax" or take a specific supplement to
-                miraculously boost fertility.
-              </p>
-              <p>
-                Fortunately, there's substantial research focused on behavior
-                modifications that can genuinely enhance fertility—though these
-                findings are frequently overshadowed by the noisy fertility
-                wellness influencer industry. Based on the literature, here's
-                what we recommend:
-              </p>
-            </section>
-          </ReadMore>
-        </section>
+        <WhatToExpect myPersona={myPersona}/>
 
         {/* Conclusion Section */}
         <section className="mb-10">

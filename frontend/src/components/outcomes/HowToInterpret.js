@@ -360,14 +360,15 @@ const justHereToLearn = (
 );
 
 const content = {
-  "Embryo Freezing": embryoFreezing,
-  "Egg Freezing": eggFreezing,
-  "Elective Egg Freezing (Fertility Preservation)": eggFreezing,
-  "In Vitro Fertilization (IVF)": IVF,
+  "embryo": embryoFreezing,
+  "egg": eggFreezing,
+  "electiveEgg": eggFreezing,
+  "ivf": IVF,
+  "default": justHereToLearn
 };
 
 const HowToInterpret = ({ myPersona }) => {
-  return content[myPersona.goal];
+    return content[myPersona.goal] || content["default"];
 };
 
 export default HowToInterpret;

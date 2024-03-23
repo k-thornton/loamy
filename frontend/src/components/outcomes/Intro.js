@@ -6,6 +6,7 @@ const Intro = ({ myPersona }) => {
     // There's just a bit too much to diff at the moment to do it easily.
     // Definitely if this copy is going to be edited a bunch you might want
     // to come in here and combine sections that are similar.
+    // Right now it's a bit Frankenstein'd together :(
 
     const achievement = (thing, topic) => {
       return (
@@ -19,15 +20,15 @@ const Intro = ({ myPersona }) => {
       );
     };
 
-    const uncertain = (
-      <p className="mb-4">
+    const uncertain = (goal) => {
+      return <p className="mb-4">
         Feeling uncertain about whether {myPersona.goal.toLowerCase()} is the
         right choice for you — whether from a physical, emotional, financial, or
         mental perspective — is completely natural. However, the prevalent lack of
         informed consent in these crucial reproductive health decisions is not
         acceptable.
-      </p>
-    );
+      </p>;
+    };
 
     const daunting = (
       <p className="mb-4">
@@ -39,46 +40,44 @@ const Intro = ({ myPersona }) => {
       </p>
     );
 
-    const dataStarved = {
-      3: (
-        <p className="mb-4">
-          The feeling of being data-starved in making reproductive health
-          decisions is common. Often, it might feel like many promises are made
-          with little or weak evidence of clinical efficacy, compounded by the
-          anxiety of wondering about your chances of success. The question
-          looms, should I undergo another cycle? How do my results compare with
-          others? What should I do next?
-        </p>
-      ),
-      2: (
-        <p className="mb-4">
+    const dataStarved = (familiarity) => {
+      if (familiarity === "3"){
+        return  <p className="mb-4">
+        The feeling of being data-starved in making reproductive health
+        decisions is common. Often, it might feel like many promises are made
+        with little or weak evidence of clinical efficacy, compounded by the
+        anxiety of wondering about your chances of success. The question
+        looms, should I undergo another cycle? How do my results compare with
+        others? What should I do next?
+      </p>;
+      }
+      if (familiarity === "2"){
+        return <p className="mb-4">
           The feeling of being data-starved in making reproductive health
           decisions is common. Often, it might feel like many promises are made
           with little or weak evidence of clinical efficacy, compounded by the
           anxiety of wondering about your chances of success. Questions around
           outcomes, how you’re responding to stims, and next steps loom.
-        </p>
-      ),
-      default: (
-        <p className="mb-4">
+        </p>;
+      }
+      return <p className="mb-4">
           The scarcity of clear, compelling clinical evidence, coupled with the
           anxiety surrounding potential outcomes, contributes to the feeling of
           being overwhelmed by options that seem to be sold to us rather than
           explained.
-        </p>
-      ),
+        </p>;
     };
 
-    const whyLoamy = (
-      <p className="mb-4">
+    const whyLoamy = (goal) => {
+      return <p className="mb-4">
         This is why we’re building Loamy; to provide real, transparent
-        expectations for your {myPersona.goal.toLowerCase()} journey, informed
+        expectations for your {goal.toLowerCase()} journey, informed
         by data from women and couples like you.
-      </p>
-    );
+      </p>;
+    };
 
     // From here onward is the divergences in copy based on persona
-    if (myPersona.goal === "Embryo Freezing") {
+    if (myPersona.goal === "embryo") {
       let topContent = (
         // default (level 1)
         <>
@@ -105,7 +104,7 @@ const Intro = ({ myPersona }) => {
               you're here due to career goals, the absence of a suitable
               partner, or simply not feeling ready to start a family just yet.
             </p>
-            {uncertain}
+            {uncertain("embryo freezing")}
           </>
         );
       }
@@ -113,15 +112,15 @@ const Intro = ({ myPersona }) => {
       return (
         <div>
           {topContent}
-          {dataStarved[myPersona.familiarity]}
-          {whyLoamy}
+          {dataStarved(myPersona.familiarity)}
+          {whyLoamy("embryo freezing")}
         </div>
       );
     }
 
     if (
-      myPersona.goal === "Egg Freezing" ||
-      myPersona.goal === "Elective Egg Freezing (Fertility Preservation)"
+      myPersona.goal === "egg" ||
+      myPersona.goal === "electiveEgg"
     ) {
       let topContent = (
         // default (level 1)
@@ -146,7 +145,7 @@ const Intro = ({ myPersona }) => {
               you're here due to career goals, the absence of a suitable
               partner, or simply not feeling ready to start a family just yet.
             </p>
-            {uncertain}
+            {uncertain("egg freezing")}
           </>
         );
       }
@@ -154,13 +153,13 @@ const Intro = ({ myPersona }) => {
         // Egg Freezing default fallback
         <div>
           {topContent}
-          {dataStarved[myPersona.familiarity]}
-          {whyLoamy}
+          {dataStarved(myPersona.familiarity)}
+          {whyLoamy("egg freezing")}
         </div>
       );
     }
 
-    if (myPersona.goal === "In Vitro Fertilization (IVF)") {
+    if (myPersona.goal === "ivf") {
       let topContent = (
         // Default (level 1)
         <>
@@ -188,15 +187,15 @@ const Intro = ({ myPersona }) => {
               Starting your IVF journey can feel daunting, surrounded by a
               whirlwind of new emotions, uncertainties, and fears.
             </p>
-            {uncertain}
+            {uncertain("IVF")}
           </>
         );
       }
       return (
         <div>
           {topContent}
-          {dataStarved[myPersona.familiarity]}
-          {whyLoamy}
+          {dataStarved(myPersona.familiarity)}
+          {whyLoamy("IVF")}
         </div>
       );
     }

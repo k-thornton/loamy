@@ -96,6 +96,7 @@ def calculate():
     afc = int(data.get("afc"))
     goal = data.get("goal")
     familiarity = data.get("familiarity")
+    stage = data.get("stage")
     
     df = load_data()
     outcome_options = {'Eggs Retrieved': 'eggs_retrieved_bins', 'Mature Eggs': 'eggs_mature_bins', 'Fertilized Eggs': 'eggs_fertilized_bins', 'Day Five Embryos': 'day_5_embryos_bins'}
@@ -110,7 +111,8 @@ def calculate():
         "afc": afc,
         "diagnosis": diagnosis,
         "age": age,
-        "outcomes": outcomes        
+        "outcomes": outcomes,
+        "stage": stage     
     }
     
     print(result)

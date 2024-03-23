@@ -169,15 +169,23 @@ router.get("/me", authenticateToken, async (req, res) => {
       // TODO: Will likely want to generalize this so all multiple choice questions have tagged answer options
       userAnswers.find((item) => item.question.tag === "familiarity").answer];
 
+    const stage = questionTagToChoiceTagMap["stage"][
+      // Doing the same for stage
+      userAnswers.find((item) => item.question.tag === "stage").answer];
+
+    const goal = questionTagToChoiceTagMap["goal"][
+      // Doing the same for stage
+      userAnswers.find((item) => item.question.tag === "goal").answer];
+
     const userInfo = {
       age: userAnswers.find((item) => item.question.tag === "age")?.answer,
       amh: userAnswers.find((item) => item.question.tag === "amh")?.answer,
       diagnosis: userAnswers.find((item) => item.question.tag === "diagnosis")
         ?.answer,
       afc: userAnswers.find((item) => item.question.tag === "afc")?.answer,
-      goal: userAnswers.find((item) => item.question.tag === "goal")?.answer,
-      familiarity: familiarity
-        
+      goal: goal,
+      familiarity: familiarity,
+      stage: stage
     };
 
     const response = await axios.post(CALCULATION_SERVICE_URL, userInfo);
