@@ -15,6 +15,7 @@ const questionSchema = new mongoose.Schema({
   tooltip: { type: String, required: false }, // General tooltip for the question itself
   answerType: { type: String, required: true },
   expectedDataType: { type: String, required: true },
+  defaultValue: {type: Number, required: false},
   choices: [choiceSchema],
   note: { type: String, required: false }
 });

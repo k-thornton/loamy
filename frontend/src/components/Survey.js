@@ -87,15 +87,16 @@ function Survey() {
   };
 
   const handleNextQuestion = () => {
-    if (!selectedOption) {
+    const answer = selectedOption || questions[currentQuestionIndex].defaultValue
+    if (answer == null) {
       showModal({
-        title: "Whoa there",
-        text: "Please provide an answer before proceeding.",
-      });
-      return;
+          title: "Whoa there",
+          text: "Please provide an answer before proceeding.",
+        });
+        return;
     }
     dispatch(
-      updateAnswer({ questionId: currentQuestion._id, answer: selectedOption })
+      updateAnswer({ questionId: currentQuestion._id, answer: answer })
     );
     const nextQuestionIndex = currentQuestionIndex + 1;
     if (nextQuestionIndex < questions.length) {
