@@ -1,5 +1,4 @@
 import React from "react";
-import Heading from "./Heading";
 
 const Intro = ({ myPersona }) => {
   const getContent = (myPersona) => {

@@ -14,6 +14,7 @@ import YourResults from "./outcomes/YourResults";
 import FertilityJourney from "./outcomes/FertilityJourney";
 import Sources from "./outcomes/Sources";
 import Intro from "./outcomes/Intro";
+import HowToInterpret from "./outcomes/HowToInterpret";
 
 function Outcomes() {
   const dispatch = useDispatch();
@@ -39,87 +40,11 @@ function Outcomes() {
     <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
       <div className="p-5">
       <div className="container mx-auto">
-
         <Heading />
         <Intro myPersona={myPersona}/>
         <YourResults myPersona={myPersona} />
 
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold mb-4">
-            How To Interpret Your Outcomes
-          </h2>
-          <ReadMore maxItems={1}>
-            <div className="mb-6">
-              <p>
-                Data on fertility treatment outcomes can help you determine
-                whether egg freezing, IVF, or natural conception could be viable
-                options for you. While age stands out as one of the primary
-                indicators of success, it's just one among several factors. If
-                these statistics appear overwhelming, it's crucial to bear in
-                mind that they may not fully represent your overall health and
-                vitality profile.
-              </p>
-            </div>
-            <div className="mb-6">
-              <p>
-                Outcomes can vary significantly among women. However, knowing
-                the typical range of outcomes for individuals with similar
-                demographics and diagnoses can help you better understand your
-                reproductive status.
-              </p>
-            </div>
-            <aside className="bg-blue-100 p-4 mb-6">
-              <h3 className="font-semibold">💡 Insights</h3>
-              <ul className="list-disc list-inside">
-                <li>Women like you often aim to collect 10-20 mature eggs.</li>
-                <li>
-                  It's common for not all retrieved eggs to be mature; many
-                  times, 40% of the eggs collected may be immature. This
-                  reduction from retrieved to mature eggs is anticipated.
-                </li>
-                <li>
-                  The purpose of egg freezing is to bring as many follicles to
-                  maturity as possible, which will then be stored and used for a
-                  future IVF cycle.
-                </li>
-                <li>
-                  In IVF, the objective is to fertilize these mature eggs and
-                  develop as many of the fertilized eggs (embryos) to the
-                  blastocyst stage (day five or day six embryo), where they will
-                  be transferred into the uterus.
-                </li>
-                <li>
-                  Typically, multiple retrievals are needed to accumulate a
-                  sufficiently large egg bank for those desiring more than one
-                  child.
-                </li>
-              </ul>
-            </aside>
-            <aside className="bg-blue-100 p-4 mb-6">
-              <h3 className="font-semibold">💡 Questions to consider:</h3>
-              <ul className="list-disc list-inside">
-                <li>Do I want children? If so, why? If not, why not?</li>
-                <li>When would I like to have children?</li>
-                <li>
-                  Do I want to delay having children or plan the timing of my
-                  children?
-                </li>
-                <li>How many children do I envision having?</li>
-                <li>
-                  What aspects of starting a family excite me? Are there any
-                  concerns or reservations holding me back?
-                </li>
-                <li>
-                  What budget am I prepared to allocate for family planning?
-                </li>
-                <li>
-                  How do I plan to handle stress, and what kind of support will
-                  I need from my friends and family?
-                </li>
-              </ul>
-            </aside>
-          </ReadMore>
-        </section>
+        <HowToInterpret myPersona={myPersona}/>
         <Methodology />
         <LabValues myPersona={myPersona} />
 

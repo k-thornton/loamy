@@ -14,7 +14,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
         <div className="flex-1">
           <Link to="/">
             <img
-              className="w-40 p-3 flex items-center justify-center"
+              className="w-32 p-3 flex items-center justify-center"
               src={logo}
               alt="Home"
             />
