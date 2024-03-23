@@ -17,6 +17,9 @@ const NextSteps = ({ myPersona }) => {
         are frequently overshadowed by the noisy fertility wellness influencer
         industry. Based on the literature, here's what we recommend:
       </p>
+      <h2 id="nextSteps" className="text-xl font-bold mt-6 mb-4">
+        Women like you have used...
+      </h2>
       <h2 id="fertilityConsulting" className="text-l font-bold mb-4">
         Fertility Consulting
       </h2>
