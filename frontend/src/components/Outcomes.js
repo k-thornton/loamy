@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMe, unsetSurveyCompleted } from "../features/survey/surveySlice";
+import {
+  fetchMe,
+  fetchUnansweredQuestions,
+  unsetSurveyCompleted,
+} from "../features/survey/surveySlice";
 import ChatBot from "./ChatBot";
 import FullscreenLoader from "./FullscreenLoader";
 import Heading from "./outcomes/Heading";
@@ -23,7 +27,17 @@ function Outcomes() {
   }, [dispatch]);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div>
+        Error: {error}
+        <button
+          className="btn btn-xs"
+          onClick={() => dispatch(unsetSurveyCompleted())}
+        >
+          Return to Survey
+        </button>
+      </div>
+    );
   }
 
   if (loading) {
@@ -37,24 +51,29 @@ function Outcomes() {
   return (
     <div className="w-full md:w-3/4 lg:w-1/2 mx-auto">
       <div className="p-5">
-      <div className="container mx-auto">
-        <Heading />
-        <Intro myPersona={myPersona}/>
-        <YourResults myPersona={myPersona} />
+        <div className="container mx-auto">
+          <Heading />
+          <Intro myPersona={myPersona} />
+          <YourResults myPersona={myPersona} />
 
-        <HowToInterpret myPersona={myPersona}/>
-        <Methodology />
-        <LabValues myPersona={myPersona} />
+          <HowToInterpret myPersona={myPersona} />
+          <Methodology />
+          <LabValues myPersona={myPersona} />
 
-        <WhatToExpect myPersona={myPersona}/>
-        <NextSteps myPersona={myPersona}/>
+          <WhatToExpect myPersona={myPersona} />
+          <NextSteps myPersona={myPersona} />
 
-        <Conclusion myPersona={myPersona}/>
-        <Sources />
+          <Conclusion myPersona={myPersona} />
+          <Sources />
 
-    <button className="btn btn-xs" onClick={() => dispatch(unsetSurveyCompleted())}>Back to Survey</button>
+          <button
+            className="btn btn-xs"
+            onClick={() => dispatch(unsetSurveyCompleted())}
+          >
+            Back to Survey
+          </button>
+        </div>
       </div>
-    </div>
       <ChatBot />
     </div>
   );

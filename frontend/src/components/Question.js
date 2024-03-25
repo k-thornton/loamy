@@ -27,20 +27,22 @@ function Question({ question, selectedOption, setSelectedOption }) {
         )}
       </h2>
       {question.subHeading ? <h3 className='text text-sm mb-4'>{question.subHeading}</h3> : <div className='mb-4'/>}
-      <p className="mt-4 text-md text-gray-600">{question.description}</p>
+      
       {question.answerType === "multipleChoice" ? (
+        <><p className="mt-4 text-md text-gray-600">{question.description}</p>
         <RadioGroup
           options={question.choices}
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
-        />
+        /></>
       ) : (
-        <div className="w-full max-w-xs">
+        <div className="w-full max-w-xs mt-10">
           <label className="form-control w-full">
             <input
               ref={inputRef}
               type="text"
               id={question._id}
+              placeholder={question.description}
               onChange={(e) => setSelectedOption(e.target.value)}
               value={selectedOption}
               className="input input-bordered w-full mt-3"

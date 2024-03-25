@@ -15,9 +15,9 @@ const amhLevel = (age) => {
 const afcLevel = (age) => {
   const ageRange = findClosestRange(age);
   const rangeLookup = {
-    "25-35": { start: 10, end: 13, unit: "follicle count" },
-    "36-40": { start: 8, end: 10, unit: "follicle count" },
-    "41-45": { start: 5, end: 7, unit: "follicle count" },
+    "25-35": { start: 10, end: 13, unit: "follicles" },
+    "36-40": { start: 8, end: 10, unit: "follicles" },
+    "41-45": { start: 5, end: 7, unit: "follicles" },
   };
   return rangeLookup[ageRange] ?? null;
 };
@@ -34,7 +34,7 @@ function findClosestRange(number) {
       return range.label;
     }
   }
-  return null;
+  return ranges[0].label;
 }
 
 const LabValues = ({ myPersona }) => {
@@ -85,7 +85,7 @@ const LabValues = ({ myPersona }) => {
             <strong>Typical AMH level for women like you:</strong> A typical AMH
             level is 1.0 – 4.0 ng/ml, but, depending on age, many women will be
             higher or lower than this range.
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center -mt-10">
               <BulletChart
                 min={1}
                 max={4}
@@ -111,12 +111,12 @@ const LabValues = ({ myPersona }) => {
               </a>
             </div>
           </div>
-          <div>
+          <div className="mt-4">
             <strong>Typical AFC for women like you:</strong> Understanding the
             number of antral follicles present in your ovaries relative to your
             age can provide valuable insight for both you and your fertility
             specialist regarding your ovarian reserve.
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center -mt-10">
               <BulletChart
                 min={0}
                 max={30}

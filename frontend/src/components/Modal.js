@@ -10,7 +10,7 @@ const Modal = () => {
     <dialog className="modal" open={isVisible} onClick={hideModal}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
         {title && <h3 className="font-bold text-lg">{title}</h3>}
-        {text && <p className="py-4">{text}</p>}
+        {text && <p className="pt-4">{text}</p>}
         {content}
         <div className="modal-action">
           <button className="btn btn-accent" onClick={hideModal}>

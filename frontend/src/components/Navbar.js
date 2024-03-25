@@ -9,12 +9,12 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
   const dispatch = useDispatch();
 
   return (
-    <nav>
-      <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <Link to="/">
+    <nav className="top-0">
+      <div className="navbar bg-base-100 p-6 lg:px-8">
+        <div className="flex-1 ">
+          <Link to="/" className=" p-1.5 -m-1.5 ">
             <img
-              className="w-32 p-3 flex items-center justify-center"
+              className="w-24 flex items-center justify-center"
               src={logo}
               alt="Home"
             />

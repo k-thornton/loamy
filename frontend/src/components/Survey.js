@@ -82,10 +82,11 @@ function Survey() {
   };
 
   const handleNextQuestion = () => {
+    console.log(currentQuestion.defaultValue)
     const answer = selectedOption || currentQuestion.defaultValue
     if (answer == null) {
       showModal({
-          title: "Whoa there",
+          title: "There's an issue...",
           text: "Please provide an answer before proceeding.",
         });
         return;
@@ -100,8 +101,8 @@ function Survey() {
       if ((minValue !== undefined && numericAnswer < minValue) ||
           (maxValue !== undefined && numericAnswer > maxValue)) {
         showModal({
-          title: "Hang on!",
-          text: `Your answer should be between ${minValue} and ${maxValue}`,
+          title: "There's an issue...",
+          text: `Your answer needs to be between ${minValue} and ${maxValue}`,
         });
         return;
       }
