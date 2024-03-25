@@ -45,6 +45,19 @@ function transformData(input, label) {
   return sortedData.reverse();
 }
 
+const info = {
+  // This is a little too hard coded for my liking, but it'll work for now.
+  // I'd prefer the chart display to not have any idea what its data will be.
+  "Day Five Embryos":
+    "The number of frozen embryos that women like you typically have at this point in their fertility journey.",
+  "Eggs Retrieved":
+    "Our data indicates that women like you have had this many eggs retrieved at this point in their fertility journey.",
+  "Fertilized Eggs":
+    "Our data indicates that women like you have had this many eggs fertilized at this point in their fertility journey.",
+  "Mature Eggs":
+    "Our data indicates that women like you have this many mature eggs.",
+};
+
 function ChartCards({ myPersona }) {
   return (
     <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4 min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
@@ -60,9 +73,29 @@ function ChartCards({ myPersona }) {
                 id={outcomeType}
                 className="relative card-body pt-5 pb-0 flex items-center justify-center"
               >
-                <h2 className="card-title text-center">{outcomeType}</h2>
+                <div className="flex items-center align-middle">
+                  <h2 className="card-title text-center mr-1">{outcomeType}</h2>
+                  <div className="tooltip" data-tip={info[outcomeType]}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                </div>
               </div>
-              <div className="p-5 w-full h-96"><RadialBar data={binData} /></div>
+              <div className="p-5 w-full h-96">
+                <RadialBar data={binData} />
+              </div>
             </div>
           );
         }

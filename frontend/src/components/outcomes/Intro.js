@@ -22,7 +22,7 @@ const Intro = ({ myPersona }) => {
 
     const uncertain = (goal) => {
       return <p className="mb-4 text">
-        Feeling uncertain about whether {myPersona.goal.toLowerCase()} is the
+        Feeling uncertain about whether {goal} is the
         right choice for you — whether from a physical, emotional, financial, or
         mental perspective — is completely natural. However, the prevalent lack of
         informed consent in these crucial reproductive health decisions is not
