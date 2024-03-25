@@ -158,7 +158,7 @@
     "questionNumber": 6,
     "tag": "amh",
     "text": "What is your Anti-Müllerian Hormone level?",
-    "description": "What is your AMH level (ng/mL):",
+    "description": "Enter your AMH level (ng/mL):",
     "tooltip": "AMH levels give insights into your ovarian reserve but are not the sole indicator of fertility.",
     "answerType": "freeEntry",
     "expectedDataType": "numeric",

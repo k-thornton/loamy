@@ -18,6 +18,7 @@ module.exports = {
           "neutral": "#534D56", //Davy's Gray
           "base-100": "#F8F1FF", //Magnolia (pale purple)
           "neutral-content": "#F5F5F5", //White Smoke
+          "primary-content": "#F5F5F5", //i.e. wherever you display content on top of "primary" color
           // "accent-2": "#F8F1FF",
           // "loamy-home": "#edf4f3",
           // "loamy-green": "#6c9189",

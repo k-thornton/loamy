@@ -16,7 +16,7 @@ function Question({ question, selectedOption, setSelectedOption }) {
 
   return (
     <div className="mb-8 flex flex-col items-center justify-center relative w-full">
-      <h2 className="text-xl font-semibold text-gray-800 flex items-center justify-center">
+      <h2 className="text text-xl font-semibold text-gray-800 flex items-center justify-center">
         {question.text}
         {question.tooltip && (
           <div className="tooltip tooltip-right ml-2" data-tip={question.tooltip}>
@@ -26,6 +26,7 @@ function Question({ question, selectedOption, setSelectedOption }) {
           </div>
         )}
       </h2>
+      {question.subHeading ? <h3 className='text text-sm mb-4'>{question.subHeading}</h3> : <div className='mb-4'/>}
       <p className="mt-4 text-md text-gray-600">{question.description}</p>
       {question.answerType === "multipleChoice" ? (
         <RadioGroup
@@ -40,7 +41,6 @@ function Question({ question, selectedOption, setSelectedOption }) {
               ref={inputRef}
               type="text"
               id={question._id}
-              placeholder={question.description}
               onChange={(e) => setSelectedOption(e.target.value)}
               value={selectedOption}
               className="input input-bordered w-full mt-3"
