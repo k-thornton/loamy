@@ -6,11 +6,11 @@ import Callout from "../Callout";
 const integrativeSteps = <><h3 className="font-bold text-lg mb-2">Integrative Steps</h3>
 <ul className="list-none space-y-2">
   {[
-    <p className="mb-4 text">Mental Health Support <a className="link "href="#mindfulness" >Link</a></p>,
-    <p className="mb-4 text">Prenatal Vitamins & Supplements <a className="link "href="#supplements" >Link</a></p>,
-    <p className="mb-4 text">Acupuncture <a className="link "href="#acupuncture" >Link</a></p>,
-    <p className="mb-4 text">Nutrition Modifications <a className="link "href="#lifestyle" >Link</a></p>,
-    <p className="mb-4 text">Omission of Chemicals & Drugs <a className="link "href="#lifestyle" >Link</a></p>,
+    <p className="text"><a className="link "href="#mindfulness" >Mental Health Support</a></p>,
+    <p className="text"><a className="link "href="#supplements" >Prenatal Vitamins & Supplements</a></p>,
+    <p className="text"><a className="link "href="#acupuncture" >Acupuncture</a></p>,
+    <p className="text"><a className="link "href="#lifestyle" >Nutrition Modifications</a></p>,
+    <p className="text"><a className="link "href="#lifestyle" >Omission of Chemicals & Drugs</a></p>,
   ].map((step, index) => (
     <li key={index} className="flex">
       <span className="text-primary mr-2">■</span>
