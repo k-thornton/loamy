@@ -13,6 +13,7 @@ import favicon from "../components/static/favicon.png";
 import Peek from "../components/home/Peek";
 import About from "../components/home/About";
 import OurTeam from "../components/home/OurTeam";
+import FAQ from "../components/home/FAQ";
 
 const navigation = [
   { name: "Women Like Me", href: "#" },
@@ -215,6 +216,7 @@ export default function Example() {
     <Peek/>
     <About/>
     <OurTeam/>
+    <FAQ/>
 
     </div>
   );
