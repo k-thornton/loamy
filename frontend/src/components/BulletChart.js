@@ -61,20 +61,22 @@ function BulletChart({ min, max, highlightStart, highlightEnd, marker, metricNam
         }
       }];
 
-    const layout = { ...chartSize, paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)', annotations: [
-        {
-            x: ((highlightStart - min) + (highlightEnd - highlightStart) / 2) / (max - min),
-            y: 1,
-            xref: 'paper',
-            yref: 'paper',
-            text: `For women your age, the typical range is ${highlightStart} to ${highlightEnd} ${unit}`,
-            showarrow: true,
-            arrowhead: 1,
-            ax: 0,
-            ay: -40,
-            font: {size: 12, color: textColor},
-        }
-    ] };
+    const layout = { ...chartSize, paper_bgcolor: 'rgba(0,0,0,0)', plot_bgcolor: 'rgba(0,0,0,0)',
+    // annotations: [
+    //     {
+    //         x: ((highlightStart - min) + (highlightEnd - highlightStart) / 2) / (max - min),
+    //         y: 1,
+    //         xref: 'paper',
+    //         yref: 'paper',
+    //         text: `For women your age, the typical range is ${highlightStart} to ${highlightEnd} ${unit}`,
+    //         showarrow: true,
+    //         arrowhead: 1,
+    //         ax: 0,
+    //         ay: -40,
+    //         font: {size: 12, color: textColor},
+    //     }
+    // ] 
+  };
     const config = { responsive: true };
 
     return (<div ref={chartContainerRef}>

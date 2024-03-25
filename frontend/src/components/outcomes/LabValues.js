@@ -8,16 +8,16 @@ const amhLevel = (age) => {
   const rangeLookup = {
     "25-35": { start: 1.5, end: 3, unit: "ng/mL" },
     "36-40": { start: 1, end: 1.5, unit: "ng/mL" },
-    "41-45": { start: 0.5, end: 1, unit: "ng/mL" }
+    "41-45": { start: 0.5, end: 1, unit: "ng/mL" },
   };
   return rangeLookup[ageRange] ?? null;
 };
 const afcLevel = (age) => {
   const ageRange = findClosestRange(age);
   const rangeLookup = {
-    "25-35": { start: 10, end: 13, unit: "follicles" },
-    "36-40": { start: 8, end: 10, unit: "follicles" },
-    "41-45": { start: 5, end: 7, unit: "follicles" }
+    "25-35": { start: 10, end: 13, unit: "follicle count" },
+    "36-40": { start: 8, end: 10, unit: "follicle count" },
+    "41-45": { start: 5, end: 7, unit: "follicle count" },
   };
   return rangeLookup[ageRange] ?? null;
 };
@@ -85,8 +85,21 @@ const LabValues = ({ myPersona }) => {
             <strong>Typical AMH level for women like you:</strong> A typical AMH
             level is 1.0 – 4.0 ng/ml, but, depending on age, many women will be
             higher or lower than this range.
-            <BulletChart min={1} max={4} highlightStart={amh.start} highlightEnd={amh.end} marker={myAmh} metricName={"AMH"} unit={amh.unit}/>
-
+            <div className="flex flex-col items-center">
+              <BulletChart
+                min={1}
+                max={4}
+                highlightStart={amh.start}
+                highlightEnd={amh.end}
+                marker={myAmh}
+                metricName={"AMH"}
+                unit={amh.unit}
+              />
+              <div className="text text-sm -mt-10 mb-10">
+                For women your age, the typical range is {amh.start} to{" "}
+                {amh.end} {amh.unit}
+              </div>
+            </div>
             <div className="mb-4">
               <a
                 className="link"
@@ -103,7 +116,21 @@ const LabValues = ({ myPersona }) => {
             number of antral follicles present in your ovaries relative to your
             age can provide valuable insight for both you and your fertility
             specialist regarding your ovarian reserve.
-            <BulletChart min={0} max={30} highlightStart={afc.start} highlightEnd={afc.end} marker={myAfc} metricName={"AFC"} unit={afc.unit}/>
+            <div className="flex flex-col items-center">
+              <BulletChart
+                min={0}
+                max={30}
+                highlightStart={afc.start}
+                highlightEnd={afc.end}
+                marker={myAfc}
+                metricName={"AFC"}
+                unit={afc.unit}
+              />
+              <div className="text text-sm -mt-10 mb-10">
+                For women your age, the typical range is {afc.start} to{" "}
+                {afc.end} {afc.unit}
+              </div>
+            </div>
             <div>
               <a
                 className="link"
