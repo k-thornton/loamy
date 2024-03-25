@@ -20,19 +20,15 @@ export const ReadMore = ({ children, maxItems = 1 }) => {
       {displayedChildren.map((child, index) => (
         cloneElement(child, { key: index })
       ))}
-      {!isExpanded && itCanOverflow && (
-        <div className="fade-out-effect"></div>
-      )}
-      {itCanOverflow && (
+      {(itCanOverflow && !isExpanded) && (
         <button
-          className="btn btn-gray-100 focus:outline-none mt-5 focus:ring focus:ring-accent"
+          className="btn btn-gray-100 btn-right focus:outline-none mt-5 focus:ring focus:ring-accent"
           onClick={handleExpandClick}
           aria-expanded={isExpanded}
         >
-          {isExpanded ? 'Show Less' : 'Show More'}
-        </button>
-      )}
-      {/* <hr className='border'/> */}
+          Show More
+        </button>)
+      }
     </div>
   );
 };

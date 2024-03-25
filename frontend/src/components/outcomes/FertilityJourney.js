@@ -15,7 +15,7 @@ const FertilityJourney = ({ stepsCompleted = 5 }) => {
 
   return (
     <div className="">
-    <ul className="timeline timeline-vertical lg:timeline-horizontal overflow-x-auto">
+    <ul className="timeline timeline-vertical overflow-x-auto">
       {events.map((event, index) => (
         <li key={index}>
           {index < stepsCompleted ? (
