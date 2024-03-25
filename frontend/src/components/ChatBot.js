@@ -135,7 +135,7 @@ const ChatBot = () => {
                 <ChatDisclaimer />
                 <div className="chat chat-start flex justify-start">
                   <div className="chat-bubble rounded-lg p-2 bg-primary text-white">
-                    Please type a question to begin
+                    Ask Loamy a question.
                   </div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ const ChatBot = () => {
             {isLoading && (
               <div className="chat chat-start flex justify-start">
                 <div className="chat-bubble skeleton rounded-lg p-2 bg-gray-200 text-black">
-                  Bot is thinking...
+                  Thinking...
                 </div>
               </div>
             )}
