@@ -71,15 +71,11 @@ app.add_middleware(SlowAPIMiddleware)
 
 @app.exception_handler(RateLimitExceeded)
 async def custom_rate_limit_exceeded_handler(request: Request, exc: RateLimitExceeded):
+    # This is just to prevent someone from spamming the OpenAI endpoint and racking up a huge bill.
     return JSONResponse(
         status_code=status.HTTP_429_TOO_MANY_REQUESTS,
         content={"detail": "Too many requests, please try again in a minute."},
     )
-
-
-# Initialize user state
-# TODO: move this off into s3 or something
-user_states = {}
 
 
 # Define Retrieval
@@ -93,7 +89,6 @@ def retrieve(user_input, user_id):
         key=lambda x: x["score"],
         reverse=True,
     )
-    print(res_query)
     # Construct the contexts
     contexts = []
     for idx, item in enumerate(sorted_items):
@@ -104,27 +99,11 @@ def retrieve(user_input, user_id):
                 context += f"\nLearn more: {metadata.get("source")}"
             contexts.append(context)
 
-    # Retrieve and format previous conversation history for a specific user_id
-    print(contexts)
-    last_conversation = (
-        user_states[user_id].get("previous_queries", [])[-1]
-        if user_states[user_id].get("previous_queries", [])
-        else None
-    )
-    previous_conversation = (
-        f"User: {last_conversation[0]}\nAssistant: {last_conversation[1]}"
-        if last_conversation
-        else ""
-    )
-
     # Construct the augmented query string with contexts, chat history, and user input
     augmented_query = (
         "CONTEXT: "
         + "\n\n"
         + "\n\n".join(contexts)
-        + "\n\n-----\n\n"
-        + "CHAT HISTORY: \n"
-        + previous_conversation
         + "\n\n-----\n\n"
         + "User: "
         + user_input
@@ -147,9 +126,6 @@ async def react_description(query: Query, request: Request):
     user_id = query.user_id
     user_input = query.user_input.strip()
 
-    if user_id not in user_states:
-        user_states[user_id] = {"previous_queries": [], "timestamp": time.time()}
-
     try:
         retrieve(user_input, user_id)
 
@@ -158,7 +134,6 @@ async def react_description(query: Query, request: Request):
         print(augmented_query)
         res = client.chat.completions.create(
             temperature=0.0,
-            # model='gpt-4',
             model=conversation_model,
             messages=[
                 {"role": "system", "content": primer},
@@ -167,18 +142,10 @@ async def react_description(query: Query, request: Request):
         )
         response = res.choices[0].message.content
 
-        # Save the response to a thread
-        user_states[user_id] = {
-            "previous_queries": user_states[user_id].get("previous_queries", [])
-            + [(user_input, response)],
-            "timestamp": time.time(),
-        }
         return {"output": response}
 
     except ValueError as e:
         print(e)
         raise HTTPException(status_code=400, detail="Invalid input")
-
-
 
 # Local start command: uvicorn app:app --reload --port 8800
