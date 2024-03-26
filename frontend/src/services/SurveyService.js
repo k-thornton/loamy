@@ -1,5 +1,6 @@
 import axios from 'axios';
-const BASE_URL = '/api/survey';
+const SERVER_URL = process.env.REACT_APP_BACKEND_URL || "";
+const BASE_URL = `${SERVER_URL}/api/survey`;
 const withCredentials = true;
 
 const fetchQuestions = async () => {

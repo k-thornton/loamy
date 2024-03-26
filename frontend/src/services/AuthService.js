@@ -3,7 +3,8 @@ import { store } from "../app/store";
 import { setAuthInfo, logout, fetchGreeting } from "../features/auth/authSlice";
 
 const withCredentials = true;
-const BASE_URL = '/api/auth';
+const SERVER_URL = process.env.REACT_APP_BACKEND_URL || "";
+const BASE_URL = `${SERVER_URL}/api/auth`;
 
 const setAxiosAuthHeader = (jwt) => {
     if (jwt) {

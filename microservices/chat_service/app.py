@@ -10,8 +10,6 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
 from starlette.status import HTTP_429_TOO_MANY_REQUESTS
-import tiktoken
-import time
 
 main.load_dotenv()
 client = OpenAI()
@@ -38,16 +36,6 @@ score_threshold = 0.3
 
 with open("system_prompt.txt", "r") as sys_file:
     primer = sys_file.read()
-
-
-# #####################################################
-tokenizer = tiktoken.get_encoding("cl100k_base")
-
-
-# create the length function
-def tiktoken_len(text):
-    tokens = tokenizer.encode(text, disallowed_special=())
-    return len(tokens)
 
 
 def get_user_id(request: Request):

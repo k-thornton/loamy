@@ -4,7 +4,7 @@ const axios = require('axios');
 const authenticateToken = require("../middleware/authenticateToken");
 const User = require("../models/User");
 
-const CHAT_SERVICE_URL = 'http://127.0.0.1:7000/chat';
+const CHAT_SERVICE_URL = process.env.CHAT_SERVICE_URL || 'http://127.0.0.1:7000/chat';
 
 // POST endpoint for receiving messages and sending replies
 router.post('/', authenticateToken, async (req, res) => {
