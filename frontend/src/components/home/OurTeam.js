@@ -24,7 +24,7 @@ export default function OurTeam() {
   return (
     <div className="py-24 md:py-32 lg:py-40 ">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3 ">
-        <div className="mx-auto max-w-2xl lg:mx-0 ">
+        <div className="mx-auto max-w-2xl ">
           <h2 className="text-3xl font-bold tracking-tight text-neutral sm:text-4xl">
             Our team
           </h2>
