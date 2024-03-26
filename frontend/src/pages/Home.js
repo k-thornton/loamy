@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import CardPeek from "../components/home/CardPeek";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import {
@@ -14,137 +13,14 @@ import Peek from "../components/home/Peek";
 import About from "../components/home/About";
 import OurTeam from "../components/home/OurTeam";
 import FAQ from "../components/home/FAQ";
-
-const navigation = [
-  { name: "Women Like Me", href: "#" },
-  { name: "About", href: "#" },
-  { name: "FAQ", href: "#" },
-];
-
-const stats = [
-{ id: 1, name: 'Transactions every 24 hours', value: '44 million' },
-{ id: 2, name: 'Assets under holding', value: '$119 trillion' },
-{ id: 3, name: 'New users annually', value: '46,000' },
-];
-
-const features = [
-  {
-    name: "Push to deploy.",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: CloudArrowUpIcon,
-  },
-  {
-    name: "SSL certificates.",
-    description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-    icon: LockClosedIcon,
-  },
-  {
-    name: "Database backups.",
-    description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
-    icon: ServerIcon,
-  },
-];
+import Header from "../components/home/Header";
 
 export default function Example() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div>
-      <div className="bg-white">
-        <header className="absolute inset-x-0 top-0 z-50">
-          <nav
-            className="flex items-center justify-between p-6 lg:px-8"
-            aria-label="Global"
-          >
-            <div className="flex lg:flex-1">
-              <div className="-m-1.5 p-1.5">
-                <span className="sr-only">Loamy</span>
-                <img className="h-auto w-24" src={logo} alt="" />
-              </div>
-            </div>
-            <div className="flex lg:hidden">
-              <button
-                type="button"
-                className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(true)}
-              >
-                <span className="sr-only">Open main menu</span>
-                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="hidden lg:flex lg:gap-x-12">
-              {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  {item.name}
-                </a>
-              ))}
-            </div>
-            {/* The one at the top when it's large */}
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <Link
-                to="/womenlikeme"
-                className="btn btn-primary text-sm font-semibold leading-6 drop-shadow-xl hover:bg-neutral"
-              >
-                Take the Quiz
-              </Link>
-            </div>
-          </nav>
-          <Dialog
-            as="div"
-            className="lg:hidden"
-            open={mobileMenuOpen}
-            onClose={setMobileMenuOpen}
-          >
-            <div className="fixed inset-0 z-50" />
-            <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-              <div className="flex items-center justify-between">
-                <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Loamy</span>
-                  <img className="h-8 w-auto" src={logo} alt="" />
-                </a>
-                <button
-                  type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="sr-only">Close menu</span>
-                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div>
-              <div className="mt-6 flow-root">
-                <div className="-my-6 divide-y divide-gray-500/10">
-                  <div className="space-y-2 py-6">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                  <div className="py-6">
-                    {/* The one in the small dropdown dialog panel */}
-                    <Link
-                      to="/womenlikeme"
-                      className="btn btn-primary btn-outline -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-neutral-content"
-                    >
-                      Take the Quiz <span aria-hidden="true">&rarr;</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </Dialog.Panel>
-          </Dialog>
-        </header>
+      <div className="bg-base-100">
+        <Header/>
 
         <div className="relative isolate px-6 pt-14 lg:px-8">
           <div
@@ -152,7 +28,7 @@ export default function Example() {
             aria-hidden="true"
           >
             <div
-              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#1D8A99] to-[#DECDF5] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
               style={{
                 clipPath:
                   "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
@@ -160,21 +36,12 @@ export default function Example() {
             />
           </div>
           <div className="mx-auto max-w-2xl pt-28 pb-5">
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              {/* <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Announcing our next round of funding.{" "}
-              <a href="#" className="font-semibold text-indigo-600">
-                <span className="absolute inset-0" aria-hidden="true" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div> */}
-            </div>
-            <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <div className="text-center mt-8">
+              <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl">
                 <span className="inline-block">Empowering Your</span>
                 <span className="inline-block">Fertility Journey</span>
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              <p className="mt-6 text-lg leading-8 text-neutral-600">
                 Loamy’s Women Like Me quiz helps you navigate the complex, often
                 emotional fertility treatment process. Sharing real, raw data
                 and real-world experiences from women who’ve been there, we
@@ -188,12 +55,6 @@ export default function Example() {
                 >
                   <button>Take the Quiz</button>
                 </Link>
-                <a
-                  href="#"
-                  className="text-sm font-semibold leading-6 text-gray-900"
-                >
-                  Learn more <span aria-hidden="true">→</span>
-                </a>
               </div>
             </div>
           </div>
@@ -202,7 +63,7 @@ export default function Example() {
             aria-hidden="true"
           >
             <div
-              className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+              className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#1D8A99] to-[#DECDF5] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
               style={{
                 clipPath:
                   "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
@@ -210,14 +71,13 @@ export default function Example() {
             />
           </div>
         </div>
-      </div>
 
       {/* peek */}
-    <Peek/>
-    <About/>
-    <OurTeam/>
-    <FAQ/>
-
+      <Peek />
+      <About />
+      <OurTeam />
+      <FAQ />
+      </div>
     </div>
   );
 }

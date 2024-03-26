@@ -2,7 +2,7 @@ import React from 'react';
 
 const IVFDataInfo = () => {
   return (
-    <div className="text-gray-700 p-4">
+    <div className="text-neutral-700 p-4">
       <h1 className="text-2xl font-bold mb-4">IVF Hunger Games Datasheet - r/infertility Subreddit</h1>
       <p className="mb-4 text">
         The data is from over 4,000 IVF patients who have contributed their experiences to the <strong>IVF Hunger Games Datasheet</strong> in the r/infertility subreddit. This resource provides insights into the outcomes and protocols experienced by women with biologically female reproductive organs (uterus, ovaries, vagina, etc.) during the egg retrieval phase of IVF treatment for infertility.

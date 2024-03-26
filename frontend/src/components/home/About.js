@@ -2,8 +2,8 @@ import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/2
 
 export default function About() {
   return (
-    <div className="relative isolate overflow-hidden bg-white pt-24 sm:pt-32">
-      <div
+    <div className="relative isolate overflow-hidden pt-24 sm:pt-32">
+      {/* <div
         className="absolute -top-80 left-[max(6rem,33%)] -z-10 transform-gpu blur-3xl sm:left-1/2 md:top-20 lg:ml-20 xl:top-3 xl:ml-56"
         aria-hidden="true"
       >
@@ -14,8 +14,8 @@ export default function About() {
               'polygon(63.1% 29.6%, 100% 17.2%, 76.7% 3.1%, 48.4% 0.1%, 44.6% 4.8%, 54.5% 25.4%, 59.8% 49.1%, 55.3% 57.9%, 44.5% 57.3%, 27.8% 48%, 35.1% 81.6%, 0% 97.8%, 39.3% 100%, 35.3% 81.5%, 97.2% 52.8%, 63.1% 29.6%)',
           }}
         />
-      </div>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      </div> */}
+      <div className="mx-auto max-w-7xl px-6 lg:px-8" id="about">
         <div className="mx-auto max-w-2xl lg:mx-0">
           {/* <p className="text-lg font-semibold leading-8 tracking-tight text-indigo-600">Deploy faster</p> */}
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral sm:text-4xl">About Loamy</h1>
@@ -27,23 +27,7 @@ export default function About() {
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:mt-10 lg:max-w-none lg:grid-cols-12">
           <div className="relative lg:order-last lg:col-span-5">
-            <svg
-              className="absolute -top-[40rem] left-1 -z-10 h-[64rem] w-[175.5rem] -translate-x-1/2 stroke-gray-900/10 [mask-image:radial-gradient(64rem_64rem_at_111.5rem_0%,white,transparent)]"
-              aria-hidden="true"
-            >
-              <defs>
-                <pattern
-                  id="e87443c8-56e4-4c20-9111-55b82fa704e3"
-                  width={200}
-                  height={200}
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path d="M0.5 0V200M200 0.5L0 0.499983" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" strokeWidth={0} fill="url(#e87443c8-56e4-4c20-9111-55b82fa704e3)" />
-            </svg>
-            <figure className="border-l border-indigo-600 pl-8">
+            <figure className="border-l border-primary pl-8">
               <blockquote className="text-xl font-semibold leading-8 tracking-tight text-neutral">
                 <p>
                 "This is enlightenment. Thank you for helping me understand the data and how that impacts my options."
@@ -52,7 +36,7 @@ export default function About() {
               <figcaption className="mt-8 flex gap-x-4">
               <div className="text-sm leading-6">
                   <div className="font-semibold text-neutral">Priya</div>
-                  <div className="text-gray-600">age 32</div>
+                  <div className="text-neutral-600">age 32</div>
                 </div>
               </figcaption>
             </figure>

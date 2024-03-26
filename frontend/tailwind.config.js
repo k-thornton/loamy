@@ -4,7 +4,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {fontFamily: {
+      heading: ['Montserrat', 'ui-sans-serif', 'system-ui'],
+      body: ['Questrial', 'ui-serif', 'Georgia'],
+    },},
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
 

@@ -1,14 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/questrial/400.css';
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+body, p {
+  font-family: 'Questral', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
 }
 
 code {
