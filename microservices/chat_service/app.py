@@ -84,7 +84,7 @@ def retrieve(user_input, user_id):
         if metadata:
             context = metadata.get("text")
             if context and metadata.get("source"):
-                context += f"\nLearn more: {metadata.get("source")}"
+                context += f"\nLearn more: {metadata.get('source')}"
             contexts.append(context)
 
     # Construct the augmented query string with contexts, chat history, and user input
