@@ -156,20 +156,36 @@ def calculate():
     ]
 
     df = load_data()
-    outcome_options = {
-        "Eggs Retrieved": "eggs_retrieved_bins",
-        "Mature Eggs": "eggs_mature_bins",
-        "Fertilized Eggs": "eggs_fertilized_bins",
-        "Day Five Embryos": "day_5_embryos_bins",
-    }
+    outcome_options = [
+        {
+            "name": "Eggs Retrieved",
+            "data_name": "eggs_retrieved_bins",
+            "unit": "eggs retrieved"
+        },
+        {
+            "name": "Mature Eggs",
+            "data_name": "eggs_mature_bins",
+            "unit": "mature eggs"
+        },
+        {
+            "name": "Fertilized Eggs",
+            "data_name": "eggs_fertilized_bins",
+            "unit": "fertilized eggs",
+        },
+        {
+            "name": "Day Five Embryos",
+            "data_name": "day_5_embryos_bins",
+            "unit": "embryos frozen",
+        },
+    ]
     min_df_size = 50  # Pulled from streamlit code
     filtered_df_list = filter_dataframe(df, diagnosis, age, amh, afc, min_df_size)
-    outcomes = {
-        outcome_name: get_outcomes(
-            filtered_df_list, min_df_size, outcome_options[outcome_name]
-        )
-        for outcome_name in outcome_options
-    }
+    outcomes = [
+        {"name": outcome["name"],
+         "data": get_outcomes(filtered_df_list, min_df_size, outcome["data_name"]),
+         "unit": outcome["unit"]}
+        for outcome in outcome_options
+    ]
 
     result = {
         "familiarity": familiarity,

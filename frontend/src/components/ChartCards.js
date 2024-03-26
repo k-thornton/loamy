@@ -1,10 +1,10 @@
 import React from "react";
 import RadialBar from "./RadialBar";
 
-function transformData(input, label) {
+function transformData(input, label, unit) {
   // This code squishes the calculation data into the format expected by the RadialBar chart
   const unsortedData = Object.keys(input.groups).map((key) => ({
-    id: `${input.labels[key]}`,
+    id: `${input.labels[key]} ${unit}`,
     data: [
       {
         x: input.labels[key],
@@ -61,21 +61,24 @@ const info = {
 function ChartCards({ myPersona }) {
   return (
     <div className="grid grid-cols-1 2xl:grid-cols-2 gap-4 min-w-full justify-center items-center overflow-y-auto p-10 min-h-screen">
-      {Object.entries(myPersona.outcomes).map(
-        ([outcomeType, outcomeData], index) => {
-          const binData = transformData(outcomeData, outcomeType);
+      {myPersona.outcomes.map(
+        (outcome, index) => {
+          const data = outcome.data;
+          const name = outcome.name;
+          const unit = outcome.unit;
+          const binData = transformData(data, name, unit);
           return (
             <div
-              key={outcomeType}
+              key={name}
               className="card bg-base-100 shadow-xl m-4 aspect-w-1 aspect-h-1 min-w-100"
             >
               <div
-                id={outcomeType}
+                id={name}
                 className="relative card-body pt-5 pb-0 flex items-center justify-center"
               >
                 <div className="flex items-center align-middle">
-                  <h2 className="card-title text-center mr-1">{outcomeType}</h2>
-                  <div className="tooltip" data-tip={info[outcomeType]}>
+                  <h2 className="card-title text-center mr-1">{name}</h2>
+                  <div className="tooltip" data-tip={info[name]}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-5 w-5"
