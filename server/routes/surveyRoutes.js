@@ -5,7 +5,7 @@ const User = require("../models/User");
 const authenticateToken = require("../middleware/authenticateToken");
 const axios = require("axios");
 
-const CALCULATION_SERVICE_URL = process.env.CALCULATION_SERVICE_URL || "http://localhost:6000/calculate";
+const CALCULATION_SERVICE_URL = process.env.CALCULATION_SERVICE_URL || "http://127.0.0.1:6000/calculate";
 
 async function fetchQuestions(user, filter = "all") {
   // Fetch all current questions from the database regardless of the filter
