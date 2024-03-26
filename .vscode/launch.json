@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch Backend Node.js",
+        "type": "node",
+        "request": "launch",
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}/server/index.js", // Adjust this path to your Node.js entry point
+        "cwd": "${workspaceFolder}/server",
+        "env": {
+          "NODE_ENV": "development"
+        },
+        "console": "integratedTerminal"
+      },
+      {
+        "name": "Launch Frontend React App",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}/frontend", // Adjust this path to your React app's root folder
+        "preLaunchTask": "Start React App"
+      },
+      {
+        "name": "Launch Calc Service",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/microservices/calc_service/calculation_service.py",
+        "cwd": "${workspaceFolder}/microservices/calc_service",
+        "console": "integratedTerminal",
+        "justMyCode": true,
+        "stopOnEntry": false
+      },
+      {
+        "name": "Launch Chat Service",
+        "type": "debugpy",
+        "request": "launch",
+        "module": "uvicorn",
+        "args": ["app:app", "--reload", "--port", "7000"],
+        "jinja": false,
+        "cwd": "${workspaceFolder}/microservices/chat_service",
+      }
+    ],
+    "compounds": [
+      {
+        "name": "Launch Full Stack",
+        "configurations": ["Launch Backend Node.js", "Launch Frontend React App", "Launch Calc Service", "Launch Chat Service"]
+      }
+    ]
+  }
+  
