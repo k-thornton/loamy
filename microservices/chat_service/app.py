@@ -129,7 +129,7 @@ async def react_description(query: Query, request: Request):
             ],
         )
         response = res.choices[0].message.content
-
+        print(response)
         return {"output": response}
 
     except ValueError as e:

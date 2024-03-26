@@ -31,7 +31,7 @@ const ChatBot = () => {
 
   function linkify(text) {
     const markdownLinkRegex =
-      /\[([^\]]+)\]\((https?:\/\/[^\s)]+?(?:\([^\s)]+?\))*?)\)/g;
+      /\[([^\]]+)]\(((?:https?:\/\/)?.+?)\)$/gm;
 
     const parts = [];
     let lastIndex = 0;
@@ -70,9 +70,10 @@ const ChatBot = () => {
     setMessages([...messages, newUserMessage]);
     setIsLoading(true); // Start loading
     scrollToBottom();
+    const messagesLog = messages.map(({ text, sender }) => `${sender}: ${text}`).join(' | ');
 
     // Await the response from sendQuery and handle errors gracefully
-    const response = await sendQuery(userInput);
+    const response = await sendQuery(`Previous Messages: ${messagesLog} Current Message:${userInput}`);
     setIsLoading(false); // Stop loading
 
     if (response.error) {
@@ -135,7 +136,7 @@ const ChatBot = () => {
                 <ChatDisclaimer />
                 <div className="chat chat-start flex justify-start">
                   <div className="chat-bubble rounded-lg p-2 bg-primary text-white">
-                    Ask Loamy a question.
+                    Please type a question to begin
                   </div>
                 </div>
               </div>
@@ -161,7 +162,7 @@ const ChatBot = () => {
             {isLoading && (
               <div className="chat chat-start flex justify-start">
                 <div className="chat-bubble skeleton rounded-lg p-2 bg-gray-200 text-black">
-                  Thinking...
+                  Bot is thinking...
                 </div>
               </div>
             )}
@@ -181,7 +182,7 @@ const ChatBot = () => {
             <button
               onClick={handleSendClick}
               disabled={isLoading}
-              className="btn btn-accent text-white p-2 rounded-lg disabled:bg-gray-300"
+              className="btn btn-neutral text-white p-2 rounded-lg disabled:bg-gray-300"
             >
               Send
             </button>
