@@ -148,4 +148,4 @@ async def react_description(query: Query, request: Request):
         print(e)
         raise HTTPException(status_code=400, detail="Invalid input")
 
-# Local start command: uvicorn app:app --reload --port 8800
+# Local start command: uvicorn app:app --reload --port 7000
