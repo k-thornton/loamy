@@ -79,13 +79,23 @@ def get_outcomes(filtered_df_list, threshold, category):
     df_final_grouped = df_final_grouped[df_final_grouped["percent"] > 0]
     df_final_grouped = df_final_grouped.sort_values(by="percent", ascending=False)
     return {
-        'labels': df_final_grouped[category].to_dict(),
-        'groups': df_final_grouped.percent.to_dict(),
-        'highest': df_final_grouped[category].iloc[0],
-        'highest_percent': df_final_grouped.percent.iloc[0],
-        'num': len(df_final),
-        'index': index,
+        "labels": df_final_grouped[category].to_dict(),
+        "groups": df_final_grouped.percent.to_dict(),
+        "highest": df_final_grouped[category].iloc[0],
+        "highest_percent": df_final_grouped.percent.iloc[0],
+        "num": len(df_final),
+        "index": index,
     }
+
+
+def find_range_by_age(age, ranges):
+    for range_dict in ranges:
+        if range_dict["start_age"] <= age <= range_dict["end_age"]:
+            return range_dict
+    return ranges[
+        0
+    ]  # We should be rejecting values out of range, but returning the first range as a safe default
+
 
 @app.route("/calculate", methods=["POST"])
 def calculate():
@@ -98,13 +108,69 @@ def calculate():
     familiarity = data.get("familiarity")
     stage = data.get("stage")
     location = data.get("location")
-    
+    amh_ranges = [
+        {
+            "start_age": 25,
+            "end_age": 35,
+            "start_val": 1.5,
+            "end_val": 3,
+            "unit": "ng/mL",
+        },
+        {
+            "start_age": 36,
+            "end_age": 40,
+            "start_val": 1,
+            "end_val": 1.5,
+            "unit": "ng/mL",
+        },
+        {
+            "start_age": 41,
+            "end_age": 45,
+            "start_val": 0.5,
+            "end_val": 1,
+            "unit": "ng/mL",
+        },
+    ]
+    afc_ranges = [
+        {
+            "start_age": 25,
+            "end_age": 35,
+            "start_val": 10,
+            "end_val": 13,
+            "unit": "follicles",
+        },
+        {
+            "start_age": 36,
+            "end_age": 40,
+            "start_val": 8,
+            "end_val": 10,
+            "unit": "follicles",
+        },
+        {
+            "start_age": 41,
+            "end_age": 45,
+            "start_val": 5,
+            "end_val": 7,
+            "unit": "follicles",
+        },
+    ]
+
     df = load_data()
-    outcome_options = {'Eggs Retrieved': 'eggs_retrieved_bins', 'Mature Eggs': 'eggs_mature_bins', 'Fertilized Eggs': 'eggs_fertilized_bins', 'Day Five Embryos': 'day_5_embryos_bins'}
+    outcome_options = {
+        "Eggs Retrieved": "eggs_retrieved_bins",
+        "Mature Eggs": "eggs_mature_bins",
+        "Fertilized Eggs": "eggs_fertilized_bins",
+        "Day Five Embryos": "day_5_embryos_bins",
+    }
     min_df_size = 50  # Pulled from streamlit code
     filtered_df_list = filter_dataframe(df, diagnosis, age, amh, afc, min_df_size)
-    outcomes = {outcome_name: get_outcomes(filtered_df_list, min_df_size, outcome_options[outcome_name]) for outcome_name in outcome_options}
-    
+    outcomes = {
+        outcome_name: get_outcomes(
+            filtered_df_list, min_df_size, outcome_options[outcome_name]
+        )
+        for outcome_name in outcome_options
+    }
+
     result = {
         "familiarity": familiarity,
         "goal": goal,
@@ -114,9 +180,11 @@ def calculate():
         "age": age,
         "outcomes": outcomes,
         "stage": stage,
-        "local": location == "Yes"
+        "local": location == "Yes",
+        "amh_range": find_range_by_age(age, amh_ranges),
+        "afc_range": find_range_by_age(age, afc_ranges),
     }
-    
+
     print(result)
     response = jsonify({"result": result})
     return response

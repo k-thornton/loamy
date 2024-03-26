@@ -3,43 +3,9 @@ import ReadMore from "../ReadMore";
 import BulletChart from "../BulletChart";
 import Callout from "../Callout";
 
-const amhLevel = (age) => {
-  const ageRange = findClosestRange(age);
-  const rangeLookup = {
-    "25-35": { start: 1.5, end: 3, unit: "ng/mL" },
-    "36-40": { start: 1, end: 1.5, unit: "ng/mL" },
-    "41-45": { start: 0.5, end: 1, unit: "ng/mL" },
-  };
-  return rangeLookup[ageRange] ?? null;
-};
-const afcLevel = (age) => {
-  const ageRange = findClosestRange(age);
-  const rangeLookup = {
-    "25-35": { start: 10, end: 13, unit: "follicles" },
-    "36-40": { start: 8, end: 10, unit: "follicles" },
-    "41-45": { start: 5, end: 7, unit: "follicles" },
-  };
-  return rangeLookup[ageRange] ?? null;
-};
-
-function findClosestRange(number) {
-  const ranges = [
-    { start: 25, end: 35, label: "25-35" },
-    { start: 36, end: 40, label: "36-40" },
-    { start: 41, end: 45, label: "41-45" },
-  ];
-  // Check if the number is within any of the ranges
-  for (const range of ranges) {
-    if (number >= range.start && number <= range.end) {
-      return range.label;
-    }
-  }
-  return ranges[0].label;
-}
-
 const LabValues = ({ myPersona }) => {
-  const amh = amhLevel(myPersona.age);
-  const afc = afcLevel(myPersona.age);
+  const amh = myPersona.amh_range;
+  const afc = myPersona.afc_range;
   const myAmh = myPersona.amh;
   const myAfc = myPersona.afc;
   return (
@@ -89,15 +55,15 @@ const LabValues = ({ myPersona }) => {
               <BulletChart
                 min={1}
                 max={4}
-                highlightStart={amh.start}
-                highlightEnd={amh.end}
+                highlightStart={amh.start_val}
+                highlightEnd={amh.end_val}
                 marker={myAmh}
                 metricName={"AMH"}
                 unit={amh.unit}
               />
               <div className="text text-sm -mt-10 mb-10">
-                For women your age, the typical range is {amh.start} to{" "}
-                {amh.end} {amh.unit}
+                For women your age, the typical range is {amh.start_val} to{" "}
+                {amh.end_val} {amh.unit}
               </div>
             </div>
             <div className="mb-4">
@@ -120,15 +86,15 @@ const LabValues = ({ myPersona }) => {
               <BulletChart
                 min={0}
                 max={30}
-                highlightStart={afc.start}
-                highlightEnd={afc.end}
+                highlightStart={afc.start_val}
+                highlightEnd={afc.end_val}
                 marker={myAfc}
                 metricName={"AFC"}
                 unit={afc.unit}
               />
               <div className="text text-sm -mt-10 mb-10">
-                For women your age, the typical range is {afc.start} to{" "}
-                {afc.end} {afc.unit}
+                For women your age, the typical range is {afc.start_val} to{" "}
+                {afc.end_val} {afc.unit}
               </div>
             </div>
             <div>
