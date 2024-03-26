@@ -21,11 +21,11 @@ const people = [
   
   export default function OurTeam() {
     return (
-      <div className="bg-white py-24 md:py-32 lg:py-40">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our team</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+      <div className="bg-white py-24 md:py-32 lg:py-40 ">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3 ">
+          <div className="mx-auto max-w-2xl lg:mx-0 ">
+            <h2 className="text-3xl font-bold tracking-tight text-neutral sm:text-4xl">Our team</h2>
+            <p className="mt-6 text-lg leading-8 text-neutral-600">
             The company was founded after Shauny had a frustrating experience as a fertility patient, which led her to pivot her last health tech company. Loamy is also inspired by Becky's own frustration navigating the healthcare and integrative care systems as a 2x child cancer survivor. We have experienced and understand the pain points, are passionate about advanced technology, and are activated patients ourselves.</p>
             <p className="mt-6 text-lg leading-8 text-gray-600">We are also deeply committed to women's empowerment, recognizing fertility as integral to women's vitality and longevity.</p>
             

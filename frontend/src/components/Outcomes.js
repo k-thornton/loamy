@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchMe,
-  fetchUnansweredQuestions,
   unsetSurveyCompleted,
 } from "../features/survey/surveySlice";
 import ChatBot from "./ChatBot";
@@ -55,14 +54,11 @@ function Outcomes() {
           <Heading />
           <Intro myPersona={myPersona} />
           <YourResults myPersona={myPersona} />
-
           <HowToInterpret myPersona={myPersona} />
           <Methodology />
           <LabValues myPersona={myPersona} />
-
           <WhatToExpect myPersona={myPersona} />
           <NextSteps myPersona={myPersona} />
-
           <Conclusion myPersona={myPersona} />
           <Sources />
 
