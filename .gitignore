@@ -19,7 +19,6 @@ logs/
 Thumbs.db
 
 # Editor-specific files
-.vscode/
 .idea/
 
 # Generated files
