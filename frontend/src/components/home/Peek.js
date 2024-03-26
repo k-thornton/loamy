@@ -245,7 +245,7 @@ export default function Peek() {
             Women Like Me
           </h2>
         </div>
-        <div className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 md:max-w-none md:grid-cols-3">
+        <div className="mx-auto mt-8 grid max-w-xs grid-cols-1 gap-x-8 gap-y-4 lg:mx-0 md:max-w-none md:grid-cols-3">
           {posts.map((post) => (
             <article
               key={post.id}
@@ -289,7 +289,7 @@ export default function Peek() {
                       {post.title}
                     </a>
                   </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-neutral-600">
+                  <p className="mt-3 line-clamp-3 text-sm leading-6 text-neutral-600">
                     {post.description}
                   </p>
                 </div>
