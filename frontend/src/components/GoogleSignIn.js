@@ -14,7 +14,7 @@ const GoogleSignIn = () => {
             </p>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <div className="card-body">
               <GoogleLogin
                 onSuccess={authService.handleGoogleLoginSuccess}
                 onFailure={authService.handleGoogleLoginFailure}
@@ -28,7 +28,7 @@ const GoogleSignIn = () => {
                 ux_mode="popup"
                 cancel_on_tap_outside={true}
               />
-            </form>
+            </div>
           </div>
         </div>
       </div>
