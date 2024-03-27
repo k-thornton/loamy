@@ -25,12 +25,21 @@
         "name": "Launch Calc Service",
         "type": "debugpy",
         "request": "launch",
-        "program": "${workspaceFolder}/microservices/calc_service/calculation_service.py",
+        "program": "${workspaceFolder}/microservices/calc_service/app.py",
         "cwd": "${workspaceFolder}/microservices/calc_service",
         "console": "integratedTerminal",
         "justMyCode": true,
         "stopOnEntry": false
       },
+      // {
+      //   "name": "Launch Calc Service",
+      //   "type": "debugpy",
+      //   "request": "launch",
+      //   "module": "gunicorn",
+      //   "args": ["-w", "4", "-b", "0.0.0.0:6000", "app:app"],
+      //   "jinja": false,
+      //   "cwd": "${workspaceFolder}/microservices/chat_service",
+      // },
       {
         "name": "Launch Chat Service",
         "type": "debugpy",

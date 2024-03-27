@@ -130,12 +130,12 @@ const ChatBot = () => {
       )}
       {isOpen && (
         <div className="card chat-window bg-base-100 w-96 h-[59vh] shadow-xl rounded-lg flex flex-col justify-between">
-          <div className="card-body overflow-y-auto p-3 space-y-2 mr-5">
+          <div className="card-body overflow-y-auto p-3 space-y-1 mr-5">
             {messages.length === 0 && (
               <div>
                 <ChatDisclaimer />
                 <div className="chat chat-start flex justify-start">
-                  <div className="chat-bubble rounded-lg p-2 bg-primary text-white">
+                  <div className="chat-bubble rounded-lg p-2 bg-primary text-neutral-content">
                     Please type a question to begin
                   </div>
                 </div>
@@ -162,11 +162,11 @@ const ChatBot = () => {
             {isLoading && (
               <div className="chat chat-start flex justify-start">
                 <div className="chat-bubble skeleton rounded-lg p-2 bg-gray-200 text-black">
-                  Bot is thinking...
+                  Thinking...
                 </div>
               </div>
             )}
-            <div ref={endOfMessagesRef} />
+            <div className="mb-12" ref={endOfMessagesRef}/>
           </div>
           <div className="card-actions input-area flex p-3 space-x-2">
             <input

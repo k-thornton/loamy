@@ -205,6 +205,7 @@ def calculate():
     response = jsonify({"result": result})
     return response
 
+application = app # Elastic Beanstalk looks for an 'application' callable by default.
 
 if __name__ == "__main__":
     app.run(debug=True, port=6000)

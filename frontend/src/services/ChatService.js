@@ -1,11 +1,10 @@
-import axios from 'axios';
-const SERVER_URL = process.env.REACT_APP_BACKEND_URL || "";
-const BASE_URL = `${SERVER_URL}/api/chat`;
+import axiosInstance from "./AxiosInstance";
+const BASE_URL = `api/chat`;
 const withCredentials = true;
 
 export const sendQuery = async (message) => {
   try {
-    const response = await axios.post(`${BASE_URL}`, {'message': message}, { withCredentials });
+    const response = await axiosInstance.post(`${BASE_URL}`, {'message': message}, { withCredentials });
     return response.data;
   } catch (error) {
     console.error("Error sending query:", error);

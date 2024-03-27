@@ -3,9 +3,7 @@ const router = express.Router();
 const Question = require("../models/Question");
 const User = require("../models/User");
 const authenticateToken = require("../middleware/authenticateToken");
-const axios = require("axios");
-
-const CALCULATION_SERVICE_URL = process.env.CALCULATION_SERVICE_URL || "http://127.0.0.1:6000/calculate";
+const { calcServiceClient } = require("../config/axiosConfig");
 
 async function fetchQuestions(user, filter = "all") {
   // Fetch all current questions from the database regardless of the filter
@@ -133,10 +131,7 @@ router.post("/answers", authenticateToken, async (req, res) => {
 
 router.post("/reset", authenticateToken, async (req, res) => {
   try {
-    await User.updateOne(
-      { email: req.user.email },
-      { $set: { answers: [] } }
-    );
+    await User.updateOne({ email: req.user.email }, { $set: { answers: [] } });
     res.status(200).send("User answers reset");
   } catch (error) {
     console.log(error);
@@ -164,18 +159,24 @@ router.get("/me", authenticateToken, async (req, res) => {
       return acc;
     }, {});
 
-    const familiarity = questionTagToChoiceTagMap["familiarity"][
-      // I want to work with familiarity as a number for persona calculation
-      // TODO: Will likely want to generalize this so all multiple choice questions have tagged answer options
-      userAnswers.find((item) => item.question.tag === "familiarity").answer];
+    const familiarity =
+      questionTagToChoiceTagMap["familiarity"][
+        // I want to work with familiarity as a number for persona calculation
+        // TODO: Will likely want to generalize this so all multiple choice questions have tagged answer options
+        userAnswers.find((item) => item.question.tag === "familiarity").answer
+      ];
 
-    const stage = questionTagToChoiceTagMap["stage"][
-      // Doing the same for stage
-      userAnswers.find((item) => item.question.tag === "stage").answer];
+    const stage =
+      questionTagToChoiceTagMap["stage"][
+        // Doing the same for stage
+        userAnswers.find((item) => item.question.tag === "stage").answer
+      ];
 
-    const goal = questionTagToChoiceTagMap["goal"][
-      // Doing the same for stage
-      userAnswers.find((item) => item.question.tag === "goal").answer];
+    const goal =
+      questionTagToChoiceTagMap["goal"][
+        // Doing the same for stage
+        userAnswers.find((item) => item.question.tag === "goal").answer
+      ];
 
     const userInfo = {
       age: userAnswers.find((item) => item.question.tag === "age")?.answer,
@@ -183,13 +184,14 @@ router.get("/me", authenticateToken, async (req, res) => {
       diagnosis: userAnswers.find((item) => item.question.tag === "diagnosis")
         ?.answer,
       afc: userAnswers.find((item) => item.question.tag === "afc")?.answer,
-      location: userAnswers.find((item) => item.question.tag === "location")?.answer,
+      location: userAnswers.find((item) => item.question.tag === "location")
+        ?.answer,
       goal: goal,
       familiarity: familiarity,
-      stage: stage
+      stage: stage,
     };
 
-    const response = await axios.post(CALCULATION_SERVICE_URL, userInfo);
+    const response = await calcServiceClient.post("/calculate", userInfo);
     res.json(response.data.result);
   } catch (error) {
     res.status(500).send(error.message);

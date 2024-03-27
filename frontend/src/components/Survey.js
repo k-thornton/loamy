@@ -82,7 +82,6 @@ function Survey() {
   };
 
   const handleNextQuestion = () => {
-    console.log(currentQuestion.defaultValue)
     const answer = selectedOption || currentQuestion.defaultValue
     if (answer == null) {
       showModal({

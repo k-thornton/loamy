@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import { authService } from "../services/AuthService";
 import { ModalProvider } from "../contexts/ModalContext";
 import Modal from "../components/Modal"
+import MockGoogleSignIn from "../components/MockGoogleSignIn";
 
 function SurveyPage() {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -19,7 +20,8 @@ function SurveyPage() {
           isAuthenticated={isAuthenticated}
           onLogout={() => authService.handleLogout()}
         />
-        {!isAuthenticated ? <GoogleSignIn /> : <Survey />}
+        {!isAuthenticated ? <MockGoogleSignIn /> : <Survey />}
+        {/* {!isAuthenticated ? <GoogleSignIn /> : <Survey />} */}
       </ModalProvider>
     </div>
   );
