@@ -44,6 +44,7 @@ function BulletChart({ min, max, highlightStart, highlightEnd, marker, metricNam
         type: "indicator",
         mode: "gauge",
         domain: { x: [0, 1], y: [0, 1] },
+        displayModeBar: false,
         title: {
           text: `<br><span style='color: ${textColor}; font-size:1em'>${metricName}</span>`,
           font: { size: 14, family: 'Inter, sans-serif' } // Adjust font family to match your theme
