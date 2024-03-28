@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { OAuth2Client } = require("google-auth-library");
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+const googleClientID = process.env.GOOGLE_CLIENT_ID || process.env.REACT_APP_GOOGLE_CLIENT_ID;
+const client = new OAuth2Client(googleClientID);
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const authenticateToken = require("../middleware/authenticateToken");
@@ -21,10 +22,10 @@ router.get("/greeting", authenticateToken, (req, res) => {
 // Route to handle Google Sign-In
 router.post("/google", async (req, res) => {
   try {
-    const { token } = req.body; // Assuming the frontend sends the ID token in the body with key 'token'
+    const { token } = req.body;
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID,
+      audience: googleClientID,
     });
     const payload = ticket.getPayload(); // This object includes user's information
     // Extract user details
