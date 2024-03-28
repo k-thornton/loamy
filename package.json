@@ -3,18 +3,14 @@
     "version": "1.0.0",
     "description": "loamy.info web app and landing page",
     "scripts": {
-      "start": "cd server && node index.js",
-      "build-frontend": "cd frontend && npm install && npm run build",
-      "heroku-postbuild": "npm run build-frontend"
+        "start": "node server/index.js",
+        "build-frontend": "cd frontend && npm install && npm run build",
+        "build-server": "cd server && npm install",
+        "heroku-postbuild": "npm run build-frontend && npm run build-server"
     },
     "engines": {
-      "node": "21.x",
-      "npm": "6.x"
+        "node": "21.x",
+        "npm": "10.x"
     },
-    "dependencies": {
-      "express": "^4.17.1"
-    },
-    "devDependencies": {},
     "author": "Kyle Thornton"
-  }
-  
+}

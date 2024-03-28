@@ -1,9 +1,7 @@
 require('dotenv').config(); // Load environment variables from .env file
 const express = require('express');
 const mongoose = require('mongoose');
-const session = require('express-session'); // Needed for handling user sessions
 const bodyParser = require('body-parser');
-const authenticateToken = require('./middleware/authenticateToken');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../docs/swagger.json');
 const path = require('path');
@@ -59,8 +57,8 @@ const buildDirectory = path.join(__dirname, '../frontend/build');
 
 // Making a monolith by starting all services from the same file.
 // This is for ease of deployment, though this could be broken up for more scalability later.
-startPythonMicroservice('gunicorn', ['-w', '4', '-b', '0.0.0.0:6000', 'app:app'], '../microservices/calc_service');
-startPythonMicroservice('uvicorn', ['app:app', '--reload', '--port', '7000'], '../microservices/chat_service');
+startPythonMicroservice('gunicorn', ['-w', '4', '-b', '0.0.0.0:6000', 'app:app'], path.join(__dirname, '../microservices/calc_service'));
+startPythonMicroservice('uvicorn', ['app:app', '--reload', '--port', '7000'], path.join(__dirname, '../microservices/chat_service'));
 
 // Serve the React frontend app
 app.use(express.static(buildDirectory));
