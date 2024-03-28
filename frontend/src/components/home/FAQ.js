@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react";
-import { MinusSmallIcon, PlusSmallIcon } from "@heroicons/react/24/outline";
+import { MinusIcon, PlusIcon } from "@heroicons/react/24/outline";
 
 const faqs = [
   {
@@ -148,12 +148,12 @@ export default function FAQ() {
                         </span>
                         <span className="ml-6 flex h-7 items-center">
                           {open ? (
-                            <MinusSmallIcon
+                            <MinusIcon
                               className="h-6 w-6"
                               aria-hidden="true"
                             />
                           ) : (
-                            <PlusSmallIcon
+                            <PlusIcon
                               className="h-6 w-6"
                               aria-hidden="true"
                             />
