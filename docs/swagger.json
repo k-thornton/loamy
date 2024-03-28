@@ -7,7 +7,7 @@
     },
     "host": "localhost:5001",
     "basePath": "/",
-    "schemes": ["http"],
+    "schemes": ["http, https"],
     "paths": {
       "/google": {
         "post": {
@@ -74,6 +74,22 @@
           }
         }
       },
+      "/survey/questions": {
+        "get": {
+          "summary": "Get all questions, answered and unanswered, along with their associated answer or `null` if unanswered",
+          "responses": {
+            "200": {
+              "description": "An array containing questions and answers",
+              "schema": {
+                "type": "array",
+                "items": {
+                    "$ref": "#/definitions/QuestionWithAnswer"
+                }
+              }
+            }
+          }
+        }
+      },
       "/survey/answers": {
         "post": {
           "summary": "Submit answers",
@@ -94,6 +110,19 @@
           "responses": {
             "200": {
               "description": "Answers submitted successfully"
+            }
+          }
+        }
+      }
+    },
+    "/survey/me": {
+      "get": {
+        "summary": "Returns the calculation data from the calc service, using the user's answers.",
+        "responses": {
+          "200": {
+            "description": "An object containing a bunch of different calculated variables and data",
+            "schema": {
+              "type": "object",
             }
           }
         }

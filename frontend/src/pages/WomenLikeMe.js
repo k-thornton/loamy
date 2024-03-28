@@ -20,7 +20,6 @@ function SurveyPage() {
           isAuthenticated={isAuthenticated}
           onLogout={() => authService.handleLogout()}
         />
-        {/* {!isAuthenticated ? <MockGoogleSignIn /> : <Survey />} */}
         {!isAuthenticated ? <GoogleSignIn /> : <Survey />}
       </ModalProvider>
     </div>
