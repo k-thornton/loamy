@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { sendQuery } from "../services/ChatService";
 import ChatDisclaimer from "./static/ChatDisclaimer";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -101,12 +102,11 @@ const ChatBot = () => {
   return (
     <div className="fixed bottom-10 right-10">
       {isOpen ? (
-        <button
+        <XMarkIcon
           onClick={() => setIsOpen(!isOpen)}
           className="btn btn-sm btn-circle btn-ghost absolute right-1 top-1 z-10"
         >
-          ✕
-        </button>
+        </XMarkIcon>
       ) : (
         <div
           className="px-11 py-4 cursor-pointer bg-primary text-white rounded-full shadow-lg flex items-center justify-center gap-2"
@@ -129,7 +129,7 @@ const ChatBot = () => {
         </div>
       )}
       {isOpen && (
-        <div className="card chat-window bg-base-100 w-96 h-[59vh] shadow-xl rounded-lg flex flex-col justify-between">
+        <div className="card chat-window bg-base-100 sm:w-96 w-[80vw] h-[70vh] shadow-xl rounded-lg flex flex-col justify-between">
           <div className="card-body overflow-y-auto p-3 space-y-1 mr-5">
             {messages.length === 0 && (
               <div>
