@@ -23,8 +23,8 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
         {isAuthenticated && (
           <div className="flex-none gap-2">
             <p className="hidden sm:block text">{greeting.email}</p>
-            <div className="dropdown dropdown-end">
-              <div
+            <details className="dropdown dropdown-end">
+              <summary
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
@@ -36,7 +36,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                     referrerPolicy="no-referrer"
                   />
                 </div>
-              </div>
+              </summary>
               <ul
                 tabIndex={0}
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
@@ -50,7 +50,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                   <button onClick={onLogout}>Logout</button>
                 </li>
               </ul>
-            </div>
+            </details>
           </div>
         )}
       </div>
