@@ -1,13 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {fontFamily: {
-      heading: ['Montserrat', 'ui-sans-serif', 'system-ui'],
-      body: ['Questrial', 'ui-serif', 'Georgia'],
-    },},
+    extend: {
+      fontFamily: {
+        heading: ["Montserrat", "ui-sans-serif", "system-ui"],
+        body: ["Questrial", "ui-serif", "Georgia"],
+      },
+    },
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
 
@@ -15,10 +15,10 @@ module.exports = {
     themes: [
       {
         loamy: {
-          "primary": "#1D8A99", // Munsell Blue
-          "secondary": "#DECDF5", // Thistle (lavender)
-          "accent": "#edf4f3", //Mint cream
-          "neutral": "#534D56", //Davy's Gray
+          primary: "#1D8A99", // Munsell Blue
+          secondary: "#DECDF5", // Thistle (lavender)
+          accent: "#edf4f3", //Mint cream
+          neutral: "#534D56", //Davy's Gray
           "base-100": "#F8F1FF", //Magnolia (pale purple)
           "neutral-content": "#F5F5F5", //White Smoke
           "primary-content": "#F5F5F5", //i.e. wherever you display content on top of "primary" color

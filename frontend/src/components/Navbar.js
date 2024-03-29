@@ -22,7 +22,7 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
         </div>
         {isAuthenticated && (
           <div className="flex-none gap-2">
-            <p>{greeting.email}</p>
+            <p className="hidden sm:block text">{greeting.email}</p>
             <div className="dropdown dropdown-end">
               <div
                 tabIndex={0}
@@ -42,7 +42,9 @@ const Navbar = ({ isAuthenticated, onLogout }) => {
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <button onClick={() => dispatch(resetAnswers())}>Reset My Answers</button>
+                  <button onClick={() => dispatch(resetAnswers())}>
+                    Reset My Answers
+                  </button>
                 </li>
                 <li>
                   <button onClick={onLogout}>Logout</button>
