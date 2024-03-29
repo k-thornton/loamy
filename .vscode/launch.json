@@ -6,7 +6,7 @@
         "type": "node",
         "request": "launch",
         "skipFiles": ["<node_internals>/**"],
-        "program": "${workspaceFolder}/server/index.js", // Adjust this path to your Node.js entry point
+        "program": "${workspaceFolder}/server/index.js",
         "cwd": "${workspaceFolder}/server",
         "env": {
           "NODE_ENV": "development"
@@ -15,12 +15,15 @@
       },
       {
         "name": "Launch Frontend React App",
-        "type": "chrome",
+        "type": "node",
         "request": "launch",
-        "url": "http://localhost:3000",
-        "webRoot": "${workspaceFolder}/frontend", // Adjust this path to your React app's root folder
-        "preLaunchTask": "Start React App"
-      },
+        "program": "${workspaceFolder}/frontend/src/index.js",
+        "cwd": "${workspaceFolder}/frontend",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["start"],
+        "envFile": "${workspaceFolder}/.env",
+        "console": "integratedTerminal"
+    },
       {
         "name": "Launch Calc Service",
         "type": "debugpy",
@@ -29,17 +32,9 @@
         "cwd": "${workspaceFolder}/microservices/calc_service",
         "console": "integratedTerminal",
         "justMyCode": true,
-        "stopOnEntry": false
+        "stopOnEntry": false,
+        "subProcess": false
       },
-      // {
-      //   "name": "Launch Calc Service",
-      //   "type": "debugpy",
-      //   "request": "launch",
-      //   "module": "gunicorn",
-      //   "args": ["-w", "4", "-b", "0.0.0.0:6000", "app:app"],
-      //   "jinja": false,
-      //   "cwd": "${workspaceFolder}/microservices/chat_service",
-      // },
       {
         "name": "Launch Chat Service",
         "type": "debugpy",

@@ -122,7 +122,7 @@
           "200": {
             "description": "An object containing a bunch of different calculated variables and data",
             "schema": {
-              "type": "object",
+              "type": "object"
             }
           }
         }

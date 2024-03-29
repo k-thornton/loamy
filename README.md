@@ -27,7 +27,7 @@
   - Follow [this guide](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid) to obtain your Google API Client ID.
   - Add your Client ID to your `.env` here -> `REACT_APP_GOOGLE_CLIENT_ID=clientidgoeshere`.
   - Create a new OAuth client ID credential at [Google Cloud Credentials](https://console.cloud.google.com/apis/credentials).
-  - In the OAuth credential config, under "authorized javascript origins", add `https://loamy.info` or `https://demo.loamy.info` (or wherever this ends up hosted), and optionally `http://localhost:3000` for local testing.
+  - In the OAuth credential config, under "authorized javascript origins", add `https://loamy.info` or `https://demo.loamy.info` (or wherever this ends up hosted), and also `http://localhost` for local testing.
 
 - **MongoDB Atlas**:
   - Register at [MongoDB Atlas](https://account.mongodb.com/account/login).
