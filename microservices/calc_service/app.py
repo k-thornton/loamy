@@ -160,22 +160,22 @@ def calculate():
         {
             "name": "Eggs Retrieved",
             "data_name": "eggs_retrieved_bins",
-            "unit": "eggs retrieved"
+            "unit": "eggs"
         },
         {
             "name": "Mature Eggs",
             "data_name": "eggs_mature_bins",
-            "unit": "mature eggs"
+            "unit": "eggs"
         },
         {
             "name": "Fertilized Eggs",
             "data_name": "eggs_fertilized_bins",
-            "unit": "fertilized eggs",
+            "unit": "eggs",
         },
         {
             "name": "Day Five Embryos",
             "data_name": "day_5_embryos_bins",
-            "unit": "embryos frozen",
+            "unit": "embryos",
         },
     ]
     min_df_size = 50  # Pulled from streamlit code
@@ -204,8 +204,6 @@ def calculate():
     print(result)
     response = jsonify({"result": result})
     return response
-
-application = app # Elastic Beanstalk looks for an 'application' callable by default.
 
 if __name__ == "__main__":
     app.run(debug=True, port=6000)

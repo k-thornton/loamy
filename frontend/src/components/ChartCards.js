@@ -60,47 +60,49 @@ const info = {
 
 function ChartCards({ myPersona }) {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 min-w-full justify-center items-center overflow-y-auto p-10">
-      {myPersona.outcomes.map((outcome, index) => {
-        const data = outcome.data;
-        const name = outcome.name;
-        const unit = outcome.unit;
-        const binData = transformData(data, name, unit);
-        return (
-          <div
-            key={name}
-            className="card bg-base-100 shadow-xl m-4 aspect-w-1 aspect-h-1 min-w-[250px] min-h-[250px]"
-          >
+    <div className="flex justify-center items-center max-w-[600px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-2 gap-x-48 min-w-full aspect-square justify-center place-items-center p-7 w-full">
+        {myPersona.outcomes.map((outcome, index) => {
+          const data = outcome.data;
+          const name = outcome.name;
+          const unit = outcome.unit;
+          const binData = transformData(data, name, unit);
+          return (
             <div
-              id={name}
-              className="relative card-body pt-5 pb-0 flex items-center justify-center"
+              key={name}
+              className="card bg-base-100 shadow-xl m-2 aspect-square max-w-[280px]"
             >
-              <div className="flex items-center align-middle">
-                <h2 className="card-title text-center mr-1">{name}</h2>
-                <div className="tooltip" data-tip={info[name]}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+              <div
+                id={name}
+                className="relative card-body pt-5 pb-0 flex items-center justify-center"
+              >
+                <div className="flex items-center align-middle">
+                  <h2 className="card-title text text-center mr-1">{name}</h2>
+                  <div className="tooltip" data-tip={info[name]}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <div className="p-5 h-[300px] w-[300px] max-w-64 max-h-64">
+                  <RadialBar data={binData} />
                 </div>
               </div>
-              <div className="p-5 h-[40vw] w-[40vw] lg:h-[30vw] lg:w-[30vw] xl:h-[20vw] xl:w-[20vw] min-w-[250px] min-h-[250px]">
-                <RadialBar data={binData} />
-              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }
