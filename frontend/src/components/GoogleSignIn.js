@@ -5,11 +5,11 @@ import { authService } from "../services/AuthService";
 const GoogleSignIn = () => {
   return (
     <>
-      <div className="hero min-h-screen bg-base-100">
+      <div className="hero min-h-[80vh] flex flex-col justify-center bg-base-100">
         <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left pl-4 pt-5">
+          <div className="text-center lg:text-left pl-4 pt-5 min-w-[40vh]">
             <h1 className="text-5xl font-bold">Log in!</h1>
-            <p className="py-6 min-w-full">
+            <p className="py-6">
               Welcome to Loamy!  Please sign in with Google to begin.
             </p>
           </div>
