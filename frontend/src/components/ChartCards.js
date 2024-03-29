@@ -95,7 +95,7 @@ function ChartCards({ myPersona }) {
                     </svg>
                   </div>
                 </div>
-                <div className="p-5 h-[300px] w-[300px] max-w-64 max-h-64">
+                <div className="p-5 h-[300px] w-[300px] max-w-64">
                   <RadialBar data={binData} />
                 </div>
               </div>
