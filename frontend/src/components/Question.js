@@ -20,7 +20,7 @@ function Question({ question, selectedOption, setSelectedOption }) {
         {question.text}
         {question.tooltip && (
           <div
-            className="tooltip tooltip-right ml-2"
+            className="tooltip tooltip-bottom ml-2"
             data-tip={question.tooltip}
           >
             <svg
