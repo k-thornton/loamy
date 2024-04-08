@@ -1,5 +1,7 @@
+# calc service
 Flask
 pandas
+# chat service
 gunicorn
 openai
 pinecone-client
@@ -8,3 +10,8 @@ pydantic
 uvicorn
 fastapi
 slowapi
+# Pinecone update scripts
+requests
+beautifulsoup4 ~= 4.12.2
+tiktoken
+pathlib
