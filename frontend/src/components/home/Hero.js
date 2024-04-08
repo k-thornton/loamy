@@ -19,8 +19,7 @@ export default function Hero() {
       <div className="mx-auto max-w-2xl pt-28 pb-5">
         <div className="text-center mt-8">
           <h1 className="text-4xl font-bold tracking-tight text-neutral-900 sm:text-6xl">
-            <span className="inline-block">Empowering Your</span>
-            <span className="inline-block">Fertility Journey</span>
+            <span className="inline-block">Women Like Me</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-neutral-600">
             Loamy’s Women Like Me quiz helps you navigate the complex, often
