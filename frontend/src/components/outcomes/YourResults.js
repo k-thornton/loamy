@@ -12,16 +12,16 @@ const YourResults = ({ myPersona }) => {
       (30-50%), and only a fraction may be tested normal.  
       </p>
       <p className="mb-4 text">
-      As a result, people tend to aim for 10-12 mature eggs per cycle in order to develop at 
+      As a result, people tend to aim for 10-12 mature eggs retrieved per cycle in order to develop at 
       least one normal embryo for implementation. 
       </p>
       <p className="mb-4 text">
-      Below we show the % of women like you with the following ranges of outcomes.
+      Below we show the percentage of women like you with the following ranges of outcomes.
       </p>
       <ChartCards myPersona={myPersona} />
       <p className="mb-4 text">
         These results may still be confusing. That’s why we’ve had conversations
-        with reproductive endocrinologists (REI), Chief Medical Officers,
+        with reproductive endocrinologists (REIs), Chief Medical Officers,
         researchers, international fertility drug pharmacies, acupuncturist,
         nutritionist, fertility and longevity supplement providers, and even a
         neurologic music therapist to make sense of it.

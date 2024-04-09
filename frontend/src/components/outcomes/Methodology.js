@@ -38,8 +38,8 @@ const Methodology = () => {
             significant to outcomes in this dataset.
           </p>
           <p className="mb-4 text">
-            AMH alone is also not a good single indicator of egg freezing
-            success, so we don’t filter on AMH. However, we use your AMH inputs
+            AMH alone is also not a good single indicator of success, so we 
+            don’t filter on AMH. However, we use your AMH inputs
             to inform the content below.
           </p>
           <p className="text">

@@ -5,7 +5,7 @@ import Callout from "../Callout";
 const embryoFreezing = (
   <section className="mb-10">
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
-    <ReadMore maxItems={2}>
+    <ReadMore maxItems={1}>
       <p className="mb-4 text">
         Gaining insight into the typical range of outcomes for individuals who share your 
         demographic profile and diagnosis is crucial for setting realistic expectations.
@@ -69,7 +69,7 @@ const embryoFreezing = (
             having a baby?
           </li>
           <li>
-            How do I plan to manage stress, and what kind of support will I need
+            How do I plan to manage stress? What support will I need
             from my friends and family?
           </li>
           <li>
@@ -84,8 +84,10 @@ const embryoFreezing = (
             offer access to a reputable donor database?
           </li>
         </ul>
-        <h2>Questions for Your Reproductive Endocrinologist:</h2>
-        <ul>
+        </Callout>
+        <Callout>
+        <h2 className="font-semibold">💡Questions for Your Reproductive Endocrinologist:</h2>
+        <ul className="list-disc list-inside">
           <li>
             How many cycles of embryo freezing might be necessary for me, and
             what does that timeline look like?
@@ -112,24 +114,22 @@ const eggFreezing = (
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
     <ReadMore maxItems={1}>
       <p className="mb-4 text">
-        Access to fertility data is your right. Gaining insight into the typical
-        range of outcomes for individuals who share your demographic profile and
-        diagnosis is crucial for setting realistic expectations.
+        Gaining insight into the typical range of outcomes for individuals who share your 
+        demographic profile and diagnosis is crucial for setting realistic expectations.
       </p>
       <p className="mb-4 text">
-        Outcomes can vary significantly among women. However, knowing the
-        typical range of outcomes for individuals with similar demographics and
-        diagnoses can help you better understand your reproductive status.
+        While egg freezing outcomes can vary significantly from person to person, seeing results 
+        of women like you can help set expectations for number of cycles, costs, and next steps. 
       </p>
 
       <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
-          <li>Women like you often aim to collect 10-20 mature eggs.</li>
+          <li>Women like you often aim to collect 10-12 mature eggs in one cycle and bank 
+            a total of 10-20 mature eggs.</li>
           <li>
-            It's common for not all retrieved eggs to be mature; many times, 40%
-            of the eggs collected may be immature. This reduction from retrieved
-            to mature eggs is anticipated.
+            It's common for not all retrieved eggs to be mature; many times, only 60-80% of the eggs 
+            collected may be mature. This attrition from retrieved to mature eggs is anticipated.
           </li>
           <li>
             The purpose of egg freezing is to bring as many follicles to
@@ -155,8 +155,10 @@ const eggFreezing = (
           <li>Why am I considering freezing my eggs?</li>
           <li>Do I have a preference for freezing eggs or embryos?</li>
           <li>
-            What aspects of starting a family excite me? Are there any
-            reservations holding me back?
+            What aspects of starting a family excite me? 
+          </li>
+          <li>
+            Are there any reservations holding me back?
           </li>
           <li>
             How much am I prepared to invest financially to preserve my
@@ -171,15 +173,17 @@ const eggFreezing = (
             Who would I want to co-parent with, if I decide to use these eggs?
           </li>
         </ul>
-        <h3>Questions to Discuss with Your Reproductive Endocrinologist:</h3>
-        <ul>
+        </Callout>
+        <Callout>
+        <h3  className="font-semibold"> 💡Questions to Discuss with Your Reproductive Endocrinologist:</h3>
+        <ul className="list-disc list-inside">
           <li>
             How many cycles might be necessary for me? What could the timeline
             look like?
           </li>
           <li>
             For someone of my age and with my lab values, what is the typical
-            range of eggs retrieved?
+            range of mature eggs retrieved?
           </li>
           <li>
             Are there any measures I can take to enhance my chances of success?
@@ -299,10 +303,10 @@ const justHereToLearn = (
       <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
-          <li>Women like you often aim to collect 10-20 mature eggs.</li>
+          <li>Women like you often aim to collect 10-12 mature eggs in one cycle.</li>
           <li>
-            It's common for not all retrieved eggs to be mature; many times, 40%
-            of the eggs collected may be immature. This reduction from retrieved
+            It's common for not all retrieved eggs to be mature; many times, only 60-80% 
+            of the eggs collected may be mature. This attrition from retrieved
             to mature eggs is anticipated.
           </li>
           <li>

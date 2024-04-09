@@ -135,14 +135,14 @@ const NextSteps = ({ myPersona }) => {
           <strong>
             Supplement for men with low sperm count, motility, volume:
           </strong>{" "}
-          Ashwagandha
+          <a className="link" href="https://amzn.to/3vJuoHW">Fertility Dad with Ashwangandha</a>
         </p>
         <p className="mb-4 text">
           <strong>
             Supplement for men with low sperm count, concentration,
             motility, and ejaculate volume:
           </strong>{" "}
-          Lycopene
+          <a className="link" href="https://amzn.to/4as1gUz">Wholesome Story male Supplement with Lycopene </a>
         </p>
         <p className="mb-4 text">
           Vitamin D is recommended for both men and women if you're Vitamin D
@@ -182,21 +182,18 @@ const NextSteps = ({ myPersona }) => {
       <p className="mb-4 text">
         Despite the rarity of clinical studies on Western medicine interventions
         like acupuncture in well-known, mainstream medical journals, many women
-        undergoing egg freezing report finding these treatments to be
-        stress-reducing and beneficial to their journey.
+        undergoing egg/embryo freezing report finding these treatments to be
+        stress-reducing and beneficial to their journey. If your interested in 
+        exploring acupuncture further, a resource with over <a className="link" href="https://directory.nccaom.org/">21,000 National Board-Certified 
+        Acupuncturists</a> is available for reference. Look for a practice that focuses 
+        specifically on fertility and you can always cross-reference with 
+        referrals from friends or reproductive endocrinologist.
       </p>
       {myPersona.local && (
         <>
           <p className="mb-4 text">
             <strong>Our top recommendation for acupuncture in Boston:</strong>{" "}
             <a className="link" href="https://yintuitionwellness.com/">Yintuition</a>.
-          </p>
-          <p className="mb-4 text">
-            <strong>Our top location for Onco-fertility patients:</strong>{" "}
-            <a className="link" href="https://www.sacredhealingbodyworks.com/">
-              Sacred Healings Bodyworks
-            </a>
-            .
           </p>
         </>
       )}
@@ -228,6 +225,8 @@ const NextSteps = ({ myPersona }) => {
             boost vitamin D levels.
           </li>
         </ul>
+        </Callout>
+        <Callout>
         <p className="mb-4 text">
           💡 <strong>Lifestyle Factors to Avoid for Better Fertility:</strong>
         </p>

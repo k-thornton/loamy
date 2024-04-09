@@ -4,7 +4,7 @@ const Conclusion = ({ myPersona }) => {
   return (
     <section className="mb-10">
       <h2 className="text-2xl font-bold mb-4">Conclusion</h2>
-      <p>
+      <p className="mb-4 text">
         We hope this information and the recommendations provided help address
         three important questions for you:
       </p>
