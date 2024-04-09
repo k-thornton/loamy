@@ -78,7 +78,7 @@ function ChartCards({ myPersona }) {
                   className="relative card-body pt-5 pb-0 flex items-center justify-center"
                 >
                   <div className="flex items-center align-middle">
-                    <h2 className="card-title text text-center mr-1 break-keep">
+                    <h2 className="card-title text text-center mr-1 whitespace-nowrap">
                       {name}
                     </h2>
                     <div className="tooltip" data-tip={info[name]}>
