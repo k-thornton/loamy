@@ -14,7 +14,7 @@ const people = [
     name: "Rebecca Curry",
     role: "Co-Founder",
     imageUrl: rebecca,
-    bio: "Rebecca Curry is an AI and web3 builder and 2x child cancer survivor. She formally sat on the leadership council of MIT’s graduate course, AI and Web3 for Impact, where the team spun out Loamy. Rebecca has been biohacking her own fertility, vitality, and longevity since age 10 and is committed to using emerging technologies to empower patient decision-making— in a way that is personalized, intelligent, and driven by data + love.",
+    bio: "Rebecca Curry is an AI and web3 builder and 2x child cancer survivor. She formally sat on the leadership council of MIT’s graduate course, AI and Web3 for Impact. Rebecca has been biohacking her own fertility, vitality, and longevity since age 10 and is committed to using emerging technologies to empower patient decision-making.",
     xUrl: "",
     linkedinUrl: "",
   },

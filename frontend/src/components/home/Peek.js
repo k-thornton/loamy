@@ -4,7 +4,7 @@ const posts = [
     title: "Decision Support",
     href: "#",
     description:
-      "Get outcome expectations from eggs retrieved to day 5 embryos from women like you.",
+      "Get expectations from eggs retrieved to day 5 embryos based on the outcomes of women like you.",
     imageSvg: (
       <svg
         preserveAspectRatio="xMidYMid meet"
@@ -144,10 +144,10 @@ const posts = [
   },
   {
     id: 3,
-    title: "Cost Transparency",
+    title: "Chat With the Literature",
     href: "#",
     description:
-      "Understand your associated costs & coverage that accompany your fertility journey.",
+      "Explore our curated content of scientific, peer-reviewed literature on fertility that informed your action plan. ",
     imageSvg: (
       <svg
         preserveAspectRatio="xMidYMid meet"
@@ -191,7 +191,7 @@ export default function Peek() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-neutral-900 sm:text-4xl">
-            Women Like Me
+            How It Works
           </h2>
         </div>
         <div className="mx-auto mt-8 grid max-w-xs grid-cols-1 gap-x-8 gap-y-4 lg:mx-0 md:max-w-none md:grid-cols-3">

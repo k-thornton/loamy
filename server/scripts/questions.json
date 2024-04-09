@@ -25,8 +25,8 @@
         "tag": "egg"
       },
       {
-        "text": "Elective Egg Freezing (Fertility Preservation)",
-        "tooltip": "Elective egg freezing is for the purposes of fertility preservation rather than for the presence of an infertility diagnosis. Reasons for elective egg freezing may include delaying childbearing due to career, educational pursuits, or personal circumstances, preserving fertility before undergoing medical treatments such as chemotherapy or radiation therapy, or the most common reason: you haven’t found the one yet (85% freeze because they can’t find a suitable partner). ",
+        "text": "Elective Egg Freezing (Social Egg Freezing)",
+        "tooltip": "🧊🥚 Elective egg freezing is for the purposes of fertility preservation rather than for the presence of an infertility diagnosis. Reasons for elective egg freezing may include delaying childbearing due to career, educational pursuits, or personal circumstances, preserving fertility before undergoing medical treatments such as chemotherapy or radiation therapy, or the most common reason: you haven’t found the one yet (85% freeze because they haven't found a suitable partner). ",
         "tag": "electiveEgg"
       },
       {
@@ -39,6 +39,7 @@
     "questionNumber": 2,
     "tag": "familiarity",
     "text": "How familiar are you with the fertility journey?",
+    "subHeading": "Asking so that we can cater your content to your familiarity level and stage of the journey.",
     "answerType": "multipleChoice",
     "expectedDataType": "string",
     "choices": [
@@ -165,7 +166,7 @@
     "defaultValue": 0,
     "minValue": 0,
     "maxValue": 40,
-    "note": "Enter a number between 0-40. Leave this question blank if you are unsure."
+    "note": "Leave this question blank if you are unsure. We will still share typical ranges of AMH for women your age in the report."
   },
   {
     "questionNumber": 7,
@@ -178,7 +179,7 @@
     "defaultValue": 0,
     "minValue": 0,
     "maxValue": 100,
-    "note": "Enter a number between 0-100. Leave this question blank if you are unsure."
+    "note": "Leave this question blank if you are unsure. We will still share typical ranges of AFC for women your age in the report."
   },
   {
     "questionNumber": 8,

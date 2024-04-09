@@ -5,7 +5,7 @@ const NextSteps = ({ myPersona }) => {
   return (
     <section className="mb-10">
       <h2 id="nextSteps" className="text-2xl font-bold mb-4">
-        Your Next Steps
+      Your Next Steps
       </h2>
       <p className="mb-4 text">
         There's a considerable amount of misleading information online about
@@ -22,7 +22,7 @@ const NextSteps = ({ myPersona }) => {
         Women like you have used...
       </h2>
       <h2 id="fertilityConsulting" className="text-l font-bold mb-4">
-        Fertility Consulting
+        Data-Driven Fertility Consulting
       </h2>
       <p className="mb-4 text">
         Before visiting an IVF clinic or even after your first IVF attempt,
@@ -32,7 +32,7 @@ const NextSteps = ({ myPersona }) => {
         <a className="link" href="https://fertilitypregnancy.org/protocol/">
           The Fertility and Pregnancy Institute
         </a>{" "}
-        and <a className="link" href="https://denovofertility.com/">Denovo Fertility</a>, both
+        and <a className="link" href="https://go.denovofertility.com/guide?am_id=shaundra565">Denovo Fertility</a>, both
         known for their commitment to research and results.
       </p>
       <Callout>
@@ -85,12 +85,21 @@ const NextSteps = ({ myPersona }) => {
         women with higher levels of alpha-amylase, a stress biomarker,
         experienced a 29% decrease in fecundity (resulting in a longer time to
         pregnancy) and were over twice as likely to face infertility compared to
-        women with lower levels of this biomarker.
+        women with lower levels of this biomarker. You may find practices like meditation, 
+        breathwork on a guided app, or visualization to be helpful in reducing stress. 
+      </p>
+      <p className="mb-4 text">
+      Guided visualization is a mind-body practice wherein you evoke all your senses to 
+      experience something in your mind. Olympic athletes use this technique to imagine their 
+      race and cancer patients use it before treatment to mentally prepare. This can help control 
+      your emotions, physiology, and reduce stress-induced cortisol levels. You can start on 
+      YouTube with fertility meditations and if you want to upgrade your practice, <a className="link" href="hhttps://circlebloom.com/shop/?ref=20393">Circle & Bloom</a> offers 
+      a series of guided visualization curated for your specific fertility journey. 
       </p>
       <p className="mb-4 text">
         Seeking a trustworthy therapist familiar with infertility, engaging your
         partner or community groups for support, and considering integrative
-        therapies such as acupuncture are all viable options.
+        therapies such as acupuncture or massage are all viable options.
       </p>
 
       <h2 id="supplements" className="text-l font-bold mb-4">
@@ -102,37 +111,35 @@ const NextSteps = ({ myPersona }) => {
         used appropriately. Here are our recommendations:
       </p>
       <Callout>
-        <p className="mb-4 text">
-          💡 <strong>Top pick for pregnancy & fetal development:</strong>{" "}
-          Choline
-        </p>
+        <h3 className="font-semibold mb-4">🏆 Our Top Picks:</h3>
         <p className="mb-4 text">
           <strong>
             Top pick for men and women to support overall fertility:
           </strong>{" "}
-          Prenatal vitamin (includes Folate/Folic acid and vitamin B-9)
+          <a className="link" href="https://amzn.to/3vN5qre">Ritual Prenatal vitamin (Includes Choline and Folate/Folic acid)</a>
         </p>
         <p className="mb-4 text">
-          <strong>Top pick for men and women over 35:</strong> Coenzyme Q10
-          (CoQ10)
+          <strong>Top pick for men and women over 35:</strong> <a className="link" href="https://amzn.to/4cDVQHz">
+            Natalist Coenzyme Q10 (CoQ10)</a>
         </p>
         <p className="mb-4 text">
-          <strong>Supplements just for women with DOR:</strong>{" "}
-          Dehydroepiandrosterone (DHEA)
+          <strong>Supplements just for women with DOR (not recommended for women who have a history of hormonal cancer 
+            or estrogen-sensitive conditions like endometriosis or PCOS):</strong>{" "}
+          <a className="link" href="https://amzn.to/3VQxapg"> Fertility Nutraceuticals Dehydroepiandrosterone (DHEA)</a>
         </p>
         <p className="mb-4 text">
-          <strong>Supplements for women with PCOS:</strong> Myoinositol;
-          Corrects the LH/FSH ratio
+          <strong>Supplements for women with PCOS:</strong> <a className="link" href="https://amzn.to/4czLgkS">Wholesome Story Myoinositol;
+          Corrects the LH/FSH ratio</a> 
         </p>
         <p className="mb-4 text">
           <strong>
-            Supplements just for men with low sperm count, motility, volume:
+            Supplement for men with low sperm count, motility, volume:
           </strong>{" "}
           Ashwagandha
         </p>
         <p className="mb-4 text">
           <strong>
-            Supplements just for men with low sperm count, concentration,
+            Supplement for men with low sperm count, concentration,
             motility, and ejaculate volume:
           </strong>{" "}
           Lycopene

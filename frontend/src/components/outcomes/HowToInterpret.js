@@ -5,29 +5,26 @@ import Callout from "../Callout";
 const embryoFreezing = (
   <section className="mb-10">
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
-    <ReadMore maxItems={1}>
+    <ReadMore maxItems={2}>
       <p className="mb-4 text">
-        Access to fertility data is your right. Gaining insight into the typical
-        range of outcomes for individuals who share your demographic profile and
-        diagnosis is crucial for setting realistic expectations.
+        Gaining insight into the typical range of outcomes for individuals who share your 
+        demographic profile and diagnosis is crucial for setting realistic expectations.
       </p>
       <p className="mb-4 text">
-        Outcomes can vary significantly among women. However, knowing the
-        typical range of outcomes for individuals with similar demographics and
-        diagnoses can help you better understand your reproductive status.
+        While embryo freezing outcomes can vary significantly from person to person, seeing results 
+        of women like you can help set expectations for number of cycles, costs, and next steps. 
       </p>
 
       <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>
-            Women like you often aim to collect 10-20 mature eggs prior to
+            Women like you often aim to collect 10-12 mature eggs in one cycle prior to
             fertilization.
           </li>
           <li>
-            It's common for not all retrieved eggs to be mature; many times, 40%
-            of the eggs collected may be immature. This reduction from retrieved
-            to mature eggs is anticipated.
+            It's common for not all retrieved eggs to be mature; many times, only 60-80% of the 
+            eggs collected may be mature. This attrition from retrieved to mature eggs is anticipated.
           </li>
           <li>
             The purpose of embryo freezing is to bring as many follicles to
@@ -47,18 +44,9 @@ const embryoFreezing = (
           </li>
         </ul>
         </Callout>
-
-      <p className="mb-4 text">
-        Understanding potential outcomes is crucial for estimating your
-        expenses, which include both time and effort. Consider the duration of
-        the process, the number of cycles needed to achieve a live birth, the
-        financial cost of these cycles, and their impact on your mental health
-        and relationships. Another key decision is whether to freeze eggs or
-        embryos.
-      </p>
       <p className="mb-4 text">
         The success rate of live births per embryo transfer ranges between
-        34-47%, varying with the egg quality's grading. Opting for genetic
+        34-47%, varying with the embryo quality's grading. Opting for genetic
         screening with embryos offers more insight into your frozen embryos
         regarding potential outcomes.
       </p>
@@ -210,29 +198,26 @@ const IVF = (
     <h2 className="text-2xl font-bold mb-4">How To Interpret Your Outcomes</h2>
     <ReadMore maxItems={1}>
       <p className="mb-4 text">
-        While IVF outcomes can vary significantly from person to person, access
-        to fertility data is your right. Gaining insight into the typical range
+        Gaining insight into the typical range
         of outcomes for individuals who share your demographic profile and
         diagnosis is crucial for setting realistic expectations.
       </p>
       <p className="mb-4 text">
-        Knowing the typical range of outcomes for individuals with similar
-        demographics and diagnoses can help you better understand your
-        reproductive status.
+        While IVF outcomes can vary significantly from person to person, seeing results 
+        of women like you can help set expectations for number of cycles, costs, and next steps. 
       </p>
 
       <Callout>
         <h3 className="font-semibold">💡 Insights</h3>
         <ul className="list-disc list-inside">
           <li>
-            Women like you often aim to collect 10-20 mature eggs prior to
+            Women like you often aim to collect 10-12 mature eggs in one cycle prior to
             fertilization.
           </li>
           <li>
             It's common for not all retrieved eggs to be mature and suitable for
-            fertilization; many times, 40% of the eggs collected may be
-            immature. This reduction from retrieved to mature eggs is
-            anticipated.
+            fertilization; many times, only 60-80% of the eggs collected may be mature. 
+            This attrition from retrieved to mature eggs is anticipated.
           </li>
           <li>
             The purpose of IVF is to bring as many follicles to maturity as
@@ -262,7 +247,7 @@ const IVF = (
             having a baby?
           </li>
           <li>
-            How do I plan to manage stress, and what kind of support will I need
+            How do I plan to manage stress? What support will I need
             from my friends and family?
           </li>
           <li>
@@ -270,8 +255,10 @@ const IVF = (
             offer access to a reputable donor database?
           </li>
         </ul>
-        <h3>Questions for Your Reproductive Endocrinologist:</h3>
-        <ul>
+      </Callout>
+      <Callout>
+        <h3 className="font-semibold">💡 Questions for Your Reproductive Endocrinologist:</h3>
+        <ul className="list-disc list-inside">
           <li>
             How many IVF cycles might I need, and what does the overall timeline
             look like?

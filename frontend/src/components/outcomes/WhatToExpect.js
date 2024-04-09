@@ -292,11 +292,11 @@ const IVF = (
     <p className="mb-4 text">
     You've come a long way already. Your journey, often thought to start at the fertility clinic, actually includes much more—like the months you've spent advocating for yourself, being persistent with providers, and undergoing various diagnoses and tests to get to where you are now.
     </p>
-    <p className="mb-4 text">These experiences are a significant part of your journey and will be a chapter in the story of how your future child came into the world. Here's a glimpse into where you stand now in your embryo freezing journey.</p>
+    <p className="mb-4 text">These experiences are a significant part of your journey and will be a chapter in the story of how your future child came into the world. Here's a glimpse into where you stand now in your IVF journey.</p>
     <div className="mb-6">
       <FertilityJourney stepsCompleted={myPersona.stage} />
       <p className="mb-4 text">
-      The embryo freezing journey involves a series of sequential decisions. Due to the limited number of providers—around 1,300 reproductive endocrinologists for 30 million women—most of these decisions are made by you, the patient.
+      The IVF journey involves a series of sequential decisions. Due to the limited number of providers—around 1,300 reproductive endocrinologists for 30 million women—most of these decisions are made by you, the patient.
       </p>
       <p className="mb-4 text">
         Beyond the clinic, many patients also explore integrative and
@@ -304,7 +304,7 @@ const IVF = (
         packages.
       </p>
       <p className="mb-4 text">
-      We differentiate between optional and required steps in an embryo freezing cycle by focusing on evidence-based practices that are right for you. You can find more detailed information below.
+      We differentiate between optional and required steps in an IVF cycle by focusing on evidence-based practices that are right for you. You can find more detailed information below.
       </p>
     </div>
     <div className="flex flex-wrap -mx-2">

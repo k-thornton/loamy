@@ -7,10 +7,10 @@ const faqs = [
     answer: (
       <>
         <p className="mb-4">
-          "This tool is comprised of eight questions. Simply input your
+          This tool is comprised of eight questions. Simply input your
           fertility goal, stage, age, primary diagnosis, and hormone levels. The
           tool will then output results of the patients who share your similar
-          characteristics, based on age and diagnosis. "
+          characteristics, based on age and diagnosis. 
         </p>
         <p className="mb-4">
           You will receive a personalized report that includes expected outcomes

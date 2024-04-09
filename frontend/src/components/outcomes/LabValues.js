@@ -33,12 +33,12 @@ const LabValues = ({ myPersona }) => {
         </p>
         <Callout>
           <p className="text mb-4">
-            💡 👉 The accuracy of at-home tests can vary widely, influenced by
+            👉 The accuracy of at-home tests can vary widely, influenced by
             the manufacturer, the conditions during shipping, and whether the
             test was conducted on the appropriate day of your cycle. Often,
             these tests cannot provide a comprehensive overview without a
-            physical examination, and your Reproductive Endocrinologist (REI)
-            will likely require you to repeat them.
+            physical examination, and your Reproductive Endocrinologist will likely 
+            require you to repeat them.
           </p>
         </Callout>
         <p className="text mb-4">
