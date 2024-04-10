@@ -13,6 +13,39 @@ const Conclusion = ({ myPersona }) => {
         <li className="pl-2">How can I optimize my overall fertility?</li>
         <li className="pl-2">What should I do next?</li>
       </ol>
+      {myPersona.familiarity === '1' && (
+        <>
+          <p className="mb-4 text">
+          Now that you have an understanding of your reproductive baseline, potential outcomes, 
+          and ways to optimize your fertility, you can begin to make the decision whether fertility
+           treatment is your next right step.  A good place to start is 
+           the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website </a> to 
+           find a nearby fertility center and compare success rates across clinics.
+          </p>
+        </>
+      )}
+      {myPersona.familiarity === '2' && (
+        <>
+          <p className="mb-4 text">
+            As you finish your cycle, next steps may be comparing your results with women like you, deciding to do another cycle, or doing 
+            some self-care post treatment. If doing another cycle is your next right step, evaluate your 
+            experience and know that you do not need to feel pressured to stay with your doctor.  Consider exploring 
+            the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website </a> to 
+            compare success rates across clinics and find care that is right for you. 
+          </p>
+        </>
+      )}
+      {myPersona.familiarity === '3' && (
+        <>
+          <p className="mb-4 text">
+            Next steps may be comparing your results with women like you, deciding to do another cycle, or doing some 
+            self-care post treatment. If doing another cycle is your next right step, evaluate your experience and 
+            know that you do not need to feel pressured to stay with your doctor.  Consider exploring 
+            the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website </a> to 
+            compare success rates across clinics and find care that is right for you. 
+          </p>
+        </>
+      )}
       <p className="mb-4 text">
         If becoming a mother (or father) is your goal, remember that there are
         multiple paths to achieve it. Recognizing that you are not limited to

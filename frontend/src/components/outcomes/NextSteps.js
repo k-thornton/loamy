@@ -66,22 +66,71 @@ const NextSteps = ({ myPersona }) => {
             female-factor infertility types.
           </li>
         </ul>
-        <p className="mb-4 text">
+        {myPersona.goal === 'ivf' && (
+        <>
+          <p className="mb-4 text">
           👉{" "}
-          <strong>
-            Consider, the 12-Week VIP Program or 12-Week CORE Plus Program from
-            Denovo. It has been found to have an 85% success rate, even for
-            patients with extensive fertility struggles or failed IVF cycles.
-          </strong>
-        </p>
+            <strong>Consider, the 12-Week VIP Program or 12-Week CORE Plus Program 
+              from <a className="link" href="https://go.denovofertility.com/guide?am_id=shaundra565">Denovo</a>. It 
+              has been found to have an 85% success rate, even for patients with extensive 
+              fertility struggles or failed IVF cycles. </strong>
+          </p>
+        </>
+      )}
+      {myPersona.goal === 'embryo' && (
+        <>
+          <p className="mb-4 text">
+          👉{" "}
+            <strong>Consider, the 12-Week VIP Program or 12-Week CORE Plus Program 
+              from <a className="link" href="https://go.denovofertility.com/guide?am_id=shaundra565">Denovo</a> when 
+              thinking about conception, IVF, or embryo freezing. It has been found to have an 85% success rate,
+               even for patients with extensive fertility struggles or failed IVF cycles. </strong>
+          </p>
+        </>
+      )}
+      {myPersona.goal === 'egg' && (
+        <>
+          <p className="mb-4 text">
+          👉{" "}
+              <strong>Consider, the 12-Week CORE Plus Program 
+              from <a className="link" href="https://go.denovofertility.com/guide?am_id=shaundra565">Denovo</a> in preperation 
+              for your egg freezing cycle. It has been found to have an 85% success rate,
+               even for patients with extensive fertility struggles. </strong>
+          </p>
+          <p className="mb-4 text">
+              <strong>Tip: </strong>Mention you are egg freezing. Denovo will allow you to join their CORE Plus 
+              Program without the male component to save money.
+          </p>
+        </>
+      )}
+      {myPersona.goal === 'electiveEgg' && (
+        <>
+          <p className="mb-4 text">
+          👉{" "}
+              <strong>Consider, the Core Plus Dynamic Egg program
+              from <a className="link" href="https://go.denovofertility.com/guide?am_id=shaundra565">Denovo</a> in preperation 
+              for your egg freezing cycle. It has been found to have an 85% success rate,
+               even for patients with extensive fertility struggles. </strong>
+          </p>
+        </>
+      )}
+      {myPersona.goal === 'learn' && (
+        <>
+          <p className="mb-4 text">
+          👉{" "}
+              <strong>Consider, the  the Baby Basics Program 
+              from <a className="link" href="https://go.denovofertility.com/guide?am_id=shaundra565">Denovo</a> for 
+              optimizing your health and fertility. </strong>
+          </p>
+        </>
+      )}
       </Callout>
 
       <h2 id="mindfulness" className="text-l font-bold mb-4">
         Mental Health & Mindfulness
       </h2>
       <p className="mb-4 text">
-        Research indicates a link between stress and fertility outcomes. A{" "}
-        <a className="link" href="https://pubmed.ncbi.nlm.nih.gov/24664130/">study</a> found that
+        Research indicates a link between stress and fertility outcomes. A study found that
         women with higher levels of alpha-amylase, a stress biomarker,
         experienced a 29% decrease in fecundity (resulting in a longer time to
         pregnancy) and were over twice as likely to face infertility compared to
@@ -161,7 +210,7 @@ const NextSteps = ({ myPersona }) => {
         </p>
       </Callout>
       <h2 id="acupuncture" className="text-l font-bold mb-4">
-        Acupuncture
+        Acupuncture & Massage
       </h2>
       <p className="mb-4 text">
         At the very least, we see acupuncture as an excellent mindfulness
@@ -194,6 +243,19 @@ const NextSteps = ({ myPersona }) => {
           <p className="mb-4 text">
             <strong>Our top recommendation for acupuncture in Boston:</strong>{" "}
             <a className="link" href="https://yintuitionwellness.com/">Yintuition</a>.
+          </p>
+        </>
+      )}
+      <p className="mb-4 text">
+      Other integrative practices women have used include cupping, acupressure, and massage. Massage is a 
+      complementary approach to treatment through safe and compassionate touch. Often studied and used as an 
+      approach to relieve pain in cancer patients, we see this as a viable option for both infertility and onco-fertility patients.
+      </p>
+      {myPersona.local && (
+        <>
+          <p className="mb-4 text">
+            <strong>Our top recommendation for massage and lymphedema therapy in Boston:</strong>{" "}
+            <a className="link" href="https://www.sacredhealingbodyworks.com/">Sacred Healing Bodyworks</a>.
           </p>
         </>
       )}
