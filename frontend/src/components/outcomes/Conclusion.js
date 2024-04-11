@@ -19,7 +19,7 @@ const Conclusion = ({ myPersona }) => {
           Now that you have an understanding of your reproductive baseline, potential outcomes, 
           and ways to optimize your fertility, you can begin to make the decision whether fertility
            treatment is your next right step.  A good place to start is 
-           the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website </a> to 
+           the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website</a> to 
            find a nearby fertility center and compare success rates across clinics.
           </p>
         </>
@@ -30,7 +30,7 @@ const Conclusion = ({ myPersona }) => {
             As you finish your cycle, next steps may be comparing your results with women like you, deciding to do another cycle, or doing 
             some self-care post treatment. If doing another cycle is your next right step, evaluate your 
             experience and know that you do not need to feel pressured to stay with your doctor.  Consider exploring 
-            the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website </a> to 
+            the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website</a> to 
             compare success rates across clinics and find care that is right for you. 
           </p>
         </>
@@ -41,7 +41,7 @@ const Conclusion = ({ myPersona }) => {
             Next steps may be comparing your results with women like you, deciding to do another cycle, or doing some 
             self-care post treatment. If doing another cycle is your next right step, evaluate your experience and 
             know that you do not need to feel pressured to stay with your doctor.  Consider exploring 
-            the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website </a> to 
+            the <a className="link" href="https://www.sartcorsonline.com/members/Search">Society for Assisted Reproductive Technology website</a> to 
             compare success rates across clinics and find care that is right for you. 
           </p>
         </>

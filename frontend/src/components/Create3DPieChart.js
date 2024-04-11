@@ -1,7 +1,7 @@
 import React from "react";
 import Plot from "react-plotly.js";
 
-const Create3DPieChart = ({ labels, values, title, className }) => {
+const Create3DPieChart = ({ labels, values, title, className}) => {
   const data = [
     {
       type: "pie",
@@ -25,6 +25,8 @@ const Create3DPieChart = ({ labels, values, title, className }) => {
       },
     },
   ];
+
+
 
   const layout = {
     title: title,

@@ -236,7 +236,7 @@ const NextSteps = ({ myPersona }) => {
         exploring acupuncture further, a resource with over <a className="link" href="https://directory.nccaom.org/">21,000 National Board-Certified 
         Acupuncturists</a> is available for reference. Look for a practice that focuses 
         specifically on fertility and you can always cross-reference with 
-        referrals from friends or reproductive endocrinologist.
+        referrals from friends or your reproductive endocrinologist.
       </p>
       {myPersona.local && (
         <>
