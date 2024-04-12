@@ -17,7 +17,7 @@ export default function About() {
         <div className="mx-auto max-w-2xl">
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral sm:text-4xl">About Loamy</h1>
           <p className="mt-6 text-xl leading-8 text-neutral">
-          We're using data + love to optimize reproductive health decision-making. 
+          We're using data + love to optimize fertility decision-making. 
           </p>
           <p className="mt-6 text-xl leading-8 text-neutral">
           Loamy helps women (and men!) make fertility decisions by delivering real-world data and evidence-based recommendations directly into patients’ hands. We believe women are smart and by delivering outcome expectations to them, it can meaningfully differentiate how they can make decisions in this space.            </p>

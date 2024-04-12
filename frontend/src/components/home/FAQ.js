@@ -31,8 +31,8 @@ const faqs = [
           4,000 de-identified women who have undergone IVF.
         </p>
         <p className="mb-4">
-          All data is anonymous and not monetized, used to show an aggregate
-          sample of real-world outcomes.
+          All data is anonymous and used to show an aggregate sample of real-world outcomes. 
+          None of the data is moentized or sold to third parties. 
         </p>
       </>
     ),

@@ -37,7 +37,7 @@ export default function OurTeam() {
           <p className="mt-6 text-lg leading-8 text-neutral-600">
             Loamy was spun-out of the MIT Media Lab and was part of the inaugural cohort of C10 Labs, 
             Dimensional AI Venture Studio and Fund. They are the winner of the NextMED Health 2023 National 
-            startup competition and are deeply committed to women's empowerment, recognizing fertility as 
+            Startup competition and are deeply committed to women's empowerment, recognizing fertility as 
             integral to women's vitality and longevity.
           </p>
         </div>
