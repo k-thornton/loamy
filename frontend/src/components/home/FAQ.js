@@ -70,7 +70,7 @@ const faqs = [
           can always go back and input them later to see your results evolve.
         </p>
         <p className="mb-4">
-          If you still have questions, reach out! Message us at hi@loamy.info
+          If you still have questions, reach out! Message us at bcurry@loamy.info
           for help with the survey.
         </p>
       </>

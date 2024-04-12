@@ -17,10 +17,10 @@ export default function About() {
         <div className="mx-auto max-w-2xl">
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-neutral sm:text-4xl">About Loamy</h1>
           <p className="mt-6 text-xl leading-8 text-neutral">
-          Loamy helps women (and men!) make fertility decisions by delivering real-world data (RWD) and evidence-based recommendations directly into patients’ hands. We believe women are smart and by delivering outcome expectations to them, it can meaningfully differentiate how they can make decisions in this space, for instance whether to freeze their eggs or undergo another round of IVF. We then offer recommendations for optimizing fertility and achieving each user’s stated reproductive goal based on science, literature, and evidence. 
+          We're using data + love to optimize reproductive health decision-making. 
           </p>
           <p className="mt-6 text-xl leading-8 text-neutral">
-          Loamy was spun-out of the MIT Media Lab and is part of the inaugural cohort of C10 Labs, Dimensional AI Venture Studio and Fund. They are the winner of the NextMED Health 2023 National startup competition and are committed to enabling informed consent for all fertility patients.           </p>
+          Loamy helps women (and men!) make fertility decisions by delivering real-world data and evidence-based recommendations directly into patients’ hands. We believe women are smart and by delivering outcome expectations to them, it can meaningfully differentiate how they can make decisions in this space.            </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mt-10">
           <div className="relative ">
