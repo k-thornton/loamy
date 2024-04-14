@@ -43,12 +43,12 @@ export default function OurTeam() {
         </div>
         <ul className="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-8 xl:col-span-2">
           {people.map((person) => (
-            <li key={person.name}>
-              <img
-                className="aspect-[3/2] w-full rounded-2xl object-cover object-top"
-                src={person.imageUrl}
-                alt=""
-              />
+              <li key={person.name}>
+                <img
+                  className="aspect-[3/2] w-full rounded-2xl object-cover object-top"
+                  src={person.imageUrl}
+                  alt=""
+                />
               <h3 className="mt-6 text-lg font-semibold leading-8 text-neutral-900">
                 {person.name}
               </h3>
