@@ -45,6 +45,20 @@ function transformData(input, label, unit) {
   return sortedData.reverse();
 }
 
+function generateCaption(label, unit, highest, highest_percent) {
+  const formattedPercent = (highest_percent * 100).toFixed(0);
+  const captions = {
+    "Day Five Embryos": `${formattedPercent}% of women like you have ${highest} frozen embryos`,
+    "Eggs Retrieved": `${formattedPercent}% of women like you have ${highest} eggs retrieved`,
+    "Fertilized Eggs": `${formattedPercent}% of women like you have ${highest} eggs fertilized`,
+    "Mature Eggs": `${formattedPercent}% of of women like you have ${highest} mature eggs`,
+  };
+
+  return captions[label] || `Data for ${label} is not available.`;
+}
+
+
+
 const info = {
   // This is a little too hard coded for my liking, but it'll work for now.
   // I'd prefer the chart display to not have any idea what its data will be.
@@ -68,10 +82,11 @@ function ChartCards({ myPersona }) {
             const name = outcome.name;
             const unit = outcome.unit;
             const binData = transformData(data, name, unit);
+            const caption = generateCaption(outcome.name, outcome.unit, outcome.data.highest, outcome.data.highest_percent);
             return (
               <div
                 key={name}
-                className="card bg-base-100 shadow-xl m-5 aspect-square w-[280px] h-[330px]"
+                className="card bg-base-100 shadow-xl m-5 aspect-square w-[280px] h-[420px]"
               >
                 <div
                   id={name}
@@ -98,6 +113,7 @@ function ChartCards({ myPersona }) {
                       </svg>
                     </div>
                   </div>
+                  <div className="text-center font-semibold">{caption}</div> {/* Display the dynamic caption here */}
                   <div className="p-6 h-[300px] w-[300px] max-w-64">
                     <RadialBar data={binData} />
                   </div>

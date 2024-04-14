@@ -111,8 +111,8 @@ const faqs = [
         <p className="mb-4">
           We will continue to fine tune and build upon our data, models, and
           recommendations. We have stealthy partnerships down the pipeline with
-          networks of fertility clinics, researchers, and academia to deliver
-          some of the most sophisticated fertility models to market.{" "}
+          networks of fertility clinics and researchers to deliver
+          sophisticated fertility models to market.{" "}
         </p>
         <p className="mb-4">
           But more importantly, we know this experience sucks. Loamy is
