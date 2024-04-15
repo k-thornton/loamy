@@ -161,53 +161,91 @@ const NextSteps = ({ myPersona }) => {
       </p>
       <Callout>
         <h3 className="font-semibold mb-4">🏆 Our Top Picks:</h3>
-        <p className="mb-4 text">
-          <strong>
-            Top pick for men and women to support overall fertility:
-          </strong>{" "}
-          <a className="link" href="https://amzn.to/3vN5qre">Ritual Prenatal vitamin (Includes Choline and Folate/Folic acid)</a>
-        </p>
-        <p className="mb-4 text">
-          <strong>Top pick for men and women over 35:</strong> <a className="link" href="https://amzn.to/4cDVQHz">
-            Natalist Coenzyme Q10 (CoQ10)</a>
-        </p>
-        <p className="mb-4 text">
-          <strong>Supplements just for women with DOR (not recommended for women who have a history of hormonal cancer 
-            or estrogen-sensitive conditions like endometriosis or PCOS):</strong>{" "}
-          <a className="link" href="https://amzn.to/3VQxapg"> Fertility Nutraceuticals Dehydroepiandrosterone (DHEA)</a>
-        </p>
-        <p className="mb-4 text">
-          <strong>Supplements for women with PCOS:</strong> <a className="link" href="https://amzn.to/4czLgkS">Wholesome Story Myoinositol;
-          Corrects the LH/FSH ratio</a> 
-        </p>
-        <p className="mb-4 text">
-          <strong>
-            Supplement for men with low sperm count, motility, volume:
-          </strong>{" "}
-          <a className="link" href="https://amzn.to/3vJuoHW">Fertility Dad with Ashwangandha</a>
-        </p>
-        <p className="mb-4 text">
-          <strong>
-            Supplement for men with low sperm count, concentration,
-            motility, and ejaculate volume:
-          </strong>{" "}
-          <a className="link" href="https://amzn.to/4as1gUz">Wholesome Story male Supplement with Lycopene </a>
-        </p>
-        <p className="mb-4 text">
-          Vitamin D is recommended for both men and women if you're Vitamin D
-          deficient, which affects 40% of the population. Antioxidants like
-          Vitamin C and E and Selenium may also help support healthy sperm
-          count, motility, and morphology.
-        </p>
-        <p className="mb-4 text">
-          👉{" "}
-          <strong>
-            Top pick for medical-grade, third-party tested supplements:
-          </strong>{" "}
-          <a className="link" href="https://fertilitypregnancy.org/protocol/">
-            The Fertility and Pregnancy Institute
-          </a>
-        </p>
+        {((myPersona.goal === 'ivf' || myPersona.goal === 'embryo' || myPersona.goal === 'learn')) && (
+          <>
+            <p className="mb-4 text">
+              <strong>
+                Top pick for men and women to support overall fertility:
+              </strong>{" "}
+              <a className="link" href="https://amzn.to/3vN5qre">Ritual Prenatal vitamin (Includes Choline and Folate/Folic acid)</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>Top pick for men and women over 35:</strong> <a className="link" href="https://amzn.to/4cDVQHz">
+                Natalist Coenzyme Q10 (CoQ10)</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>Supplements just for women with DOR (not recommended for women who have a history of hormonal cancer 
+                or estrogen-sensitive conditions like endometriosis or PCOS):</strong>{" "}
+              <a className="link" href="https://amzn.to/3VQxapg"> Fertility Nutraceuticals Dehydroepiandrosterone (DHEA)</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>Supplements for women with PCOS:</strong> <a className="link" href="https://amzn.to/49znW41">Theralogix Myo-Inositol & D-Chiro Inositol;
+              Corrects the LH/FSH ratio</a> 
+            </p>
+            <p className="mb-4 text">
+              <strong>
+                Supplement for men with low sperm count, motility, volume: </strong>Ashwangandha,{" "}
+              <a className="link" href="https://amzn.to/3vJuoHW">Found in Fertility Dad</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>
+                Supplement for men with low sperm count, concentration,
+                motility, and ejaculate volume: </strong>Lycopene,{" "}
+              <a className="link" href="https://amzn.to/3JmcRZz">Found in Theralogix Male Supplement</a>
+            </p>
+            <p className="mb-4 text">
+              Vitamin D is recommended for both men and women if you're Vitamin D
+              deficient, which affects 40% of the population. Antioxidants like
+              Vitamin C and E and Selenium may also help support healthy sperm
+              count, motility, and morphology.
+            </p>
+            <p className="mb-4 text">
+              👉{" "}
+              <strong>
+                Top pick for HIS & HERS bundled medical-grade, third-party-tested supplements:
+              </strong>{" "}
+              <a className="link" href="https://fertilitypregnancy.org/nutrient-shop/">
+                The Fertility and Pregnancy Institute
+              </a>
+            </p>
+          </>
+        )}
+        {((myPersona.goal === 'egg' || myPersona.goal === 'electiveEgg')) && (
+          <>
+            <p className="mb-4 text">
+              <strong>
+                Top pick for women to support overall fertility:
+              </strong>{" "}
+              <a className="link" href="https://amzn.to/3vN5qre">Ritual Prenatal vitamin (Includes Choline and Folate/Folic acid)</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>Top pick for women over 35:</strong> <a className="link" href="https://amzn.to/4cDVQHz">
+                Natalist Coenzyme Q10 (CoQ10)</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>Supplements just for women with DOR (not recommended for women who have a history of hormonal cancer 
+                or estrogen-sensitive conditions like endometriosis or PCOS):</strong>{" "}
+              <a className="link" href="https://amzn.to/3VQxapg"> Fertility Nutraceuticals Dehydroepiandrosterone (DHEA)</a>
+            </p>
+            <p className="mb-4 text">
+              <strong>Supplements for women with PCOS:</strong> <a className="link" href="https://amzn.to/49znW41">Theralogix Myo-Inositol & D-Chiro Inositol;
+              Corrects the LH/FSH ratio</a> 
+            </p>
+            <p className="mb-4 text">
+              Vitamin D is recommended for women if you're Vitamin D
+              deficient, which affects 40% of the population.
+            </p>
+            <p className="mb-4 text">
+              👉{" "}
+              <strong>
+                Top pick for bundled medical-grade, third-party-tested supplements:
+              </strong>{" "}
+              <a className="link" href="https://fertilitypregnancy.org/nutrient-shop/">
+                The Fertility and Pregnancy Institute
+              </a>
+            </p>
+          </>
+        )}
       </Callout>
       <h2 id="acupuncture" className="text-l font-bold mb-4">
         Acupuncture & Massage
