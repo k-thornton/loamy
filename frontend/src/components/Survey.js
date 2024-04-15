@@ -85,8 +85,8 @@ function Survey() {
     const answer = selectedOption || currentQuestion.defaultValue
     if (answer == null) {
       showModal({
-          title: "There's an issue...",
-          text: "Please provide an answer before proceeding.",
+          title: "Oops! Something's missing...",
+          text: "Please provide an answer before moving forward.",
         });
         return;
     }
