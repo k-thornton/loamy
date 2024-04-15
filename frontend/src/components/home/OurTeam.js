@@ -6,7 +6,7 @@ const people = [
     name: "Shauny Ullman",
     role: "Co-Founder",
     imageUrl: shauny,
-    bio: "Shauny holds an MBA/MPP with MIT Sloan and Harvard Kennedy School. She has worked in impact investing for several years, overseeing over $3B in social and environmental investments. Shauny is deeply passionate about women thriving and destigmatizing critical conversations. She believes each of us should be empowered to take control of our health and data.",
+    bio: "Shauny holds a MBA/MPP with MIT Sloan and Harvard Kennedy School. She has worked in impact investing for several years, overseeing over $3B in social and environmental investments. Shauny is deeply passionate about women thriving and destigmatizing critical conversations. She believes each of us should be empowered to take control of our health and data.",
     xUrl: "",
     linkedinUrl: "https://www.linkedin.com/in/shaundraullman/",
   },
