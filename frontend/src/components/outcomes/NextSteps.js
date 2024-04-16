@@ -142,7 +142,7 @@ const NextSteps = ({ myPersona }) => {
       experience something in your mind. Olympic athletes use this technique to imagine their 
       race and cancer patients use it before treatment to mentally prepare. This can help control 
       your emotions, physiology, and reduce stress-induced cortisol levels. You can start on 
-      YouTube with fertility meditations and if you want to upgrade your practice, <a className="link" href="hhttps://circlebloom.com/shop/?ref=20393">Circle & Bloom</a> offers 
+      YouTube with fertility meditations and if you want to upgrade your practice, <a className="link" href="https://circlebloom.com/shop/?ref=20393">Circle & Bloom</a> offers 
       a series of guided visualization curated for your specific fertility journey. 
       </p>
       <p className="mb-4 text">
