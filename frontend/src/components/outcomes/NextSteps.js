@@ -200,11 +200,21 @@ const NextSteps = ({ myPersona }) => {
               count, motility, and morphology.
             </p>
             <p className="mb-4 text">
-              👉{" "}
+            👉{" "}
               <strong>
                 Top pick for HIS & HERS bundled medical-grade, third-party-tested supplements:
               </strong>{" "}
-              <a className="link" href="https://fertilitypregnancy.org/nutrient-shop/">
+              <a
+                href="https://fertilitypregnancy.org/nutrient-shop/"
+                className="link"
+                onClick={(event) => {
+                  // Log the click event or send it to your server for tracking
+                  console.log("The Fertility and Pregnancy Institute link clicked:", event.target.href);
+                  // If you want to track the click event, you can send it to your server here
+                  // Then navigate to the link
+                  window.location.href = event.target.href;
+                }}
+              >
                 The Fertility and Pregnancy Institute
               </a>
             </p>
@@ -240,7 +250,17 @@ const NextSteps = ({ myPersona }) => {
               <strong>
                 Top pick for bundled medical-grade, third-party-tested supplements:
               </strong>{" "}
-              <a className="link" href="https://fertilitypregnancy.org/nutrient-shop/">
+              <a
+                href="https://fertilitypregnancy.org/nutrient-shop/"
+                className="link"
+                onClick={(event) => {
+                  // Log the click event or send it to your server for tracking
+                  console.log("The Fertility and Pregnancy Institute link clicked:", event.target.href);
+                  // If you want to track the click event, you can send it to your server here
+                  // Then navigate to the link
+                  window.location.href = event.target.href;
+                }}
+              >
                 The Fertility and Pregnancy Institute
               </a>
             </p>
@@ -270,9 +290,11 @@ const NextSteps = ({ myPersona }) => {
         Despite the rarity of clinical studies on Western medicine interventions
         like acupuncture in well-known, mainstream medical journals, many women
         undergoing egg/embryo freezing report finding these treatments to be
-        stress-reducing and beneficial to their journey. If your interested in 
-        exploring acupuncture further, a resource with over <a className="link" href="https://directory.nccaom.org/">21,000 National Board-Certified 
-        Acupuncturists</a> is available for reference. Look for a practice that focuses 
+        stress-reducing and beneficial to their journey. If you're interested in 
+        exploring acupuncture further, a resource with over <a className="link" href="https://directory.nccaom.org/" onClick={(event) => {
+          console.log("Acupuncturists directory link clicked:", event.target.href);
+          window.location.href = event.target.href;
+        }}>21,000 National Board-Certified Acupuncturists</a> is available for reference. Look for a practice that focuses 
         specifically on fertility and you can always cross-reference with 
         referrals from friends or your reproductive endocrinologist.
       </p>
@@ -280,7 +302,10 @@ const NextSteps = ({ myPersona }) => {
         <>
           <p className="mb-4 text">
             <strong>Our top recommendation for acupuncture in Boston:</strong>{" "}
-            <a className="link" href="https://yintuitionwellness.com/">Yintuition</a>.
+            <a className="link acupuncture-link" href="https://yintuitionwellness.com/" onClick={(event) => {
+              console.log("Acupuncture link clicked:", event.target.href);
+              window.location.href = event.target.href;
+            }}>Yintuition</a>.
           </p>
         </>
       )}
@@ -293,7 +318,10 @@ const NextSteps = ({ myPersona }) => {
         <>
           <p className="mb-4 text">
             <strong>Our top recommendation for massage and lymphedema therapy in Boston:</strong>{" "}
-            <a className="link" href="https://www.sacredhealingbodyworks.com/">Sacred Healing Bodyworks</a>.
+            <a className="link massage-link" href="https://www.sacredhealingbodyworks.com/" onClick={(event) => {
+              console.log("Massage link clicked:", event.target.href);
+              window.location.href = event.target.href;
+            }}>Sacred Healing Bodyworks</a>.
           </p>
         </>
       )}
@@ -406,7 +434,10 @@ const NextSteps = ({ myPersona }) => {
                 You're entitled to fill your prescription at any pharmacy,
                 including international pharmacies, regardless of your insurance
                 company's preferred providers. Our top recommendation is{" "}
-                <a className="link" href="https://www.ivfpharmacy.com/">IVF Pharmacy</a>, who has
+                <a className="link" href="https://www.ivfpharmacy.com/" onClick={(event) => {
+                  console.log("IVF Pharmacy link clicked:", event.target.href);
+                  window.location.href = event.target.href;
+                }}>IVF Pharmacy</a>, who has
                 been in business the last 20 years selling medication at up to
                 70% discount. These drugs come from Europe, where IVF drug
                 prices are much cheaper than in the U.S, and all from brand name
