@@ -108,7 +108,7 @@
     "expectedDataType": "numeric",
     "minValue": 25,
     "maxValue": 45,
-    "note": "For best accuracy, our dataset is only representative of women ages 25 - 45."
+    "note": "For best accuracy, our dataset is only representative of women ages 25 - 45. We are expanding our dataset now and will make updates soon."
   },
   {
     "questionNumber": 5,

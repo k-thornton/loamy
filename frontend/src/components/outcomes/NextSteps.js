@@ -25,7 +25,7 @@ const NextSteps = ({ myPersona }) => {
         Data-Driven Fertility Consulting
       </h2>
       <p className="mb-4 text">
-        Before visiting an IVF clinic or even after your first IVF attempt,
+        Before visiting an IVF clinic or even after your first cycle attempt,
         consider exploring data-driven, science-backed fertility consultants.
         These organizations focus on evidence-based approaches and may address
         some root causes of infertility. Our top recommendations include{" "}

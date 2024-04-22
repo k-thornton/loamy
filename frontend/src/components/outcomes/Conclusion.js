@@ -31,8 +31,7 @@ const Conclusion = ({ myPersona }) => {
         <>
           <p className="mb-4 text">
             As you finish your cycle, next steps may be comparing your results with women like you, deciding to do another cycle, or doing 
-            some self-care post treatment. If doing another cycle is your next right step, evaluate your 
-            experience and know that you do not need to feel pressured to stay with your doctor.  Consider exploring 
+            some self-care post treatment. Consider exploring 
             the <a className="link" href="https://www.sartcorsonline.com/members/Search" onClick={(event) => {
               console.log("SART website link clicked:", event.target.href);
               window.location.href = event.target.href;
@@ -45,8 +44,7 @@ const Conclusion = ({ myPersona }) => {
         <>
           <p className="mb-4 text">
             Next steps may be comparing your results with women like you, deciding to do another cycle, or doing some 
-            self-care post treatment. If doing another cycle is your next right step, evaluate your experience and 
-            know that you do not need to feel pressured to stay with your doctor.  Consider exploring 
+            self-care post treatment. Consider exploring 
             the <a className="link" href="https://www.sartcorsonline.com/members/Search" onClick={(event) => {
               console.log("SART website link clicked:", event.target.href);
               window.location.href = event.target.href;
@@ -55,31 +53,41 @@ const Conclusion = ({ myPersona }) => {
           </p>
         </>
       )}
-      <p className="mb-4 text">
-        If becoming a mother (or father) is your goal, remember that there are
-        multiple paths to achieve it. Recognizing that you are not limited to
-        one narrative can be liberating. Options like IVF, adoption, and
-        third-party reproduction/surrogacy offer different avenues that you can
-        assess based on your age, health, genetic background, and financial
-        circumstances. If considering surrogacy as your next step, a reputable
-        platform to explore is{" "}
-        <a
-          href="https://www.circlesurrogacy.com/intended-parents?device=c&matchtype=p&network=o&utm_adgroupid=1313918682797505&keyword=need%20surrogate&geo_click_id=51375&campaignid=686969534&gclid=&msclkid=c00c7c3de8a4104b760a19c939a7d05e&utm_source=bing&utm_medium=cpc&utm_campaign=IPs%20-%20US%20-%20Clear%20Intent%20-%20High%20Value&utm_term=need%20surrogate&utm_content=Surrogate%20-%20Need"
-          className="link"
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={(event) => {
-            console.log("Circle Surrogacy link clicked:", event.target.href);
-          }}
-        >
-          Circle Surrogacy
-        </a>
-        .
-      </p>
-      <p className="mb-4 text">
-        The good news is that you have a range of options to consider and the
-        freedom to decide your reproductive future.
-      </p>
+      {((myPersona.goal === 'ivf' || myPersona.goal === 'embryo' || myPersona.goal === 'learn')) && (
+        <>
+          <p className="mb-4 text">
+            If becoming a mother (or father) is your goal, remember that there are
+            multiple paths to achieve it. Recognizing that you are not limited to
+            one narrative can be liberating. Options like IVF, adoption, and
+            third-party reproduction/surrogacy offer different avenues that you can
+            assess based on your age, health, genetic background, and financial
+            circumstances. If considering surrogacy as your next step, a reputable
+            platform to explore is{" "}
+            <a
+              href="https://www.circlesurrogacy.com/intended-parents?device=c&matchtype=p&network=o&utm_adgroupid=1313918682797505&keyword=need%20surrogate&geo_click_id=51375&campaignid=686969534&gclid=&msclkid=c00c7c3de8a4104b760a19c939a7d05e&utm_source=bing&utm_medium=cpc&utm_campaign=IPs%20-%20US%20-%20Clear%20Intent%20-%20High%20Value&utm_term=need%20surrogate&utm_content=Surrogate%20-%20Need"
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(event) => {
+                console.log("Circle Surrogacy link clicked:", event.target.href);
+              }}
+            >
+              Circle Surrogacy
+            </a>
+            .
+          </p>
+          <p className="mb-4 text">
+          The good news is that you have a range of options to consider and the freedom to decide your reproductive future.
+          </p>
+        </>
+      )}
+      {((myPersona.goal === 'egg' || myPersona.goal === 'electiveEgg')) && (
+          <>
+            <p className="mb-4 text">
+            The good news is that you have a range of options to consider and the freedom to decide your reproductive future.
+            </p>
+          </>
+        )}
     </section>
   );
 };
