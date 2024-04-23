@@ -32,7 +32,7 @@ const faqs = [
         </p>
         <p className="mb-4">
           All data is anonymous and used to show an aggregate sample of real-world outcomes. 
-          None of the data is moentized or sold to third parties. 
+          None of the data is monetized or sold to third parties. 
         </p>
       </>
     ),
@@ -110,7 +110,7 @@ const faqs = [
         </p>
         <p className="mb-4">
           We will continue to fine tune and build upon our data, models, and
-          recommendations. We have stealthy partnerships down the pipeline with
+          recommendations. We have partnerships down the pipeline with
           networks of fertility clinics and researchers to deliver
           sophisticated fertility models to market.{" "}
         </p>

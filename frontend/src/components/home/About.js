@@ -20,7 +20,7 @@ export default function About() {
           We're using data + love to optimize fertility decision-making. 
           </p>
           <p className="mt-6 text-xl leading-8 text-neutral">
-          Loamy helps women (and men!) make fertility decisions by delivering real-world data and evidence-based recommendations directly into patients’ hands. We believe women are smart and by delivering outcome expectations to them, it can meaningfully differentiate how they can make decisions in this space.            </p>
+          Loamy helps women (and men!) make fertility decisions by delivering real-world data and evidence-based recommendations directly into patients’ hands. By delivering outcome expectations, it can meaningfully differentiate how patients make decisions in this space.            </p>
         </div>
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mt-10">
           <div className="relative ">

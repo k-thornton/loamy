@@ -9,7 +9,7 @@ const posts = [
     title: "Decision Support",
     href: "#",
     description:
-      "Get expectations from eggs retrieved to day 5 embryos based on the outcomes of women like you.",
+      "Get outcome expectations for number of eggs retrieved, fertilized eggs, and day 5 embryos based on women like you.",
     imageUrl: decisionsupport,
   },
   {
